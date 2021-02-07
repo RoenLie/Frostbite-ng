@@ -1,0 +1,15 @@
+<button *ngIf="isLoggedIn()">
+  <span class="icon">
+    <svg-icon
+      title="User profile"
+      src="assets/svg/user-solid.svg"
+      [svgStyle]="{'width.px':'20'}">
+    </svg-icon>
+  </span>
+</button>
+<button *ngIf="isLoggedIn()" (click)="logout()">
+  <span class="text">Logout</span>
+</button>
+<button *ngIf="!isLoggedIn()" (click)="login()">
+  <span class="text">Login</span>
+</button>

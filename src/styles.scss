@@ -3,6 +3,11 @@
   --bg-color-1: 30, 30, 30;
 
   --txt-color-1: 255, 255, 255;
+
+  --bg-nav-top-1: 20,20,20;
+  --border-nav-top-1: 180,180,180;
+
+  --icon-active-1: 0,0,0;
 }
 
 * {
@@ -15,4 +20,7 @@ body {
 
   margin: 0;
   padding: 0;
+
+  font-size: 1em;
+  font-family: Helvetica;
 }

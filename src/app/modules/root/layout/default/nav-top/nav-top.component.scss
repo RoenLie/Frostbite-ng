@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.2em;
+
+  background-color: rgba(var(--bg-nav-top-1));
+  border-bottom: 2px solid rgba(var(--border-nav-top-1));
+}

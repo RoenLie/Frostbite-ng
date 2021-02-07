@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+button {
+  display:grid;
+  place-items: center;
+
+  margin: 0.25em;
+  padding: 0.25em;
+  background: none;
+  border: none;
+  color: inherit;
+
+  cursor: pointer;
+  transition: box-shadow 0.1s linear;
+
+  &:active {
+    box-shadow: 0 0 3px 3px rgba(var(--txt-color-1), 0.5) inset;
+  }
+}
+
+.text {
+  font-size: 1.5em;
+  user-select: none;
+}
+
+.icon {
+  >* {
+    display:grid;
+    place-items: center;
+  }
+
+  cursor: pointer;
+
+  transition: all 0.1s linear;
+
+  color: rgba(var(--txt-color-1));
+
+  &:active {
+    box-shadow: 0 0 3px 3px rgba(var(--txt-color-1), 0.5) inset;
+  }
+}
