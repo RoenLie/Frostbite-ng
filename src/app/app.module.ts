@@ -24,6 +24,19 @@ import { FirebaseService } from "./modules/root/services/firebase.service";
 import { FirestoreService } from "./modules/root/services/firestore.service";
 import { AuthService } from "./modules/root/services/auth.service";
 import { NewComponent } from './modules/qualihr/views/new/new.component';
+import { ListComponent } from './modules/qualihr/views/list/list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// material design spesific
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
+// ---
+
 
 @NgModule({
   declarations: [
@@ -39,12 +52,22 @@ import { NewComponent } from './modules/qualihr/views/new/new.component';
     CenterComponent,
     RightComponent,
     NewComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [
     LayoutService,

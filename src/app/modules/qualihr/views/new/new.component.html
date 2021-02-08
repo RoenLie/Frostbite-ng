@@ -1,1 +1,40 @@
-<p>new works!</p>
+<div class="wrapper">
+  <form (ngSubmit)="submitSuggestion()" id="suggestionForm">
+    <h2>
+      Create a new suggestion for the HR department!
+    </h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="suggestionForm.category" name="category" required>
+        <mat-option *ngFor="let category of categories" [value]="category.value">
+          {{category.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Suggestion title</mat-label>
+      <input
+        matInput name="title"
+        required
+        placeholder="title"
+        autocomplete="_"
+        [(ngModel)]="suggestionForm.title"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        required
+        name="description"
+        placeholder="My suggestion..."
+        [(ngModel)]="suggestionForm.description">
+      </textarea>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Submit</button>
+  </form>
+</div>

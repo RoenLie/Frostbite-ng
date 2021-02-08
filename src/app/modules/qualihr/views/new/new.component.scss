@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  place-items: start center;
+
+  height: 100%;
+
+  padding: 2em;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+
+  width: clamp(10em, 50vw, 50em);
+
+  textarea {
+    height: 10em;
+  }
+}
