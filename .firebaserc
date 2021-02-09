@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "frostbite-ng"
+  },
+  "targets": {
+    "frostbite-ng": {
+      "hosting": {
+        "frostbite-ng": [
+          "frostbite-ng"
+        ]
+      }
+    }
   }
 }

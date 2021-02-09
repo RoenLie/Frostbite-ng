@@ -1,13 +1,22 @@
 <div class="wrapper">
-  <form (ngSubmit)="submitSuggestion()" id="suggestionForm">
+  <form
+    #formDirective="ngForm"
+    [formGroup]="formGroup"
+    (ngSubmit)="submitSuggestion(formDirective)">
+    
     <h2>
       Create a new suggestion for the HR department!
     </h2>
 
     <mat-form-field appearance="outline">
       <mat-label>Category</mat-label>
-      <mat-select [(ngModel)]="suggestionForm.category" name="category" required>
-        <mat-option *ngFor="let category of categories" [value]="category.value">
+      <mat-select
+        formControlName="category"
+        name="category"
+        required>
+        <mat-option
+          *ngFor="let category of categories"
+          [value]="category.value">
           {{category.viewValue}}
         </mat-option>
       </mat-select>
@@ -20,8 +29,8 @@
         required
         placeholder="title"
         autocomplete="_"
-        [(ngModel)]="suggestionForm.title"
-      />
+        formControlName="title"
+        />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -31,10 +40,12 @@
         required
         name="description"
         placeholder="My suggestion..."
-        [(ngModel)]="suggestionForm.description">
+        formControlName="description">
       </textarea>
     </mat-form-field>
 
-    <button mat-raised-button type="submit">Submit</button>
+    <button mat-raised-button type="submit" [disabled]="!formGroup.valid">
+      Submit
+    </button>
   </form>
 </div>

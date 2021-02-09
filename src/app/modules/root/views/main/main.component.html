@@ -1,3 +1,17 @@
-<div class="wrapper-main">
-  <p>test</p>
+<div class="wrapper">
+  <button class="card" routerLink="qualihr">
+    <span>
+      Suggest Something
+    </span>
+  </button>
+
+  <button
+    *ngIf="isLoggedIn()"
+    class="card"
+    routerLink="qualihr/list"
+    >
+    <span>
+      See suggestions
+    </span>
+  </button>
 </div>

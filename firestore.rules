@@ -11,7 +11,7 @@ service cloud.firestore {
       allow write: if getUserData().roles.hasAny(["admin"]);
     }
 
-    match /public {
+    match /suggestions/{suggestionId} {
       allow write: if true;
       allow read: if isSignedIn() && getUserData().roles.hasAny(["editor","admin"]);
     }

@@ -6,3 +6,14 @@
   background-color: rgba(var(--bg-color-1));
   color: rgba(var(--txt-color-1));
 }
+
+.loader {
+  position: fixed;
+
+  display: grid;
+  place-items: center;
+
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+}

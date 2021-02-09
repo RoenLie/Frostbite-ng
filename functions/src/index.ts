@@ -13,9 +13,11 @@ async function initAdmin() {
 
 // ----------------------------------------------------------------------------
 
-exports.userCreated = functions
-    .region("europe-west2")
-    .auth.user()
+exports.algolia = require("./algolia");
+
+// ----------------------------------------------------------------------------
+
+exports.userCreated = functions.region("europe-west2").auth.user()
     .onCreate(async (user) => {
       const admin = await initAdmin();
 
@@ -45,9 +47,7 @@ exports.userCreated = functions
 
 // ----------------------------------------------------------------------------
 
-exports.userDeleted = functions
-    .region("europe-west2")
-    .auth.user()
+exports.userDeleted = functions.region("europe-west2").auth.user()
     .onDelete(async (user) => {
       const admin = await initAdmin();
 

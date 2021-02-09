@@ -2,12 +2,19 @@
   --bg-body: 30, 30, 30;
   --bg-color-1: 30, 30, 30;
 
+  --quali-bg-color: 43,182,115;
+  --quali-txt-color: 255, 255, 255;
+
   --txt-color-1: 255, 255, 255;
 
   --bg-nav-top-1: 20,20,20;
   --border-nav-top-1: 180,180,180;
 
   --icon-active-1: 0,0,0;
+
+  --nav-top-height: 6em;
+
+  --view-height: calc(100vh - var(--nav-top-height));
 }
 
 * {

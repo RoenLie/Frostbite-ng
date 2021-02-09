@@ -1,1 +1,61 @@
-<p>list works!</p>
+<div class="wrapper">
+  <div class="search">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input
+      matInput type="text"
+      [(ngModel)]="searchValue"
+      autocomplete="_"
+      (ngModelChange)="search()">
+      <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="search('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div>
+    Search results: {{suggestions?.length || 0}}
+  </div>
+  <hr>
+
+  <div class="list">
+
+    <div class="item" *ngFor="let suggestion of suggestions; trackBy: trackSuggestion">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{suggestion.title}}
+          </mat-panel-title>
+          <div>
+            <span>
+              {{suggestion.state}}
+            </span>
+          </div>
+        </mat-expansion-panel-header>
+        
+        <mat-panel-description>
+          {{suggestion.description}}
+        </mat-panel-description>
+        
+        <mat-action-row class="panel-actions">
+          <div>
+            <mat-icon *ngFor="let star of stars(suggestion.stars)">star_rate</mat-icon>
+          </div>
+
+          <div>
+            <button mat-button color="accent"
+              (click)="approve(suggestion.objectID)">
+              Approve
+            </button>
+            <button mat-button color="warn"
+              (click)="decline(suggestion.objectID)">
+              Decline
+            </button>
+          </div>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </div>
+
+  </div>
+</div>

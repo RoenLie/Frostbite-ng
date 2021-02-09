@@ -1,4 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+
 
 import firebase from "firebase/app";
 import "firebase/analytics";
