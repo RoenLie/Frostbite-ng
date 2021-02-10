@@ -1,12 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
-
+import { Injectable } from '@angular/core';
 
 import firebase from "firebase/app";
-import "firebase/analytics";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/functions";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -23,5 +17,7 @@ const firebaseConfig = {
   providedIn: 'root'
 })
 export class FirebaseService {
-  constructor() { firebase.initializeApp(firebaseConfig); }
+  constructor() {
+    firebase.initializeApp(firebaseConfig);
+  }
 }

@@ -5,7 +5,6 @@ import algoliasearch from "algoliasearch";
   providedIn: 'root'
 })
 export class AlgoliaService{
-
   searchClient: any;
   index: any;
 

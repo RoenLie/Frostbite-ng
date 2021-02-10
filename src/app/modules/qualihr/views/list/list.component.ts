@@ -53,10 +53,10 @@ export class ListComponent implements OnInit {
   }
 
   async approve(id: string) {
-    this.setState(id, state.approved);
+    await this.setState(id, state.approved);
   }
   async decline(id: string) {
-    this.setState(id, state.declined);
+    await this.setState(id, state.declined);
   }
 
   async setState(id: string, state: state) {
@@ -85,11 +85,7 @@ export class ListComponent implements OnInit {
     });
   }
 
-  trackSuggestion(index: number, element: any) {
-    return element ? element.objectID : null;
-  }
-
-  stars(amount: number) {
-    return Array(amount).fill(0);
-  }
+  trackSuggestion = (index: number, suggestion: any) =>
+    suggestion ? suggestion.objectID : null;
+  stars = (amount: number) => Array(amount).fill(0);
 }

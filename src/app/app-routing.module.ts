@@ -6,7 +6,7 @@ import { Error404Component } from "./modules/root/views/error404/error404.compon
 
 const routes: Routes = [
   { path: "", component: MainComponent },
-  { path: "qualihr", loadChildren: () => import("./modules/qualihr/qualihr.module").then(m => m.QualihrModule) },
+  { path: "qualihr", loadChildren: async () => (await import("./modules/qualihr/qualihr.module")).QualihrModule },
   { path: "**", component: Error404Component },
 ];
 
