@@ -4,7 +4,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AuthService } from "../services/auth.service";
-import { FirebaseService } from "../services/firebase.service";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDU-kzMDjOwQG6cSdGM6dSAa2kghK0qTCQ",
@@ -23,7 +22,6 @@ const firebaseConfig = {
   ],
   providers: [
     AuthService,
-    FirebaseService
   ],
   bootstrap: []
 })

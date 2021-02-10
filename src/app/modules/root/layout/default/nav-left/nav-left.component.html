@@ -1,0 +1,20 @@
+<div class="title-wrapper">
+  <span class="icon">
+    <svg-icon title="User profile"
+      src="assets/svg/frostbite_logo.svg"
+      [svgStyle]="{'height.px':'50', 'width.px':'50'}">
+    </svg-icon>
+  </span>
+  
+  <span class="text">
+    {{navTitle}}
+  </span>
+
+  <span class="icon interactive"
+  (click)="defaultLayoutService.navigationLeftOpen = false">
+    <svg-icon title="Close"
+      src="assets/svg/chevron-left-solid.svg"
+      [svgStyle]="{'height.px':'25', 'width.px':'25'}">
+    </svg-icon>
+  </span>
+</div>

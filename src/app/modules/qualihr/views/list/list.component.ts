@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 import { AlgoliaService } from 'src/app/modules/root/services/algolia.service';
 import { AngularFirestore } from "@angular/fire/firestore";
 
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface suggestion {
   objectID: string,
@@ -30,35 +29,36 @@ enum state {
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-  searchValue: string = "";
-  suggestions: suggestion[];
   searchIndex: string = "suggestions";
+  suggestions: suggestion[];
+  subjectModel: BehaviorSubject<string> = new BehaviorSubject("");
+
+  trackSuggestion = (index: number, suggestion: any) =>
+    suggestion ? suggestion.objectID : null;
+  stars = (amount: number) => Array(amount).fill(0);
 
   constructor(
     private algoriaService: AlgoliaService,
     private firestore: AngularFirestore,
-    private _snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.algoriaService.initIndex(this.searchIndex);
-    this.search();
-  }
-  async search(searchValue?: string): Promise<void> {
-    if (searchValue != undefined) this.searchValue = searchValue;
-    this.suggestions = (await this.algoriaService.index.search(
-      this.searchValue, { filters: "state:new" })).hits;
-  }
 
+    this.subjectModel.pipe(debounceTime(250)).subscribe(async searchValue => {
+      this.suggestions = await this.search(searchValue);
+    })
+  }
+  async search(searchValue: string = ""): Promise<suggestion[]> {
+    return (await this.algoriaService.index.search(
+      searchValue, { filters: "state:new" })).hits;
+  }
   async approve(id: string) {
     await this.setState(id, state.approved);
   }
   async decline(id: string) {
     await this.setState(id, state.declined);
   }
-
   async setState(id: string, state: state) {
     try {
       await this.firestore.collection("suggestions").doc(id).set({
@@ -66,7 +66,7 @@ export class ListComponent implements OnInit {
       }, { merge: true });
 
       this.algoriaService.initIndex(this.searchIndex);
-      await this.search();
+      this.suggestions = await this.search();
 
       this.suggestions.splice(
         this.suggestions.findIndex(x => x.objectID === id), 1);
@@ -76,16 +76,11 @@ export class ListComponent implements OnInit {
       console.error(error);
     }
   }
-
   openSnackBar(msg: string) {
-    this._snackBar.open(msg, 'close', {
+    this.snackBar.open(msg, 'close', {
       duration: 2000,
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
+      horizontalPosition: "center",
+      verticalPosition: "top",
     });
   }
-
-  trackSuggestion = (index: number, suggestion: any) =>
-    suggestion ? suggestion.objectID : null;
-  stars = (amount: number) => Array(amount).fill(0);
 }

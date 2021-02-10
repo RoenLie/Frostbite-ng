@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { LayoutService } from "./modules/root/layout/layout.service";
 import { Layout } from "./modules/root/layout/layout";
-import { FirebaseService } from './modules/root/services/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -25,10 +24,7 @@ import { FirebaseService } from './modules/root/services/firebase.service';
 export class AppComponent implements OnInit {
   layout: Layout;
 
-  constructor(
-    private layoutService: LayoutService,
-    private firebaseService: FirebaseService,
-  ) {  }
+  constructor( private layoutService: LayoutService ) {}
   
   ngOnInit() {
     this.layout = this.layoutService.getLayouts().default;

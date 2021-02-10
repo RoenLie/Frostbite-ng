@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { DefaultLayoutService } from '../default.service';
 import { environment } from "src/environments/environment" 
-import { DefaultLayoutService } from '../../default.service';
-
 
 @Component({
-  selector: 'app-nav-top-left',
-  templateUrl: './left.component.html',
-  styleUrls: ['./left.component.scss']
+  selector: 'app-nav-left',
+  templateUrl: './nav-left.component.html',
+  styleUrls: ['./nav-left.component.scss']
 })
-export class LeftComponent implements OnInit {
-
+export class NavLeftComponent implements OnInit {
   navTitle: string = "Placeholder";
 
   constructor(public defaultLayoutService: DefaultLayoutService) { }
@@ -17,4 +15,5 @@ export class LeftComponent implements OnInit {
   ngOnInit(): void {
     this.navTitle = environment.navTitle;
   }
+
 }

@@ -6,8 +6,17 @@ import { Error404Component } from "./modules/root/views/error404/error404.compon
 
 const routes: Routes = [
   { path: "", component: MainComponent },
-  { path: "qualihr", loadChildren: async () => (await import("./modules/qualihr/qualihr.module")).QualihrModule },
-  { path: "**", component: Error404Component },
+  {
+    path: "qualihr", loadChildren: async () =>
+      (await import("./modules/qualihr/qualihr.module")).QualihrModule
+  },
+  {
+    path: "404", loadChildren: async () =>
+      (await import("./modules/root/views/error404/error404.module")).Error404Module
+  },
+  {
+    path: "**", redirectTo:"404"
+  }
 ];
 
 @NgModule({

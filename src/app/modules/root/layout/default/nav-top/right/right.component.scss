@@ -1,7 +1,11 @@
 :host {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  display: grid;
+  column-gap: 0.5em;
+  grid-auto-columns: auto;
+
+  >* {
+    grid-row: 1;
+  }
 }
 
 button {

@@ -1,4 +1,16 @@
 <button *ngIf="isLoggedIn()">
+  <span class="icon"
+    (click)="
+      defaultLayoutService.navigationRightOpen = 
+      !defaultLayoutService.navigationRightOpen">
+    <svg-icon
+      title="Help"
+      src="assets/svg/question-solid.svg"
+      [svgStyle]="{'width.px':'20'}">
+    </svg-icon>
+  </span>
+</button>
+<button *ngIf="isLoggedIn()">
   <span class="icon">
     <svg-icon
       title="User profile"

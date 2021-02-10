@@ -1,17 +1,20 @@
-<span class="icon" tabindex="1">
+<span class="icon" tabindex="1"
+  (click)="defaultLayoutService.navigationLeftOpen = true">
   <svg-icon title="Menu"
     src="assets/svg/bars-solid.svg"
     [svgStyle]="{'height.px':'30', 'width.px':'30'}">
   </svg-icon>
 </span>
+
 <a routerLink="">
-<span class="icon" tabindex="1">
+  <span class="icon" tabindex="1">
     <svg-icon title="User profile"
       src="assets/svg/frostbite_logo.svg"
       [svgStyle]="{'height.px':'50', 'width.px':'50'}">
     </svg-icon>
   </span>
 </a>
+
 <span class="text">
   {{navTitle}}
 </span>

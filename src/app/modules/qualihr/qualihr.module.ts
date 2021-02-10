@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from "@angular/common"
+import { CommonModule,  } from "@angular/common"
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NewComponent } from "./views/new/new.component";
 import { ListComponent } from "./views/list/list.component";
-import { RouterModule } from '@angular/router';
 
+import { FirebaseModule } from "../root/modules/firebase.module";
 import { AlgoliaService } from "../root/services/algolia.service";
 
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -15,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [NewComponent, ListComponent],
@@ -36,8 +38,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatSnackBarModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FirebaseModule
   ],
   providers: [AlgoliaService]
 })
-export class QualihrModule {}
+export class QualihrModule {  }

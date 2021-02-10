@@ -1,4 +1,7 @@
 :host {
+  grid-row: 1;
+  grid-column: 1/4;
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
