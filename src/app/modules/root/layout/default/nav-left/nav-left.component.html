@@ -9,12 +9,13 @@
   <span class="text">
     {{navTitle}}
   </span>
+</div>
 
-  <span class="icon interactive"
-  (click)="defaultLayoutService.navigationLeftOpen = false">
-    <svg-icon title="Close"
-      src="assets/svg/chevron-left-solid.svg"
-      [svgStyle]="{'height.px':'25', 'width.px':'25'}">
-    </svg-icon>
-  </span>
+<div class="menu-wrapper">
+  <div *ngFor="let group of menu">
+    <div *ngFor="let item of group.menuItems">
+      {{item.displayName}}
+    </div>
+  </div>
+
 </div>

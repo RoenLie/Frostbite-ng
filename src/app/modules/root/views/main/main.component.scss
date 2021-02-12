@@ -1,8 +1,6 @@
 .wrapper {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  place-items: center;
 
   height: 100%;
 

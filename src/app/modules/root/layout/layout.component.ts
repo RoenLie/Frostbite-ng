@@ -31,18 +31,16 @@ export class LayoutComponent implements OnInit {
   @Input() layout: Layout;
   @ViewChild(LayoutDirective, { static: true }) layoutHost: LayoutDirective;
 
-  loading: boolean;
+  loading: boolean = false;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private router: Router,
   ) {
-    this.loading = false;
     router.events.subscribe(
-      (event) => {
+      async (event) => {
         if (event instanceof NavigationStart) {
           this.loading = true;
-          console.log("loading route");
         } else if (event instanceof NavigationEnd) {
           this.loading = false;
         }

@@ -9,6 +9,8 @@ import { LayoutService } from "../layout/layout.service";
 import { LayoutComponent } from '../layout/layout.component';
 import { DefaultLayoutService } from "../layout/default/default.service";
 
+import { MenuService } from "../services/menu.service";
+
 import { MainComponent } from "../views/main/main.component";
 
 import { EnigmaComponent } from '../layout/enigma/enigma.component';
@@ -49,6 +51,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ], 
   providers: [
     LayoutService,
+    MenuService,
     DefaultLayoutService
   ],
 })

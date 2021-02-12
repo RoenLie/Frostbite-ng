@@ -1,3 +1,7 @@
+:host {
+  --clamp-width: 10em, 75vw, 75em;
+}
+
 hr {
   width: 100%;
   border-color: rgba(255, 255, 255, 0.2);
@@ -23,7 +27,7 @@ hr {
   }
 
   .search {
-    width: clamp(10em, 50vw, 50em);
+    width: clamp(var(--clamp-width));
   }
   
   .list {
@@ -52,7 +56,7 @@ hr {
 
 
     .item {
-      width: clamp(10em, 50vw, 50em);
+      width: clamp(var(--clamp-width));
 
 
       .panel-actions {
