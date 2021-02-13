@@ -1,0 +1,18 @@
+<hr *ngIf="depth == 0">
+
+<div class="menu"
+  *ngFor="let item of menu; let i = index">
+  <div class="menu-item" (click)="action(item, i)">
+    {{item.displayName}}
+  </div>
+
+  <div
+  #subMenu class="sub-menu"
+  *ngIf="item.menu"
+  [attr.data-menu-name]="item.name">
+    <app-menu
+      [depth]="depth + 1"
+      [menu]="item.menu">
+    </app-menu>
+  </div>
+</div>

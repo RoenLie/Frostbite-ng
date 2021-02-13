@@ -9,6 +9,7 @@ import { MenuService, Menu } from '../../../services/menu.service';
   styleUrls: ['./nav-left.component.scss']
 })
 export class NavLeftComponent implements OnInit {
+  nativeElement: Element;
   navTitle: string = "Placeholder";
   menu: Menu;
 
@@ -18,22 +19,19 @@ export class NavLeftComponent implements OnInit {
     private elementRef: ElementRef<Element>
   ) {
     this.menu = this.menuService.menu;
+    this.nativeElement = this.elementRef.nativeElement;
   }
 
-  ngOnInit(): void {
-    this.navTitle = environment.navTitle;
-  }
+  ngOnInit(): void { this.navTitle = environment.navTitle; }
 
   @HostListener("window:touchstart", ["$event"])
   @HostListener("window:mousedown", ["$event"])
   onClick(event: Event) {
-    const { nativeElement } = this.elementRef;
-
     const target = event.target as Element;
 
     const path = event.composedPath() as Element[];
 
-    const validClick = path.some((el: Element) => !!(el == nativeElement));
+    const validClick = path.some((el: Element) => !!(el == this.nativeElement));
     
     if (!validClick) this.defaultLayoutService.navigationLeftOpen = false;
   }

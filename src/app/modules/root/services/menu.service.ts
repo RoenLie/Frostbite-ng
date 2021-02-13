@@ -17,7 +17,7 @@ export interface MenuItem {
   name: string,
   actionName?: string,
   actionValue?: string,
-  children?: MenuItem[]
+  menu?: MenuItem[]
 }
 
 

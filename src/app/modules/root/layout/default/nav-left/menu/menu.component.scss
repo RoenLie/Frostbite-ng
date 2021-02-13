@@ -1,0 +1,45 @@
+hr {
+  width: 100%;
+  border-color: rgba(255,255,255,0.5)
+}
+
+.menu {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  height: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  .menu-item {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+
+    padding: 0.5em 0.5em 0.5em 0.5em;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(255,255,255,0.15);
+    }
+  }
+
+  .sub-menu {
+    padding-left: 1em;
+    width: 100%;
+
+    transition: height 0.25s ease-in-out;
+
+    .sub-menu-content {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}

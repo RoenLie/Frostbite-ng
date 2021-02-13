@@ -37,7 +37,15 @@ export class MainComponent implements OnInit {
           displayName: "Main",
           name: "main",
           actionName: "route",
-          actionValue: "main"
+          actionValue: "main",
+          menu: [
+            {
+              displayName: "Submain",
+              name: "submain",
+              actionName: "route",
+              actionValue: "submain",
+            }
+          ]
         }
       ]
     })

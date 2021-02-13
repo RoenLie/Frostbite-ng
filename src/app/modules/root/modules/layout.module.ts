@@ -10,6 +10,7 @@ import { LayoutComponent } from '../layout/layout.component';
 import { DefaultLayoutService } from "../layout/default/default.service";
 
 import { MenuService } from "../services/menu.service";
+import { MenuComponent } from "../layout/default/nav-left/menu/menu.component";
 
 import { MainComponent } from "../views/main/main.component";
 
@@ -38,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     LeftComponent,
     CenterComponent,
     RightComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
