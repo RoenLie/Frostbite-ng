@@ -21,7 +21,7 @@ export class AuthService{
 
   constructor() {
     firebase.initializeApp(firebaseConfig);
-    firebase.auth().onAuthStateChanged(user => this.user = user);
+    this.authenticate();
   }
 
   login() {
@@ -29,7 +29,25 @@ export class AuthService{
     firebase.auth().signInWithPopup(provider);
   }
 
-  logout() {
-    firebase.auth().signOut();
+  logout() { firebase.auth().signOut(); }
+
+  isLoggedIn() { return !!this.user; }
+
+  async authenticate() {
+    const authentication = new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(u => {
+        this.user = u;
+        if (u) resolve(u.uid);
+        else reject("not logged in");
+      })
+    });
+
+    try {
+      await authentication;
+    } catch (error) {
+      console.error(error);
+    }
+
+    return this.isLoggedIn();
   }
 }

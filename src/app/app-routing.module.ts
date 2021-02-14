@@ -8,14 +8,20 @@ const routes: Routes = [
   { path: "", component: MainComponent },
   {
     path: "qualihr", loadChildren: async () =>
-      (await import("./modules/qualihr/qualihr.module")).QualihrModule
+      (await import(
+        "./modules/qualihr/qualihr.module"))
+        .QualihrModule,
+    data: { animation: "fade" }
   },
   {
     path: "404", loadChildren: async () =>
-      (await import("./modules/root/views/error404/error404.module")).Error404Module
+      (await import(
+        "./modules/root/views/error404/error404.module"))
+        .Error404Module,
+    data: { animation: "fade" }
   },
   {
-    path: "**", redirectTo:"404"
+    path: "**", redirectTo:"404", data: { animation: "fade" }
   }
 ];
 

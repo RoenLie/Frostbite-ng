@@ -49,9 +49,9 @@ export class ListComponent implements OnInit {
       this.suggestions = await this.search(searchValue);
     })
   }
-  async search(searchValue: string = ""): Promise<suggestion[]> {
+  async search(searchValue: string = "", cacheable: boolean = false): Promise<suggestion[]> {
     return (await this.algoriaService.index.search(
-      searchValue, { filters: "state:new" })).hits;
+      searchValue, { filters: "state:new", cacheable: cacheable })).hits;
   }
   async approve(id: string) {
     await this.setState(id, state.approved);
@@ -64,9 +64,7 @@ export class ListComponent implements OnInit {
       await this.firestore.collection("suggestions").doc(id).set({
         state: state
       }, { merge: true });
-
-      this.algoriaService.initIndex(this.searchIndex);
-      this.suggestions = await this.search();
+      this.suggestions = await this.search(this.subjectModel.value);
 
       this.suggestions.splice(
         this.suggestions.findIndex(x => x.objectID === id), 1);

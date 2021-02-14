@@ -2,25 +2,30 @@ import {
   Component, Input, OnInit, AfterViewInit,
   ElementRef, ViewChildren, QueryList
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuGroup, MenuItem } from 'src/app/modules/root/services/menu.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit, AfterViewInit {
   @Input() menu?: MenuItem[];
   @Input() depth: number = 0;
   @ViewChildren('subMenu') subMenus: QueryList<ElementRef<HTMLElement>>
 
-  nativeElement: Element;
-
-  constructor(private elementRef: ElementRef<Element>) { }
+  toggleStates: any = {};
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (this.depth != 0) this.depth++;
-    this.nativeElement = this.elementRef.nativeElement;
+
+    const menuStates: any = this.loadSectionState();
+
+    for (const key in menuStates) {
+      this.toggleStates[key] = menuStates[key];
+    }
   }
 
   ngAfterViewInit() {
@@ -31,7 +36,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
     const menuEl = this.subMenus.toArray().map(el => el.nativeElement);
     
     if (menuEl.length > 0) {
-      const menuStates: any = this.loadSectionSate();
+      const menuStates: any = this.loadSectionState();
       
       menuEl.forEach(el => {
         const menuName: any = el.getAttribute("data-menu-name");
@@ -53,29 +58,39 @@ export class MenuComponent implements OnInit, AfterViewInit {
     }
   }
 
-  action({
+  toggleMenu({
     displayName,
     name,
     actionName,
     actionValue,
     menu
   }: MenuItem, index: number) {
-    if (menu) {
-      const menuEl = this.subMenus.toArray()[index].nativeElement;
+    const menuEl = this.subMenus.toArray()[index].nativeElement;
 
-      if (menuEl.getAttribute("data-collapsed") === "true") {
-        this.expandSection(menuEl);
-        this.saveSectionState(name);
-      } else {
-        this.collapseSection(menuEl);
-        this.saveSectionState(name);
-      }
+    if (menuEl.getAttribute("data-collapsed") === "true") {
+      this.expandSection(menuEl);
+      this.saveSectionState(name);
+
+      this.toggleStates[name] = true;
+    } else {
+      this.collapseSection(menuEl);
+      this.saveSectionState(name);
+
+      this.toggleStates[name] = false;
     }
-    if (name == "route") {
-      // if (value.params) value.params.timestamp = Date.now();
-      // router.push(value);
+  }
 
-      // nav.methods.closeLeftNavigation();
+  action(
+    { route, routeParams, routeQuery }: MenuItem,
+    index: number
+  ) {
+    if (route === undefined) return;
+
+    if (route === "") {
+      this.router.navigate([route]);
+    } else {
+      this.router.navigate([route, routeParams || {}],
+        { queryParams: routeQuery });
     }
   }
 
@@ -93,7 +108,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
         el.style.height = "0px";
       });
     });
-  
+
     el.setAttribute("data-collapsed", "true");
   }
   
@@ -106,7 +121,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       el.style.height = "auto";
       el.ontransitionend = null;
     };
-  
+
     el.setAttribute("data-collapsed", "false");
   }
   
@@ -125,7 +140,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
     localStorage.setItem("navMenuState", JSON.stringify(navMenuState));
   }
   
-  loadSectionSate () {
+  loadSectionState () {
     let navMenuState: any = localStorage.getItem("navMenuState");
   
     if (!navMenuState) navMenuState = {};

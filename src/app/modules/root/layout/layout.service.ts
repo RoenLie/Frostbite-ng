@@ -7,10 +7,15 @@ import { EnigmaComponent } from "./enigma/enigma.component";
 
 @Injectable()
 export class LayoutService {
-  getLayouts() {
-    return {
-      default: new Layout(DefaultComponent, { name: "default layout" }),
-      enigma: new Layout(EnigmaComponent, { name: "enigma layout" })
-    }
+
+  layouts: any = {
+    default: new Layout(DefaultComponent, { name: "default layout" }),
+    enigma: new Layout(EnigmaComponent, { name: "enigma layout" })
+  }
+
+  getLayouts() { return this.layouts; }
+
+  layoutExists(layoutName: string) {
+    return layoutName in this.layouts;
   }
 }

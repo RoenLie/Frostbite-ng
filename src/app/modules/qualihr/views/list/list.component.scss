@@ -1,5 +1,5 @@
 :host {
-  --clamp-width: 10em, 75vw, 75em;
+  --clamp-width: 10em, 75%, 75em;
 }
 
 hr {
@@ -23,7 +23,6 @@ hr {
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-
   }
 
   .search {
@@ -35,9 +34,7 @@ hr {
     height: 100%;
     width: 100%;
     align-items: center;
-    justify-content: center;
 
-    display: grid;
     grid-auto-rows: max-content;
     row-gap: 1em;
 
@@ -54,10 +51,8 @@ hr {
       background: rgba(255, 255, 255, 0.09);
     }
 
-
     .item {
       width: clamp(var(--clamp-width));
-
 
       .panel-actions {
         justify-content: space-between;
@@ -69,6 +64,5 @@ hr {
         }
       }
     }
-    
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { AngularFirestore } from "@angular/fire/firestore";
 
@@ -31,17 +30,12 @@ export class NewComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
-    private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     private fb: FormBuilder,
     private firestore: AngularFirestore
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      console.log(params);
-    });
-
     this.categories = [
       {value: "office", viewValue: "Office"},
       {value: "recreational", viewValue: "Recreational"},

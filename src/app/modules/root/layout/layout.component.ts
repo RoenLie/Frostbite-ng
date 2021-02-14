@@ -2,9 +2,11 @@ import {
   Component, OnInit, Input, ViewChild,
   ComponentFactoryResolver, OnDestroy, ContentChild
 } from '@angular/core';
-import { Router, RouterEvent, NavigationStart, NavigationEnd } from "@angular/router";
 import { Layout } from "./layout";
 import { LayoutDirective } from "./layout.directive";
+import { LayoutService } from './layout.service';
+
+import { BehaviorSubject } from "rxjs";
 
 interface ILayout { data: any; }
 
@@ -28,29 +30,27 @@ interface ILayout { data: any; }
   `]
 })
 export class LayoutComponent implements OnInit {
-  @Input() layout: Layout;
+  @Input() layout: BehaviorSubject<Layout>;
+
   @ViewChild(LayoutDirective, { static: true }) layoutHost: LayoutDirective;
 
   loading: boolean = false;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private router: Router,
-  ) {
-    router.events.subscribe(
-      async (event) => {
-        if (event instanceof NavigationStart) {
-          this.loading = true;
-        } else if (event instanceof NavigationEnd) {
-          this.loading = false;
-        }
-      }
-    )
-  }
-  ngOnInit(): void { this.loadComponent(); }
-  loadComponent() {
-    const layout = this.layout;
+    private layoutService: LayoutService,
+  ) { }
+  ngOnInit(): void {
+    if (!this.layout) {
+      this.loadComponent(this.layoutService.getLayouts().default);
+    }
 
+    this.layout.subscribe((layout: Layout) => {
+      this.loadComponent(layout);
+    })
+  }
+
+  loadComponent(layout: Layout) {
     const componentFactory = this.componentFactoryResolver
       .resolveComponentFactory(layout.component);
     
@@ -61,5 +61,4 @@ export class LayoutComponent implements OnInit {
       .createComponent<ILayout>(componentFactory);
     componentRef.instance.data = layout.data;
   }
-
 }

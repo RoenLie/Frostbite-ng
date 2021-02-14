@@ -11,45 +11,9 @@ export class MainComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private menuService: MenuService
   ) { }
 
-  ngOnInit(): void {
-    this.menuService.add({
-      options: {
-        order: 5,
-      },
-      menuItems: [
-        {
-          displayName: "404",
-          name: "404",
-          actionName: "route",
-          actionValue: "404"
-        }
-      ]
-    })
-    this.menuService.add({
-      options: {
-        order: 2,
-      },
-      menuItems: [
-        {
-          displayName: "Main",
-          name: "main",
-          actionName: "route",
-          actionValue: "main",
-          menu: [
-            {
-              displayName: "Submain",
-              name: "submain",
-              actionName: "route",
-              actionValue: "submain",
-            }
-          ]
-        }
-      ]
-    })
-  }
+  ngOnInit(): void { }
 
   isLoggedIn() { return !!this.authService.user; }
 

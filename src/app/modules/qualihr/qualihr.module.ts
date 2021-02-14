@@ -8,6 +8,7 @@ import { ListComponent } from "./views/list/list.component";
 
 import { FirebaseModule } from "../root/modules/firebase.module";
 import { AlgoliaService } from "../root/services/algolia.service";
+import { AuthGuard } from "../root/guards/auth.guard";
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
@@ -25,7 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RouterModule.forChild([
       { path: "", redirectTo:"new", component: NewComponent },
       { path: "new", component: NewComponent },
-      { path: "list", component: ListComponent }
+      { path: "list", component: ListComponent, canActivate: [AuthGuard] }
     ]),
 
     CommonModule,

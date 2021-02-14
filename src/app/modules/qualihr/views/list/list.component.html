@@ -7,7 +7,13 @@
       autocomplete="_"
       [ngModel]="subjectModel | async"
       (ngModelChange)="subjectModel.next($event)">
-      <button mat-button *ngIf="subjectModel.value" matSuffix mat-icon-button aria-label="Clear" (click)="subjectModel.next('')">
+      <button
+        *ngIf="subjectModel.value"
+        mat-button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="subjectModel.next('')">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
@@ -54,8 +60,6 @@
           </div>
         </mat-action-row>
       </mat-expansion-panel>
-    
     </div>
-
   </div>
 </div>

@@ -1,0 +1,55 @@
+[
+  {
+    "name": "mainView",
+    "options": {
+      "order": 5
+    },
+    "menuItems": [
+      {
+        "displayName": "Main",
+        "name": "main",
+        "route": ""
+      }
+    ]
+  },
+  {
+    "name": "qualihrView",
+    "options": {
+      "order": 10
+    },
+    "menuItems": [
+      {
+        "displayName": "QualiHr",
+        "name": "qualihr",
+        "menu": [
+          {
+            "displayName": "New",
+            "name": "new",
+            "route": "qualihr/new"
+          },
+          {
+            "displayName": "List",
+            "name": "list",
+            "route": "qualihr/list"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "404view",
+    "options": {
+      "order": 15
+    },
+    "menuItems": [
+      {
+        "displayName": "404",
+        "name": "404",
+        "route": "404",
+        "routeParams": {
+          "layout": "enigma"
+        }
+      }
+    ]
+  }
+]

@@ -1,5 +1,8 @@
 hr {
   width: 100%;
+  border:none;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
   border-color: rgba(255,255,255,0.5)
 }
 
@@ -20,7 +23,9 @@ hr {
     justify-content: stretch;
     width: 100%;
 
-    padding: 0.5em 0.5em 0.5em 0.5em;
+    >*{
+      padding: 0.25em ;
+    }
 
     cursor: pointer;
 
@@ -43,3 +48,46 @@ hr {
     }
   }
 }
+
+.icon {
+  display:grid;
+  place-items: center;
+  border-radius: 0.2em;
+
+  &.toggle {
+    transform: rotate(0deg);
+    transition: transform 1s linear;
+  
+    &.expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  >* {
+    display:grid;
+    place-items: center;
+  }
+
+  &.interactive {
+    cursor: pointer;
+
+    transition: all 0.05s linear;
+
+    color: rgba(var(--txt-color-1));
+
+    &:active {
+      box-shadow: 0 0 2px 2px rgba(var(--txt-color-1), 0.5) inset;
+    }
+  }
+}
+
+.text {
+  display: grid;
+  place-items: center start;
+  width: 100%;
+  user-select: none;
+  padding: 0.5em;
+}
+
+
+

@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from '../../../app-routing.module';
+import { RouterModule } from "@angular/router";
 
 import { LayoutDirective } from "../layout/layout.directive";
 import { LayoutService } from "../layout/layout.service";
@@ -45,7 +45,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CommonModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-    AppRoutingModule,
+    RouterModule,
     MatProgressSpinnerModule
   ],
   exports: [

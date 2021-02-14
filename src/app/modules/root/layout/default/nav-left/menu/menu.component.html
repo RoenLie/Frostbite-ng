@@ -2,14 +2,31 @@
 
 <div class="menu"
   *ngFor="let item of menu; let i = index">
-  <div class="menu-item" (click)="action(item, i)">
-    {{item.displayName}}
+  <div class="menu-item" >
+
+    <span
+      *ngIf="item.menu"
+      class="icon interactive"
+      [class]="toggleStates[item.name] ?
+      'toggle expanded': 'toggle'">
+
+        <svg-icon
+            (click)="toggleMenu(item,i)"
+            src="assets/svg/chevron-right-solid.svg"
+            [svgStyle]="{'height.em':'1.2', 'width.em':'1.2'}">
+        </svg-icon>
+    </span>
+
+    <span class="text"
+      (click)="action(item, i)">
+      {{item.displayName}}
+    </span>
   </div>
 
   <div
-  #subMenu class="sub-menu"
-  *ngIf="item.menu"
-  [attr.data-menu-name]="item.name">
+    #subMenu class="sub-menu"
+    *ngIf="item.menu"
+    [attr.data-menu-name]="item.name">
     <app-menu
       [depth]="depth + 1"
       [menu]="item.menu">

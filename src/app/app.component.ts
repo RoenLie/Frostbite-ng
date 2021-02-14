@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { LayoutService } from "./modules/root/layout/layout.service";
 import { Layout } from "./modules/root/layout/layout";
+import { Router, RoutesRecognized, NavigationStart, NavigationEnd, Params } from '@angular/router';
+
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -22,11 +25,41 @@ import { Layout } from "./modules/root/layout/layout";
   `]
 })
 export class AppComponent implements OnInit {
-  layout: Layout;
+  layout: BehaviorSubject<Layout>
+    = new BehaviorSubject<Layout>(
+      this.layoutService.getLayouts().default);
 
-  constructor( private layoutService: LayoutService ) {}
+  constructor(
+    private router: Router,
+    private layoutService: LayoutService
+  ) {
+    router.events.subscribe(
+      async (event) => {
+        if (event instanceof RoutesRecognized) {
+          const params = event.state.root.firstChild?.params;
+          this.setLayoutFromRouteParam(params);
+        } else if (event instanceof NavigationStart) {
+        } else if (event instanceof NavigationEnd) {
+        }
+      }
+    )
+  }
   
-  ngOnInit() {
-    this.layout = this.layoutService.getLayouts().default;
+  ngOnInit() { }
+
+  setLayoutFromRouteParam(params: Params | undefined) {
+    const layout: any = params?.layout;
+    const newLayout = this.layoutService.getLayouts()[layout];
+
+    if (!layout) {
+      if (this.layout.value != this.layoutService.getLayouts().default) {
+        this.layout.next(this.layoutService.getLayouts().default);
+      }
+    }
+
+    if (!this.layoutService.layoutExists(layout)) return;
+    if (this.layout.value == newLayout) return;
+
+    this.layout.next(newLayout);
   }
 }
