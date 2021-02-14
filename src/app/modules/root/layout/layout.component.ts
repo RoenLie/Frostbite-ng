@@ -6,6 +6,7 @@ import { Layout } from "./layout";
 import { LayoutDirective } from "./layout.directive";
 import { LayoutService } from './layout.service';
 
+import { Router, RoutesRecognized, NavigationStart, NavigationEnd, Params } from '@angular/router';
 import { BehaviorSubject } from "rxjs";
 
 interface ILayout { data: any; }
@@ -30,7 +31,9 @@ interface ILayout { data: any; }
   `]
 })
 export class LayoutComponent implements OnInit {
-  @Input() layout: BehaviorSubject<Layout>;
+  layout: BehaviorSubject<Layout>
+    = new BehaviorSubject<Layout>(
+      this.layoutService.getLayouts().default);
 
   @ViewChild(LayoutDirective, { static: true }) layoutHost: LayoutDirective;
 
@@ -39,7 +42,19 @@ export class LayoutComponent implements OnInit {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private layoutService: LayoutService,
-  ) { }
+    private router: Router,
+  ) {
+    router.events.subscribe(
+      async (event) => {
+        if (event instanceof RoutesRecognized) {
+          const params = event.state.root.firstChild?.params;
+          this.setLayoutFromRouteParam(params);
+        } else if (event instanceof NavigationStart) {
+        } else if (event instanceof NavigationEnd) {
+        }
+      }
+    )
+  }
   ngOnInit(): void {
     if (!this.layout) {
       this.loadComponent(this.layoutService.getLayouts().default);
@@ -60,5 +75,21 @@ export class LayoutComponent implements OnInit {
     const componentRef = viewContainerRef
       .createComponent<ILayout>(componentFactory);
     componentRef.instance.data = layout.data;
+  }
+
+  setLayoutFromRouteParam(params: Params | undefined) {
+    const layout: any = params?.layout;
+    const newLayout = this.layoutService.getLayouts()[layout];
+
+    if (!layout) {
+      if (this.layout.value != this.layoutService.getLayouts().default) {
+        this.layout.next(this.layoutService.getLayouts().default);
+      }
+    }
+
+    if (!this.layoutService.layoutExists(layout)) return;
+    if (this.layout.value == newLayout) return;
+
+    this.layout.next(newLayout);
   }
 }
