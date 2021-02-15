@@ -6,7 +6,7 @@ export type Menu = MenuGroup[];
 export interface MenuGroup {
   name: string,
   options?: MenuOptions,
-  menuItems?: MenuItem[]
+  menuItems?: MenuItem []
 }
 
 export interface MenuOptions {

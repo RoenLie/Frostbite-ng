@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from "firebase/app";
 import "firebase/auth";
+import { IAuthService } from './IAuth.service';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -16,7 +17,7 @@ const firebaseConfig = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService{
+export class AuthService implements IAuthService<firebase.User | null>{
   user: firebase.User | null;
 
   constructor() {
