@@ -1,4 +1,4 @@
-<button *ngIf="isLoggedIn()">
+<button *ngIf="authService.isLoggedIn | async">
   <span class="icon"
     (click)="
       defaultLayoutService.navigationRightOpen = 
@@ -10,7 +10,7 @@
     </svg-icon>
   </span>
 </button>
-<button *ngIf="isLoggedIn()">
+<button *ngIf="authService.isLoggedIn | async">
   <span class="icon">
     <svg-icon
       title="User profile"
@@ -19,9 +19,9 @@
     </svg-icon>
   </span>
 </button>
-<button *ngIf="isLoggedIn()" (click)="logout()">
+<button *ngIf="authService.isLoggedIn | async" (click)="authService.logout()">
   <span class="text">Logout</span>
 </button>
-<button *ngIf="!isLoggedIn()" (click)="login()">
+<button *ngIf="!(authService.isLoggedIn | async)" (click)="authService.login()">
   <span class="text">Login</span>
 </button>

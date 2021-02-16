@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-import { AuthService } from "../services/auth.service";
-
 const firebaseConfig = {
   apiKey: "AIzaSyDU-kzMDjOwQG6cSdGM6dSAa2kghK0qTCQ",
   authDomain: "frostbite-ng.firebaseapp.com",
@@ -20,9 +18,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [
-    AuthService,
-  ],
+  providers: [],
   bootstrap: []
 })
 export class FirebaseModule { }

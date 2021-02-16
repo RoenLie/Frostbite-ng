@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <button class="card" routerLink="/qualihr/new">
+    <span>
+      Suggest Something
+    </span>
+  </button>
+
+  <button
+    *ngIf="authService.isLoggedIn | async"
+    class="card"
+    routerLink="/qualihr/list"
+    >
+    <span>
+      See suggestions
+    </span>
+  </button>
+</div>

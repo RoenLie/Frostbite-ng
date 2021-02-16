@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { IAuthService } from './IAuth.service';
+
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -17,22 +18,37 @@ const firebaseConfig = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements IAuthService<firebase.User | null>{
+export class AuthService {
   user: firebase.User | null;
+  isLoggedIn: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
 
   constructor() {
-    firebase.initializeApp(firebaseConfig);
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(firebaseConfig);
+    }
     this.authenticate();
   }
 
-  login() {
+  async login() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider);
+
+    try {
+      await firebase.auth().signInWithPopup(provider);
+      this.isLoggedIn.next(true);
+    } catch (error) {
+      console.error(error);
+      this.isLoggedIn.next(false);
+    }
   }
-
-  logout() { firebase.auth().signOut(); }
-
-  isLoggedIn() { return !!this.user; }
+  async logout() {
+    try {
+      await firebase.auth().signOut();
+      this.isLoggedIn.next(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async authenticate() {
     const authentication = new Promise((resolve, reject) => {
@@ -45,10 +61,12 @@ export class AuthService implements IAuthService<firebase.User | null>{
 
     try {
       await authentication;
+      this.isLoggedIn.next(true);
     } catch (error) {
       console.error(error);
+      this.isLoggedIn.next(false);
     }
 
-    return this.isLoggedIn();
+    return this.isLoggedIn.value;
   }
 }

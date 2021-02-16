@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
-import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-main',
@@ -9,12 +7,7 @@ import { MenuService } from '../../services/menu.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(
-    private authService: AuthService,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void { }
-
-  isLoggedIn() { return !!this.authService.user; }
-
 }

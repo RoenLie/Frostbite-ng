@@ -13,6 +13,30 @@
     ]
   },
   {
+    "name": "esView",
+    "options": {
+      "order": 7
+    },
+    "menuItems": [
+      {
+        "displayName": "Eyeshare",
+        "name": "eyeshare",
+        "menu": [
+          {
+            "displayName": "Portal",
+            "name": "portal",
+            "route": "es/portal"
+          },
+          {
+            "displayName": "Lines",
+            "name": "lines",
+            "route": "es/lines"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "qualihrView",
     "options": {
       "order": 10
@@ -21,6 +45,7 @@
       {
         "displayName": "QualiHr",
         "name": "qualihr",
+        "route": "qualihr/portal",
         "menu": [
           {
             "displayName": "New",

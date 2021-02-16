@@ -8,6 +8,7 @@ import { LayoutModule } from "./modules/root/modules/layout.module";
 import { AppComponent } from './app.component';
 import { Error404Component } from './modules/root/views/error404/error404.component';
 import { MainComponent } from './modules/root/views/main/main.component';
+import { AuthService } from './modules/root/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { MainComponent } from './modules/root/views/main/main.component';
     AppRoutingModule,
     LayoutModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {  }

@@ -1,0 +1,35 @@
+.wrapper {
+  display: grid;
+  place-items: center;
+
+  height: 100%;
+
+  button {
+    height: 10rem;
+    width: 20rem;
+    border: none;
+    border-radius: 0.4em;
+    background-color: rgba(var(--quali-bg-color));
+
+    font-size: 3em;
+    color: rgba(var(--quali-txt-color));
+    font-family: 'Metric-Medium', sans-serif;
+
+    cursor: pointer;
+
+    transition: all 0.1s linear;
+
+    box-shadow: 0 0 8px 8px rgba(255,255,255,0.2) inset,
+                0 0 5px 5px rgba(255,255,255,0.1);
+
+    &:hover {
+      outline: none;
+      box-shadow: 0 0 8px 8px rgba(0,0,0,0.3) inset,
+                  0 0 5px 5px rgba(255,255,255,0.1);
+    }
+
+    &:active {
+      background-color: rgba(var(--quali-bg-color),0.5);
+    }
+  }
+}

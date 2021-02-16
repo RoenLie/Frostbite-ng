@@ -14,8 +14,7 @@ import menu from "../../config/menu.json";
 
       <app-nav-left
         [@toggleLeft]
-        *ngIf="defaultLayoutService
-        .navigationLeftOpen">
+        *ngIf="defaultLayoutService.navigationLeftOpen">
       </app-nav-left>
 
       <app-nav-right

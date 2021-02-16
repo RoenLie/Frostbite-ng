@@ -10,13 +10,9 @@ import { DefaultLayoutService } from '../../default.service';
 })
 export class RightComponent implements OnInit {
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     public defaultLayoutService: DefaultLayoutService
   ) { }
 
   ngOnInit(): void { }
-
-  login() { this.authService.login(); }
-  logout() { this.authService.logout(); }
-  isLoggedIn() { return !!this.authService.user; }
 }

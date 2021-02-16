@@ -9,15 +9,19 @@ const routes: Routes = [
   {
     path: "qualihr", loadChildren: async () =>
       (await import(
-        "./modules/qualihr/qualihr.module"))
-        .QualihrModule,
+        "./modules/qualihr/qualihr.module")).QualihrModule,
+    data: { animation: "fade" }
+  },
+  {
+    path: "es", loadChildren: async () => (
+      await import(
+        "./modules/eyeshare/eyeshare.module")).EyeshareModule,
     data: { animation: "fade" }
   },
   {
     path: "404", loadChildren: async () =>
       (await import(
-        "./modules/root/views/error404/error404.module"))
-        .Error404Module,
+        "./modules/root/views/error404/error404.module")).Error404Module,
     data: { animation: "fade" }
   },
   {
