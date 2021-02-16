@@ -6,20 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from "./modules/root/modules/layout.module";
 
 import { AppComponent } from './app.component';
-import { Error404Component } from './modules/root/views/error404/error404.component';
-import { MainComponent } from './modules/root/views/main/main.component';
 import { AuthService } from './modules/root/services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

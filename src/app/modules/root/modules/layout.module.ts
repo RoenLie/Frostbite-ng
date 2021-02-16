@@ -1,6 +1,5 @@
 import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from "@angular/router";
 
@@ -11,8 +10,6 @@ import { DefaultLayoutService } from "../layout/default/default.service";
 
 import { MenuService } from "../services/menu.service";
 import { MenuComponent } from "../layout/default/nav-left/menu/menu.component";
-
-import { MainComponent } from "../views/main/main.component";
 
 import { EnigmaComponent } from '../layout/enigma/enigma.component';
 import { DefaultComponent } from '../layout/default/default.component';
@@ -43,8 +40,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
-    AngularSvgIconModule.forRoot(),
+    AngularSvgIconModule,
     RouterModule,
     MatProgressSpinnerModule
   ],
