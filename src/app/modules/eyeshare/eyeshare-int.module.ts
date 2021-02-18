@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EyeshareIntModule } from './eyeshare-int.module';
+import { EyeshareCusModule } from './eyeshare-cus.module';
 
 
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
-    EyeshareIntModule
+    EyeshareCusModule
   ],
   providers: [
   ]
 })
-export class EyeshareModule { }
+export class EyeshareIntModule { }

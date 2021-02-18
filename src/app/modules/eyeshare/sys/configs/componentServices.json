@@ -1,0 +1,7 @@
+{
+  "EsLines": {
+    "int": false,
+    "cus": false,
+    "template": "./es-lines.component.html"
+  }
+}
