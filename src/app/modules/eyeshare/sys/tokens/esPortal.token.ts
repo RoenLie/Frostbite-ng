@@ -5,7 +5,7 @@ export interface ServiceLayer {
   sys?: boolean;
 }
 
-export const SERVICE_LAYER = new InjectionToken<ServiceLayer>("service.layer", {
+export const ESPORTAL_TOKEN = new InjectionToken("esportal.token", {
   providedIn: "root",
   factory: () => ({
     cus: true,

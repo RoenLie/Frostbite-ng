@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { EsPortalComponent } from './sys/views/es-portal/es-portal.component';
-import { EsLinesComponent } from './sys/views/es-lines/es-lines.component';
+import { EsPortalService as cus} from './injection/es-portal/es-portal-cus.service';
+import { EsPortalService } from './injection/es-portal/es-portal-sys.service';
 
+console.log("cus module");
 
 
 @NgModule({
   declarations: [ ],
   imports: [
-    RouterModule.forChild([
-      { path: "", redirectTo: "portal" },
-      { path: "portal", component: EsPortalComponent },
-      { path: "lines", component: EsLinesComponent }
-    ]),
     CommonModule
-  ]
+  ],
+  providers: [ { provide: EsPortalService, useClass: cus } ]
 })
 export class EyeshareCusModule { }

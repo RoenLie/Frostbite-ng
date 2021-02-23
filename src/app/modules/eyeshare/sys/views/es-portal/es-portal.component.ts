@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Host, OnInit, Optional, SkipSelf } from '@angular/core';
+import { EsPortalService } from '../../../injection/es-portal/es-portal-sys.service';
+
+
 
 @Component({
   selector: 'app-es-portal',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EsPortalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private esPortalService: EsPortalService) { }
 
   ngOnInit(): void {
+    console.log(this.esPortalService);
+    
+    this.esPortalService.init();
   }
 
 }

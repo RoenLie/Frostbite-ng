@@ -3,5 +3,10 @@
     "int": false,
     "cus": false,
     "template": "./es-lines.component.html"
+  },
+  "EsPortal": {
+    "int": true,
+    "cus": false,
+    "template": "./es-lines.component.html"
   }
 }
