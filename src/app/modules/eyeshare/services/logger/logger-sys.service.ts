@@ -1,16 +1,17 @@
-import { Logger } from "./logger.interface";
 import { Injectable } from "@angular/core";
-import { ServiceLayer, SERVICE_LAYER } from "./logger.token";
+import { LoggerService } from "./logger.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
-export class LoggerServiceSys implements Logger {
-  constructor() {
+export class LoggerServiceSys implements LoggerService {
+  constructor() { }
+
+  ngOnInit() {
+    console.log("ngOnInit from SYS logger service");
   }
 
   log() {
-    console.log("I am the sys logger service");
+    console.log("log from SYS logger service");
   }
-
 }

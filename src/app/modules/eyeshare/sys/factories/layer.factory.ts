@@ -1,31 +1,12 @@
-import { Injector } from "@angular/core";
+export const asyncFactory = async (name: string) => {
+  const modules = await Promise.all([
+    import("./implement.cus"),
+    import("./implement.int"),
+    import("./implement.sys"),
+  ]);
 
-export const layerProvider = (layer: any, services: Array<any>) => ({
-  provide: services[0],
-  useFactory: (injector: Injector) => {
-    return layer.cus
-      ? injector.get(services[2])
-      : layer.int ? injector.get(services[1])
-        : new services[0]();
-  },
-  deps: [Injector],
-});
+  const module: any = modules.find((module: any) => module[name]);
+  const service: any = new module[name]();
 
-
-export const templateProvider = (template: number) => {
-  const templates = [
-    `<div>sys</div>`,
-    `<div>int</div>`,
-    `<div>cus</div>`
-  ]
-
-  // return templates[template];
-  return `<div>cus</div>`;
-};
-
-export const style =
-`
-  * {
-    color: red;
-  }
-` 
+  return service;
+}

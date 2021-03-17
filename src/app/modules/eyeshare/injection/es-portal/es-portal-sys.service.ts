@@ -4,8 +4,7 @@ import { EsPortal } from "./es-portal.interface";
 
 
 @Injectable({
-  // providedIn: "root",
-  providedIn: "platform",
+  providedIn: "root",
 })
 export class EsPortalService implements EsPortal {
   constructor() { }

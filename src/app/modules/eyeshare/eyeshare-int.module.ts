@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EyeshareCusModule } from './eyeshare-cus.module';
-import { EsPortalService as int} from './injection/es-portal/es-portal-int.service';
-import { EsPortalService } from './injection/es-portal/es-portal-sys.service';
+import { LoggerServiceInt } from './services/logger/logger-int.service';
+
 
 console.log("int module");
 
@@ -13,7 +13,7 @@ console.log("int module");
     CommonModule,
     EyeshareCusModule
   ],
-  providers: [ { provide: EsPortalService, useClass: int } ]
+  providers: [ ]
 })
 export class EyeshareIntModule { }
  

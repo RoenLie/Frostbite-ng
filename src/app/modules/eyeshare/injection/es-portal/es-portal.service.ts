@@ -5,8 +5,6 @@ import { EsPortalService as cus } from "./es-portal-cus.service";
 import { EsPortalService as sys } from "./es-portal-sys.service";
 import componentServices from "../../sys/configs/componentServices.json";
 
-
-
 const layer = componentServices.EsPortal;
 
 @Injectable({

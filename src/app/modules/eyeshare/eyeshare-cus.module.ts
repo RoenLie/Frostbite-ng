@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EsPortalService as cus} from './injection/es-portal/es-portal-cus.service';
-import { EsPortalService } from './injection/es-portal/es-portal-sys.service';
+import { LoggerServiceCus } from './services/logger/logger-cus.service';
+
 
 console.log("cus module");
 
@@ -11,6 +11,6 @@ console.log("cus module");
   imports: [
     CommonModule
   ],
-  providers: [ { provide: EsPortalService, useClass: cus } ]
+  providers: [ ]
 })
 export class EyeshareCusModule { }

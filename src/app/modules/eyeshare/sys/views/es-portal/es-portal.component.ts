@@ -2,7 +2,6 @@ import { Component, Host, OnInit, Optional, SkipSelf } from '@angular/core';
 import { EsPortalService } from '../../../injection/es-portal/es-portal-sys.service';
 
 
-
 @Component({
   selector: 'app-es-portal',
   templateUrl: './es-portal.component.html',
