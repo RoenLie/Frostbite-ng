@@ -10,16 +10,16 @@ import { EsComponent } from '../../helpers/es-component.class';
   styleUrls: ['./es-portal.component.scss'],
   styles: [],
 })
-export class EsPortalComponent extends EsComponent implements OnInit {
+export class EsPortalComponent implements OnInit {
 
   constructor(private logger: LoggerService, private parser: ParserService) {
-    super();
-    this.resolveServices(logger);
+    // super();
+    // this.resolveServices(logger);
   }
 
   async ngOnInit() {
-    await this.awaitServices();
-    this.logger.ngOnInit();
+    // await this.awaitServices();
+    // this.logger.ngOnInit();
   }
 
 }

@@ -14,7 +14,7 @@ const style = `
   button {
     background-color: red;
   }
-`
+`;
 
 @Component({
   selector: 'app-es-lines',
@@ -27,12 +27,12 @@ export class EsLinesComponent extends EsComponent implements OnInit, OnChanges, 
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
   constructor(private logger: LoggerService, private parser: ParserService) {
-    super();
-    this.resolveServices(logger, parser);
+    super(logger, parser);
   }
   async ngOnInit() {
     await this.awaitServices();
-    this.parser.parse()
+
+    this.parser.parse();
     this.logger.ngOnInit();
   }
 
@@ -48,6 +48,6 @@ export class EsLinesComponent extends EsComponent implements OnInit, OnChanges, 
   ngDoCheck() { }
   ngAfterViewChecked() { }
   ngAfterContentChecked() { }
-  ngOnDestroy(){console.log("ngOnDestroy");}
+  ngOnDestroy() { console.log("ngOnDestroy"); }
   checkLogger() { this.logger.log(); }
 }
