@@ -1,18 +1,18 @@
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, DoCheck, Injector, OnChanges, OnDestroy, OnInit
+  AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit
 } from '@angular/core';
 import { LoggerService } from '../../../services/logger/logger.service';
-import { ParserService } from '../../../services/parser/parser.service';
+import { ParserService } from "../../../services/parser/parser.service";
 import { EsComponent } from '../../helpers/es-component.class';
 
 const style = `
   * {
-    color: orange;
+    // color: pink;
   }
 
   button {
-    background-color: red;
+    // background-color: darkgreen;
   }
 `;
 
@@ -26,7 +26,7 @@ const style = `
 export class EsLinesComponent extends EsComponent implements OnInit, OnChanges, DoCheck,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
-  constructor(private logger: LoggerService, private parser: ParserService) {
+  constructor(public logger: LoggerService, public parser: ParserService) {
     super(logger, parser);
   }
   async ngOnInit() {
@@ -38,16 +38,13 @@ export class EsLinesComponent extends EsComponent implements OnInit, OnChanges, 
 
   async ngAfterContentInit() {
     await this.awaitServices();
-    console.log("ngAfterContentInit");
   }
   async ngAfterViewInit() {
     await this.awaitServices();
-    console.log("ngAfterViewInit");
   }
-  ngOnChanges(changes: any) { console.log("ngOnChanges"); }
+  ngOnChanges(changes: any) { }
   ngDoCheck() { }
   ngAfterViewChecked() { }
   ngAfterContentChecked() { }
-  ngOnDestroy() { console.log("ngOnDestroy"); }
-  checkLogger() { this.logger.log(); }
+  ngOnDestroy() { }
 }
