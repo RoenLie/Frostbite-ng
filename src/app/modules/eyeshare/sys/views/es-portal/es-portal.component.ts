@@ -1,20 +1,25 @@
-import { Component, Host, OnInit, Optional, SkipSelf } from '@angular/core';
-import { EsPortalService } from '../../../injection/es-portal/es-portal-sys.service';
+import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../../../services/logger/logger.service';
+import { ParserService } from '../../../services/parser/parser.service';
+import { EsComponent } from '../../helpers/es-component.class';
 
 
 @Component({
   selector: 'app-es-portal',
   templateUrl: './es-portal.component.html',
-  styleUrls: ['./es-portal.component.scss']
+  styleUrls: ['./es-portal.component.scss'],
+  styles: [],
 })
-export class EsPortalComponent implements OnInit {
+export class EsPortalComponent extends EsComponent implements OnInit {
 
-  constructor(private esPortalService: EsPortalService) { }
+  constructor(private logger: LoggerService, private parser: ParserService) {
+    super();
+    this.resolveServices(logger);
+  }
 
-  ngOnInit(): void {
-    console.log(this.esPortalService);
-    
-    this.esPortalService.init();
+  async ngOnInit() {
+    await this.awaitServices();
+    this.logger.ngOnInit();
   }
 
 }

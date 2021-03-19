@@ -3,14 +3,16 @@ import {
   AfterViewInit, Component, DoCheck, Injector, OnChanges, OnDestroy, OnInit
 } from '@angular/core';
 import { LoggerService } from '../../../services/logger/logger.service';
+import { ParserService } from '../../../services/parser/parser.service';
+import { EsComponent } from '../../helpers/es-component.class';
 
 const style = `
   * {
     color: orange;
   }
 
-  button: {
-    background-color: blue;
+  button {
+    background-color: red;
   }
 `
 
@@ -21,31 +23,25 @@ const style = `
   styles: [style],
   providers: []
 })
-export class EsLinesComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-  constructor(private logger: LoggerService) {
-    (async () => {
-      this.logger = await this.logger;
-    })();
-  }
+export class EsLinesComponent extends EsComponent implements OnInit, OnChanges, DoCheck,
+  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
-  async services() {
-    return Promise.all([this.logger]);
+  constructor(private logger: LoggerService, private parser: ParserService) {
+    super();
+    this.resolveServices(logger, parser);
   }
-
   async ngOnInit() {
-    await this.services();
-    // this.logger = await this.logger;
+    await this.awaitServices();
+    this.parser.parse()
     this.logger.ngOnInit();
   }
 
   async ngAfterContentInit() {
-    await this.services();
-    // this.logger.ngOnInit();
+    await this.awaitServices();
     console.log("ngAfterContentInit");
   }
   async ngAfterViewInit() {
-    await this.services();
-    // this.logger.ngOnInit();
+    await this.awaitServices();
     console.log("ngAfterViewInit");
   }
   ngOnChanges(changes: any) { console.log("ngOnChanges"); }

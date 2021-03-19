@@ -3,9 +3,8 @@ import { asyncService } from "../../sys/helpers/asyncService.factory";
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => asyncService("Logger"),
+  useFactory: () => asyncService("Parser"),
 })
-export class LoggerService {
-  log() { }
-  ngOnInit() { }
+export class ParserService {
+  parse() { }
 }

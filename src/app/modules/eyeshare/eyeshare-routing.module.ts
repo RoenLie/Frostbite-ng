@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { EsPortalComponent } from './sys/views/es-portal/es-portal.component';
 import { EsLinesComponent } from './sys/views/es-lines/es-lines.component';
 
+
 const routes = [
   { path: "", redirectTo: "portal" },
   { path: "portal", component: EsPortalComponent },
