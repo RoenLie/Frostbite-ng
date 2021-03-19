@@ -1,4 +1,4 @@
-export const asyncService = async (name: string) => {
+export const EsServiceAsync = async (name: string) => {
 
   // This method works but it yeets tree shaking out the window.
   // declare var require: any;

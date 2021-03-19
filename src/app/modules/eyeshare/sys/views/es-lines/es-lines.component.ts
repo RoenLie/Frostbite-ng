@@ -1,47 +1,40 @@
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit
+  AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
+  OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
 import { LoggerService } from '../../../services/logger/logger.service';
 import { ParserService } from "../../../services/parser/parser.service";
-import { EsComponent } from '../../helpers/es-component.class';
+import { styles } from "src/app/modules/eyeshare/sys/implement/implement.sys";
+import { EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
+import { DataProviderService, Module } from '../../../services/data-provider/data-provider.service';
 
-const style = `
-  * {
-    // color: pink;
-  }
-
-  button {
-    // background-color: darkgreen;
-  }
-`;
-
+@EsInitialize
 @Component({
   selector: 'app-es-lines',
   templateUrl: './es-lines.component.html',
   styleUrls: ['./es-lines.component.scss'],
-  styles: [style],
+  styles: [styles.EsLines],
   providers: []
 })
-export class EsLinesComponent extends EsComponent implements OnInit, OnChanges, DoCheck,
-  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
+  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+  constructor(public logger: LoggerService, private dataProvider: DataProviderService) { }
 
-  constructor(public logger: LoggerService, public parser: ParserService) {
-    super(logger, parser);
-  }
-  async ngOnInit() {
-    await this.awaitServices();
-
-    this.parser.parse();
-    this.logger.ngOnInit();
+  @EsTimer("ngOnInit")
+  @EsResolveAsync()
+  ngOnInit() {
+    // this.logger.ngOnInit();
+    this.dataProvider.data(Module.generalLedger);
   }
 
-  async ngAfterContentInit() {
-    await this.awaitServices();
-  }
-  async ngAfterViewInit() {
-    await this.awaitServices();
-  }
+  @EsTimer("ngAfterContentInit")
+  @EsResolveAsync()
+  ngAfterContentInit() { }
+
+  @EsTimer("ngAfterViewInit")
+  @EsResolveAsync()
+  ngAfterViewInit() { }
   ngOnChanges(changes: any) { }
   ngDoCheck() { }
   ngAfterViewChecked() { }

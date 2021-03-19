@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { asyncService } from "../../sys/helpers/asyncService.factory";
+import { EsServiceAsync } from "../../sys/helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => asyncService("Parser"),
+  useFactory: () => EsServiceAsync("Parser"),
 })
 export class ParserService {
   parse() { }
