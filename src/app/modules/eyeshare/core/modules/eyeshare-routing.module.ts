@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { EsPortalComponent } from './sys/views/es-portal/es-portal.component';
-import { EsLinesComponent } from './sys/views/es-lines/es-lines.component';
 
 
 const routes = [
   { path: "", redirectTo: "portal" },
-  { path: "portal", component: EsPortalComponent },
-  { path: "lines", component: EsLinesComponent }
+  { path: "portal", loadChildren: async () => (
+    await import("./es-portal/es-portal.module")).EsPortalModule},
+  { path: "lines", loadChildren: async () => (
+    await import("./es-lines/es-lines.module")).EsLinesModule},
 ];
 
 

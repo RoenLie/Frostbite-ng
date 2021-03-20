@@ -3,11 +3,10 @@ import {
   AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
-import { LoggerService } from '../../../services/logger/logger.service';
-import { ParserService } from "../../../services/parser/parser.service";
-import { styles } from "src/app/modules/eyeshare/sys/implement/implement.sys";
+import { LoggerService } from '../../service-models/logger.service';
+import { styles } from "src/app/modules/eyeshare/implement/implement.sys";
 import { EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
-import { DataProviderService, Module } from '../../../services/data-provider/data-provider.service';
+import { DataProviderService, Module } from '../../service-models/data-provider.service';
 
 @EsInitialize
 @Component({

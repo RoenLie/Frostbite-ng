@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ParserService } from "./parser.service";
+import { ParserService } from "../../core/service-models/parser.service";
 
 @Injectable({
   providedIn: "root",

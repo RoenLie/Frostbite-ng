@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { LoggerServiceSys } from "./logger-sys.service";
+import { LoggerServiceSys } from "../sys/logger-sys.service";
 
 @Injectable({
   providedIn: "root"

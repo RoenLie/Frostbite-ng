@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { EsServiceAsync } from "../../sys/helpers/service-factories";
-import { DataProviderService, Module } from "./data-provider.service";
+import { EsServiceAsync } from "../../core/helpers/service-factories";
+import { DataProviderService, Module } from "../../core/service-models/data-provider.service";
 
 
 @Injectable({

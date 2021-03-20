@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { EsServiceAsync } from "../../sys/helpers/service-factories";
+import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",

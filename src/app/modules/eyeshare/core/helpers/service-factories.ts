@@ -24,9 +24,9 @@ export const EsServiceAsync = async (name: string) => {
 
   // this method requires all 3 implement files to exist, but has tree shaking.
   const modules = await Promise.all([
-    import("../implement/implement.cus"),
-    import("../implement/implement.int"),
-    import("../implement/implement.sys"),
+    import("src/app/modules/eyeshare/implement/implement.cus"),
+    import("src/app/modules/eyeshare/implement/implement.int"),
+    import("src/app/modules/eyeshare/implement/implement.sys"),
   ]);
 
   const module: any = modules.find((module: any) => module[name]);

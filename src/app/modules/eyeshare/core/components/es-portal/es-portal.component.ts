@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../../services/logger/logger.service';
-import { ParserService } from '../../../services/parser/parser.service';
 import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
+import { ParserService } from '../../service-models/parser.service';
 
 
 @EsInitialize
