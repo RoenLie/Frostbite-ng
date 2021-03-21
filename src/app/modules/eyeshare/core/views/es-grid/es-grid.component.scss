@@ -1,0 +1,23 @@
+:host {
+  display: grid;
+  padding: 1em;
+
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
+
+  grid-template-areas: 
+    "tabs tabs tabs"
+    "actions table document"
+    "lines lines lines";
+
+  >:nth-child(1) { grid-area: tabs };
+  >:nth-child(2) { grid-area: actions };
+  >:nth-child(3) { grid-area: table };
+  >:nth-child(4) { grid-area: document };
+  >:nth-child(5) { grid-area: lines };
+
+  > *{
+    // overflow: hidden;
+    border: 1px solid darkolivegreen;
+  }
+}

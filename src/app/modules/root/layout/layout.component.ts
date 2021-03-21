@@ -60,9 +60,7 @@ export class LayoutComponent implements OnInit {
       this.loadComponent(this.layoutService.getLayouts().default);
     }
 
-    this.layout.subscribe((layout: Layout) => {
-      this.loadComponent(layout);
-    })
+    this.layout.subscribe((layout: Layout) => this.loadComponent(layout));
   }
 
   loadComponent(layout: Layout) {

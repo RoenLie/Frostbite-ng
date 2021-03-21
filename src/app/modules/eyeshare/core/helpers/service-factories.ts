@@ -1,4 +1,5 @@
-export const EsServiceAsync = async (name: string) => {
+
+export const EsServiceAsync = async (name: string, instance: any) => {
 
   // This method works but it yeets tree shaking out the window.
   // declare var require: any;
@@ -24,12 +25,15 @@ export const EsServiceAsync = async (name: string) => {
 
   // this method requires all 3 implement files to exist, but has tree shaking.
   const modules = await Promise.all([
-    import("src/app/modules/eyeshare/implement/implement.cus"),
-    import("src/app/modules/eyeshare/implement/implement.int"),
-    import("src/app/modules/eyeshare/implement/implement.sys"),
+    import("src/app/modules/eyeshare/implement/#implement.cus"),
+    import("src/app/modules/eyeshare/implement/#implement.int"),
+    import("src/app/modules/eyeshare/implement/#implement.sys"),
   ]);
 
   const module: any = modules.find((module: any) => module[name]);
+
+  if (!module) return new instance();
+  
   const service: any = new module[name]();
 
   return service;

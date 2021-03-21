@@ -3,7 +3,8 @@ import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => EsServiceAsync("Parser"),
+  useFactory: async (instance: ParserService | null) =>
+    instance || EsServiceAsync("Parser", ParserService)
 })
 export class ParserService {
   parse() { }

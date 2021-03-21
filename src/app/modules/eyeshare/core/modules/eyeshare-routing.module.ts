@@ -4,11 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 
 
 const routes = [
-  { path: "", redirectTo: "portal" },
-  { path: "portal", loadChildren: async () => (
+  { path: "", redirectTo: "global/sys" },
+  { path: ":tenant/:domain/portal", loadChildren: async () => (
     await import("./es-portal/es-portal.module")).EsPortalModule},
-  { path: "lines", loadChildren: async () => (
-    await import("./es-lines/es-lines.module")).EsLinesModule},
+  { path: ":tenant/:domain/grid", loadChildren: async () => (
+    await import("./es-grid/es-grid.module")).EsGridModule},
 ];
 
 

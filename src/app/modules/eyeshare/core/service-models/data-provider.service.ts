@@ -9,7 +9,8 @@ export enum Module {
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => EsServiceAsync("DataProvider"),
+  useFactory: (instance: DataProviderService | null) =>
+    instance || EsServiceAsync("DataProvider", DataProviderService),
 })
 export class DataProviderService {
 

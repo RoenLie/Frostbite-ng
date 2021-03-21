@@ -28,9 +28,9 @@
             "route": "es/portal"
           },
           {
-            "displayName": "Lines",
-            "name": "lines",
-            "route": "es/lines"
+            "displayName": "Grid",
+            "name": "grid",
+            "route": "es/grid"
           }
         ]
       }

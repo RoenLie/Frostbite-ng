@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
+import { EsResolveAsync } from '../../helpers/component-decorators';
 import { ParserService } from '../../service-models/parser.service';
 
 
-@EsInitialize
 @Component({
-  selector: 'app-es-portal',
+  selector: 'es-portal',
   templateUrl: './es-portal.component.html',
   styleUrls: ['./es-portal.component.scss'],
   styles: [],

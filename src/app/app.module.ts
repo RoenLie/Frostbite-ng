@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthService } from './modules/root/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { MatSpinner } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [

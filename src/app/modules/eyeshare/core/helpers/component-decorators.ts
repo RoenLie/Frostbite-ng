@@ -1,34 +1,47 @@
-export function EsResolveAsync() {
-  return function (target: any, key: string, descriptor: PropertyDescriptor) {
-    const fn = descriptor.value;
-
-    descriptor.value = async function() {
-      await Promise.all(target["services"]);
-      fn.apply(this, arguments);
-    }
-  };
-}
+const RESOLVE_KEY = "_services";
 
 export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
   return class extends Base {
     constructor(...args: any[]) {
       super(...args);
 
-      const values = Object.values(this);
-      Base.prototype.services = values;
-
-      const entries: any = Object.entries(this);
-
       const t: any = this;
+      const keys: any[] = Object.keys(this);
+      const values: any[] = Object.values(this);
 
-      values.forEach(async (service: any, index: number) => {
-        const serviceTuple: any = entries.find((s: any) => s[1] == service);
+      (async () => {
+        const results = await Promise.all(values);
 
-        if (serviceTuple) {
-          t[serviceTuple[0]] = await serviceTuple[1];
-          Base.prototype.services[index] = t[serviceTuple[0]];
+        for (let i = 0; i < results.length; i++) {
+          const service = results[i];
+          
+          t[keys[i]] = service;
         }
-      });
+      })()
+    }
+  };
+}
+
+export function EsResolveAsync() {
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
+    const fn = descriptor.value;
+
+    descriptor.value = async function () {
+      const t: any = this;
+      const keys = Object.keys(t);
+      const values = Object.values(t);
+
+      const results = await Promise.all(values.map((value: any) => { 
+        if (value && typeof value?.then == 'function') return value;
+
+        return null;
+      }))
+
+      results.forEach((res: any, index: number) => {
+        if (res) t[keys[index]] = res;
+      })
+      
+      return fn.apply(this, arguments);
     }
   };
 }
@@ -37,10 +50,15 @@ export function EsTimer(message?: string) {
   return function (target: any, key: string, descriptor: PropertyDescriptor) {
     const fn = descriptor.value;
 
+    if (!message) {
+      message = target.constructor.name + " " + key;
+    }
+
     descriptor.value = function () {
       console.time(message);
-      fn.apply(this, arguments);
+      const res = fn.apply(this, arguments);
       console.timeEnd(message);
+      return res;
     }
   };
 }

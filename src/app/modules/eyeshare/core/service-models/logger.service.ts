@@ -3,7 +3,8 @@ import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => EsServiceAsync("Logger"),
+  useFactory: (instance: LoggerService | null) =>
+    instance || EsServiceAsync("Logger", LoggerService)
 })
 export class LoggerService {
   log() { }

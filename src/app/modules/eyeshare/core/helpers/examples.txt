@@ -1,0 +1,10 @@
+how to itegrate an object
+<div class="params">
+    <span *ngFor="let obj of routeParams | keyvalue:sortKeys; index as i">
+      {{i}} : {{obj.key}} => {{obj.value}}
+    </span>
+</div>
+method for sorting object by keys
+sortKeys = (a: any, b: any) => {
+    return a.key > b.key ? -1 : 1;
+}
