@@ -7,7 +7,7 @@ import { WorkflowServiceSys } from "../sys/workflow-sys.service";
 })
 export class WorkflowServiceCus extends WorkflowServiceSys {
 
-  workflows: any[] = [
+  available: any[] = [
     "Not started",
     "Waiting for approval",
     "Approved",

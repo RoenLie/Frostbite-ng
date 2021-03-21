@@ -3,11 +3,10 @@ import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: (instance: WorkflowService | null) =>
-    instance || EsServiceAsync("Workflow", WorkflowService)
+  useFactory: (instance: ModuleService | null) =>
+    instance || EsServiceAsync("ModuleService", ModuleService)
 })
-export class WorkflowService {
-  active: string;
-
+export class ModuleService {
   available: any[];
+  active: string;
 }

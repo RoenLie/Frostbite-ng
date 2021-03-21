@@ -1,0 +1,5 @@
+<div *ngFor="let domain of domainService.available; index as i"
+  class="tab"
+  [ngClass]="{'active': domainService.active == domain}"
+  (click)="activate(domain)"
+>{{domain}}</div>

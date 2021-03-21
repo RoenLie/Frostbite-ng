@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EsResolveAsync } from '../../helpers/component-decorators';
 import { WorkflowService } from '../../service-models/workflow.service';
+
 
 @Component({
   selector: 'es-tabs',
@@ -9,12 +11,28 @@ import { WorkflowService } from '../../service-models/workflow.service';
 })
 export class EsTabsComponent implements OnInit {
 
-  workflows: string[];
-
-  constructor(public workflowService: WorkflowService) { }
+  constructor(
+    public workflowService: WorkflowService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   @EsResolveAsync()
   ngOnInit() {
-    this.workflows = this.workflowService.workflows;
+    this.route.queryParams.subscribe(params => {
+      this.workflowService.active = params?.workflow;
+    })
+  }
+
+  activate(workflow: string) {
+    this.workflowService.active = workflow;
+
+    const urlTree = this.router.createUrlTree([], {
+      queryParams: { workflow: this.workflowService.active },
+      queryParamsHandling: "merge",
+      preserveFragment: true
+    });
+    
+    this.router.navigateByUrl(urlTree);
   }
 }

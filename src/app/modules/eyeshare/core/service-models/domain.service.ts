@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { EsServiceAsync } from "../helpers/service-factories";
 
+
 @Injectable({
   providedIn: "root",
-  useFactory: (instance: WorkflowService | null) =>
-    instance || EsServiceAsync("Workflow", WorkflowService)
+  useFactory: (instance: DomainService | null) =>
+    instance || EsServiceAsync("DomainService", DomainService)
 })
-export class WorkflowService {
-  active: string;
-
+export class DomainService {
   available: any[];
+  active: string;
 }

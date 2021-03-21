@@ -1,1 +1,5 @@
-<span *ngFor="let workflow of workflows; index as i">{{workflow}}</span>
+<div *ngFor="let workflow of workflowService.available; index as i"
+  class="tab"
+  [ngClass]="{'active': workflowService.active == workflow}"
+  (click)="activate(workflow)"
+>{{workflow}}</div>

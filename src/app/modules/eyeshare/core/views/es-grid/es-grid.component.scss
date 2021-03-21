@@ -2,22 +2,26 @@
   display: grid;
   padding: 1em;
 
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto auto 1fr auto;
   grid-template-columns: auto 1fr auto;
 
-  grid-template-areas: 
+  grid-template-areas:
+    "domains domains domains"
+    "modules modules modules"
     "tabs tabs tabs"
     "actions table document"
     "lines lines lines";
 
-  >:nth-child(1) { grid-area: tabs };
-  >:nth-child(2) { grid-area: actions };
-  >:nth-child(3) { grid-area: table };
-  >:nth-child(4) { grid-area: document };
-  >:nth-child(5) { grid-area: lines };
+  >:nth-child(1) { grid-area: domains };
+  >:nth-child(2) { grid-area: modules; border-top: none; };
+  >:nth-child(3) { grid-area: tabs; border-top: none; };
+  >:nth-child(4) { grid-area: actions; border-top: none; border-bottom: none; };
+  >:nth-child(5) { grid-area: table; border: none; };
+  >:nth-child(6) { grid-area: document; border-top: none; border-bottom: none; };
+  >:nth-child(7) { grid-area: lines };
+
 
   > *{
-    // overflow: hidden;
     border: 1px solid darkolivegreen;
   }
 }

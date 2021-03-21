@@ -43,9 +43,9 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   @EsResolveAsync()
   ngOnInit() {
     this.route.params.subscribe(p => this.routeParams = p as GridRouteParams);
-    this.route.queryParams.subscribe(p => console.log(p));
+    this.route.queryParams.subscribe(p => ({}));
 
-    this.loggerService.ngOnInit();
+    // this.loggerService.ngOnInit();
     // this.dataProvider.data(Module.generalLedger);
   }
 
@@ -57,8 +57,4 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   ngAfterViewChecked() { }
   ngAfterContentChecked() { }
   ngOnDestroy() { }
-  navigate(event: any) {
-    console.log("naviating");
-    this.router.navigate(["/es/lines"], { queryParams: { val: 'Query params for route 1' }});
-  }
 }
