@@ -3,13 +3,11 @@ import {
   AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
-import { LoggerService } from '../../service-models/logger.service';
-import { styles } from "src/app/modules/eyeshare/implement/#implement.sys";
+import { LoggerService } from '../../services/logger.service';
 import { EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
-import { DataProviderService, Module } from '../../service-models/data-provider.service';
+import { DataProviderService, Module } from '../../services/data-provider.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { WorkflowService } from '../../service-models/workflow.service';
-import { esServicesAsync } from '../../helpers/es-helpers';
+import { WorkflowService } from '../../services/workflow.service';
 
 
 interface GridRouteParams {
@@ -24,7 +22,6 @@ interface GridRouteParams {
   selector: 'es-grid',
   templateUrl: './es-grid.component.html',
   styleUrls: ['./es-grid.component.scss'],
-  styles: [styles.EsGrid],
   providers: []
 })
 export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
@@ -45,8 +42,8 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
     this.route.params.subscribe(p => this.routeParams = p as GridRouteParams);
     this.route.queryParams.subscribe(p => ({}));
 
-    // this.loggerService.ngOnInit();
-    // this.dataProvider.data(Module.generalLedger);
+    this.loggerService.ngOnInit();
+    // this.dataProviderService.data("invoice");
   }
 
   ngAfterContentInit() { }

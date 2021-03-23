@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot, UrlTree, Router, ActivatedRoute
 } from '@angular/router';
 import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
-import { DomainService } from '../service-models/domain.service';
+import { DomainService } from '../services/domain.service';
 
 
 @Injectable({

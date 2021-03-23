@@ -5,7 +5,7 @@ import {
 } from '@angular/router';
 import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
 import { EsServiceAsync } from '../helpers/service-factories';
-import { WorkflowService } from '../service-models/workflow.service';
+import { WorkflowService } from '../services/workflow.service';
 
 
 @Injectable({

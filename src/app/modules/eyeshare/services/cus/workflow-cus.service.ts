@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
-import { WorkflowServiceSys } from "../sys/workflow-sys.service";
+import { WorkflowService } from "../../core/services/workflow.service";
 
 
 @Injectable({
   providedIn: "root",
 })
-export class WorkflowServiceCus extends WorkflowServiceSys {
-
+export class WorkflowServiceCus extends WorkflowService {
   available: any[] = [
     "Not started",
     "Waiting for approval",

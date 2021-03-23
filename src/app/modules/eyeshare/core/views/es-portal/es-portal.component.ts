@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EsResolveAsync } from '../../helpers/component-decorators';
-import { ParserService } from '../../service-models/parser.service';
+import { ParserService } from '../../services/parser.service';
 
 
 @Component({

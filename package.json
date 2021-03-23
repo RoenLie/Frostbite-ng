@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~11.2.6",
     "@angular/platform-browser-dynamic": "~11.2.6",
     "@angular/router": "~11.2.6",
+    "ag-grid-angular": "^25.1.0",
+    "ag-grid-community": "^25.1.0",
     "algoliasearch": "^4.8.5",
     "angular-svg-icon": "^11.2.0",
     "firebase": "^8.2.6",

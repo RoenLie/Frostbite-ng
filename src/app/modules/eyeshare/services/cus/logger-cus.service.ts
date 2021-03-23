@@ -16,5 +16,4 @@ export class LoggerServiceCus extends LoggerServiceInt {
     super.log();
     console.log("I am the CUS logger service");
   }
-
 }

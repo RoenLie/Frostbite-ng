@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EsResolveAsync } from '../../helpers/component-decorators';
-import { ModuleService } from '../../service-models/module.service';
+import { ModuleService } from '../../services/module.service';
 
 
 @Component({

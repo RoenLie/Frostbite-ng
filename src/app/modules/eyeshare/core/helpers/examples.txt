@@ -8,3 +8,7 @@ method for sorting object by keys
 sortKeys = (a: any, b: any) => {
     return a.key > b.key ? -1 : 1;
 }
+
+
+to clean [object Type] and only leave Type.
+use this regex /(\[object )|]/

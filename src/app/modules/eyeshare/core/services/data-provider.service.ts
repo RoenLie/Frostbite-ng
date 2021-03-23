@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
-import { EsServiceAsync } from "../../core/helpers/service-factories";
-import { DataProviderService, Module } from "../../core/service-models/data-provider.service";
+import { EsServiceAsync } from "../helpers/service-factories";
 
+export declare type Module = "invoice" | "generalledger";
 
 @Injectable({
   providedIn: "root",
+  useFactory: (instance: DataProviderService | null) =>
+    instance || EsServiceAsync(DataProviderService),
 })
-export class DataProviderServiceSys implements DataProviderService {
-
+export class DataProviderService {
+  [Symbol.toStringTag] = "DataProviderService"
   moduleData: any = {
     invoice: [
       [0,1,2,3,4],
@@ -22,9 +24,7 @@ export class DataProviderServiceSys implements DataProviderService {
       [35,36,37,38,39],
     ]
   }
-
   ngOnInit() { }
-
   data(module: Module) {
     return this.moduleData[module];
   }

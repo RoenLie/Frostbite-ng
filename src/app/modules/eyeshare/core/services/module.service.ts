@@ -4,9 +4,15 @@ import { EsServiceAsync } from "../helpers/service-factories";
 @Injectable({
   providedIn: "root",
   useFactory: (instance: ModuleService | null) =>
-    instance || EsServiceAsync("ModuleService", ModuleService)
+    instance || EsServiceAsync(ModuleService)
 })
 export class ModuleService {
-  available: any[];
-  active: string;
+  [Symbol.toStringTag] = "ModuleService"
+  available: any[] = [
+    "invoice",
+    "generalledger",
+    "purchaseorder",
+    "archive"
+  ];
+  active: string = this.available[0];
 }

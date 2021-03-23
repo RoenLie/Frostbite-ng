@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot, UrlTree, Router, ActivatedRoute
 } from '@angular/router';
 import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
-import { TenantService } from '../service-models/tenant.service';
+import { TenantService } from '../services/tenant.service';
 
 
 @Injectable({

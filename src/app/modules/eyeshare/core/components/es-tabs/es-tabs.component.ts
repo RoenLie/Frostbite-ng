@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EsResolveAsync } from '../../helpers/component-decorators';
-import { WorkflowService } from '../../service-models/workflow.service';
+import { WorkflowService } from '../../services/workflow.service';
 
 
 @Component({
