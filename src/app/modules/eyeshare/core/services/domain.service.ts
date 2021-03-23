@@ -8,7 +8,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
     instance || EsServiceAsync(DomainService)
 })
 export class DomainService {
-  [Symbol.toStringTag] = "DomainService"
+  private [Symbol.toStringTag] = "DomainService"
   available: any[] = [
     "sys",
     "D365",

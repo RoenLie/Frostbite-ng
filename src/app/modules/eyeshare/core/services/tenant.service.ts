@@ -8,7 +8,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
     instance || EsServiceAsync(TenantService)
 })
 export class TenantService {
-  [Symbol.toStringTag] = "TenantService"
+  private [Symbol.toStringTag] = "TenantService"
   available: any[] = [
     "global"
   ];

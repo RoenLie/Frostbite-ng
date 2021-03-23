@@ -9,7 +9,7 @@ export declare type Module = "invoice" | "generalledger";
     instance || EsServiceAsync(DataProviderService),
 })
 export class DataProviderService {
-  [Symbol.toStringTag] = "DataProviderService"
+  private [Symbol.toStringTag] = "DataProviderService"
   moduleData: any = {
     invoice: [
       [0,1,2,3,4],

@@ -1,5 +1,3 @@
-const RESOLVE_KEY = "_services";
-
 export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
   return class extends Base {
     constructor(...args: any[]) {
@@ -10,13 +8,15 @@ export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
       const values: any[] = Object.values(this);
 
       (async () => {
-        const results = await Promise.all(values);
-
-        for (let i = 0; i < results.length; i++) {
-          const service = results[i];
-          
-          t[keys[i]] = service;
-        }
+        const results = await Promise.all(values.map((value: any) => { 
+          if (value && typeof value?.then == 'function') return value;
+  
+          return null;
+        }))
+  
+        results.forEach((res: any, index: number) => {
+          if (res) t[keys[index]] = res;
+        })
       })()
     }
   };

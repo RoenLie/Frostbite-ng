@@ -7,7 +7,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
     instance || EsServiceAsync(WorkflowService)
 })
 export class WorkflowService {
-  [Symbol.toStringTag] = "WorkflowService"
+  private [Symbol.toStringTag] = "WorkflowService"
   available: any[] = [
     "Not started",
     "Waiting for approval",

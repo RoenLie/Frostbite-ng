@@ -7,6 +7,6 @@ import { EsServiceAsync } from "../helpers/service-factories";
     instance || EsServiceAsync(ParserService)
 })
 export class ParserService {
-  [Symbol.toStringTag] = "ParserService"
+  private [Symbol.toStringTag] = "ParserService"
   parse() { console.log("parsing from SYS"); }
 }

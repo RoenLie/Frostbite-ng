@@ -7,7 +7,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
     instance || EsServiceAsync(ModuleService)
 })
 export class ModuleService {
-  [Symbol.toStringTag] = "ModuleService"
+  private [Symbol.toStringTag] = "ModuleService"
   available: any[] = [
     "invoice",
     "generalledger",

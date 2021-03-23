@@ -8,7 +8,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
     instance || EsServiceAsync(LoggerService)
 })
 export class LoggerService {
-  [Symbol.toStringTag] = "LoggerService"
+  private [Symbol.toStringTag] = "LoggerService"
 
   constructor() { }
   ngOnInit() {
