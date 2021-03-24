@@ -58,8 +58,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import {OverlayModule} from '@angular/cdk/overlay';
+import { OverlayModule } from '@angular/cdk/overlay';
+
 import { AgGridModule } from 'ag-grid-angular';
+import { EsDynamicDirective, EsHostComponent, EsCenterComponentSys } from '../../components/es-host/es-host.component';
+
 
 @NgModule({
   imports: [
@@ -127,6 +130,9 @@ import { AgGridModule } from 'ag-grid-angular';
     EsTabsComponent,
     EsModulesComponent,
     EsDomainsComponent,
+
+    EsDynamicDirective,
+    EsHostComponent,
   ],
   providers: [ ],
   exports: [ ],

@@ -66,11 +66,16 @@ export const EsServiceAsync = async (service: any) => {
     Object.values(module).some((obj: any) => {
       const cls = new obj();
 
+      /* Work by implementing custom Symbol.hasInstance on class. */
+      const instanceOf = obj instanceof service;
+      if (instanceOf) resolvedService = cls
+      return instanceOf;
+
       /* seems to be faster than checking proto, requires more boilerplate */
       /* Checks using the Symbol.toStringTag set on the base class. */
-      const isTypeOf = resolvedService.toString() == cls.toString();
-      if (isTypeOf) resolvedService = cls;
-      return isTypeOf
+      // const isTypeOf = resolvedService.toString() == cls.toString();
+      // if (isTypeOf) resolvedService = cls;
+      // return isTypeOf
       
       /* Checks if class has base class anywhere in hierarki */
       // const isProto = service.isPrototypeOf(obj);

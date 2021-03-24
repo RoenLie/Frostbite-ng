@@ -10,6 +10,9 @@ export declare type Module = "invoice" | "generalledger";
 })
 export class DataProviderService {
   private [Symbol.toStringTag] = "DataProviderService"
+  static [Symbol.hasInstance](instance: any) {
+    return this.isPrototypeOf(instance);
+  }
   moduleData: any = {
     invoice: [
       [0,1,2,3,4],

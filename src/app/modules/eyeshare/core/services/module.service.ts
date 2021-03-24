@@ -8,6 +8,9 @@ import { EsServiceAsync } from "../helpers/service-factories";
 })
 export class ModuleService {
   private [Symbol.toStringTag] = "ModuleService"
+  static [Symbol.hasInstance](instance: any) {
+    return this.isPrototypeOf(instance);
+  }
   available: any[] = [
     "invoice",
     "generalledger",

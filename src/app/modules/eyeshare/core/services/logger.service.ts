@@ -4,11 +4,13 @@ import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: (instance: LoggerService | null) =>
-    instance || EsServiceAsync(LoggerService)
+  useFactory: () => EsServiceAsync(LoggerService)
 })
 export class LoggerService {
   private [Symbol.toStringTag] = "LoggerService"
+  static [Symbol.hasInstance](instance: any) {
+    return this.isPrototypeOf(instance);
+  }
 
   constructor() { }
   ngOnInit() {

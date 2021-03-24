@@ -6,7 +6,7 @@ import {
 import { LoggerService } from '../../services/logger.service';
 import { EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
 import { DataProviderService, Module } from '../../services/data-provider.service';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkflowService } from '../../services/workflow.service';
 
 
@@ -28,7 +28,7 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
   
   routeParams: GridRouteParams;
-
+  
   constructor(
     public loggerService: LoggerService,
     private dataProviderService: DataProviderService,
@@ -42,7 +42,7 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
     this.route.params.subscribe(p => this.routeParams = p as GridRouteParams);
     this.route.queryParams.subscribe(p => ({}));
 
-    this.loggerService.ngOnInit();
+    // this.loggerService.ngOnInit();
     // this.dataProviderService.data("invoice");
   }
 

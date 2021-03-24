@@ -8,5 +8,8 @@ import { EsServiceAsync } from "../helpers/service-factories";
 })
 export class ParserService {
   private [Symbol.toStringTag] = "ParserService"
+  static [Symbol.hasInstance](instance: any) {
+    return this.isPrototypeOf(instance);
+  }
   parse() { console.log("parsing from SYS"); }
 }
