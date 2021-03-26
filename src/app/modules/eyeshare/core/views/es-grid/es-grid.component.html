@@ -2,7 +2,16 @@
 <es-modules></es-modules>
 <es-tabs></es-tabs>
 <es-actions></es-actions>
-<es-host></es-host>
-<!-- <es-table></es-table> -->
-<es-document></es-document>
+<!-- <div></div> -->
+<!-- <es-host [component]="esDocumentComponent"></es-host> -->
+
+
+<div>
+  <!-- <input type="text" [(ngModel)]="txt"> -->
+  <input type="text" [(ngModel)]="txt2.message">
+  <h2>{{txt2.message}}</h2>
+</div>
+<hello-component></hello-component>
+<!-- <es-host [data]="{ message: txt2.message }"></es-host> -->
+<!-- <es-document></es-document> -->
 <es-lines></es-lines>

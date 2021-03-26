@@ -61,14 +61,15 @@ import {MatTreeModule} from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 import { AgGridModule } from 'ag-grid-angular';
-import { EsDynamicDirective, EsHostComponent, EsCenterComponentSys } from '../../components/es-host/es-host.component';
-
+import { EsHostComponent, HelloComponent, HostDefaultComponent } from '../../components/es-host/es-host.component';
+import { NgxdModule } from '@ngxd/core';
 
 @NgModule({
   imports: [
     CommonModule,
     EsGridRouterModule,
 
+    NgxdModule,
     AgGridModule.withComponents([]),
 
     FormsModule,
@@ -131,8 +132,9 @@ import { EsDynamicDirective, EsHostComponent, EsCenterComponentSys } from '../..
     EsModulesComponent,
     EsDomainsComponent,
 
-    EsDynamicDirective,
     EsHostComponent,
+    HostDefaultComponent,
+    HelloComponent
   ],
   providers: [ ],
   exports: [ ],

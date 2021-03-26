@@ -17,7 +17,7 @@
   >:nth-child(3) { grid-area: tabs; border-top: none; };
   >:nth-child(4) { grid-area: actions; border-top: none; border-bottom: none; };
   >:nth-child(5) { grid-area: table; border: none; };
-  >:nth-child(6) { grid-area: document; border-top: none; border-bottom: none; };
+  >:nth-child(6) { grid-area: document; border-top: none; border-bottom: none; min-width: 20vw;};
   >:nth-child(7) { grid-area: lines };
 
 
