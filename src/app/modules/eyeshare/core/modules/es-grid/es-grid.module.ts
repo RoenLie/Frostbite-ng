@@ -134,7 +134,7 @@ import { NgxdModule } from '@ngxd/core';
 
     EsHostComponent,
     HostDefaultComponent,
-    HelloComponent
+    HelloComponent,
   ],
   providers: [ ],
   exports: [ ],

@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { EsResolveAsync } from '../../helpers/component-decorators';
-import { ParserService } from '../../services/parser.service';
-
 
 @Component({
   selector: 'es-portal',
-  templateUrl: './es-portal.component.html',
-  styleUrls: ['./es-portal.component.scss'],
-  styles: [],
+  templateUrl: "./es-portal.component.html",
+  styles: [`
+    :host {
+      display: grid;
+      place-items: center;
+    }
+  `],
 })
 export class EsPortalComponent implements OnInit {
-  constructor(private parser: ParserService) { }
 
-  @EsResolveAsync()
+  message: string = "initial message from portal";
+  constructor() { }
+
   ngOnInit() {
-    this.parser.parse();
+    console.log("SYS");
+    
   }
 }

@@ -1593,6 +1593,13 @@
     enhanced-resolve "5.7.0"
     webpack-sources "2.2.0"
 
+"@ngxd/core@^11.0.0":
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/@ngxd/core/-/core-11.0.0.tgz#81d675c2d2b7c74d69112b55fa9d1f43d8678666"
+  integrity sha512-3d6/eN7CHGUS1y0BxlFmr2/IOeaaxQu2MPbPEcntLcAztxwCoBllNDgdTjtSXc+s5YYIMaI88bCjZpl6/jwPfw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -2077,6 +2084,18 @@ after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
   integrity sha1-/ts5T58OAqqXaOcCvaI7UF+ufh8=
+
+ag-grid-angular@^25.1.0:
+  version "25.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-angular/-/ag-grid-angular-25.1.0.tgz#172816a61669acd01cee4362e5fcfd66dce5bdab"
+  integrity sha512-+5i53kJdoD339xj89TzgzqX18TVOobz+tbK+jn66bqwW0gjWipbQDS15zZZtup8zML47377OluBLPnkg3ZwtQw==
+  dependencies:
+    tslib "^1.10.0"
+
+ag-grid-community@^25.1.0:
+  version "25.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-25.1.0.tgz#7e132835789586900e0dd24d18cb71d68e09106f"
+  integrity sha512-sKJp6SZG8J50OlOeECtrLFSp/iwdx1mcG0+BmIkHsXmWoyXv5ZaTJyVg1/hMk6s3JVTm1ipg6LepbTaigWEL2A==
 
 agent-base@6:
   version "6.0.2"
