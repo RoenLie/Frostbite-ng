@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { EsComponent } from './es-component.decorator';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { EsComponent, EsInitialize } from '../../helpers/component-decorators';
+import { LoggerService } from '../../services/logger.service';
 
 
-@EsComponent("hello dis test input")
+@EsComponent()
+// @EsInitialize
 @Component({
   selector: 'es-sub-portal',
   template: `
@@ -12,14 +14,22 @@ import { EsComponent } from './es-component.decorator';
   `,
   styles:[``]
 })
-export class EsSubPortalComponent implements OnInit {
+@EsComponent()
+export class EsSubPortalComponent implements OnInit, OnDestroy {
 
   @Input() message: string;
 
   randomProp: string = "I am just a random prop";
-  constructor() { }
+  constructor(private logger: LoggerService) { }
 
   ngOnInit() {
-    console.log("sub portal component SYS");
+    // console.log("sub portal component SYS");
+    console.log(this.logger);
+    
+    // this.logger.ngOnInit();
+  }
+
+  ngOnDestroy() {
+    // console.log("I am destroyed");
   }
 }

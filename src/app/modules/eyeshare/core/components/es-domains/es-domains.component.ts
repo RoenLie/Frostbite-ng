@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EsResolveAsync } from '../../helpers/component-decorators';
+import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { DomainService } from '../../services/domain.service';
 
-
+@EsInitialize
 @Component({
   selector: 'es-domains',
   templateUrl: './es-domains.component.html',
@@ -17,7 +17,6 @@ export class EsDomainsComponent implements OnInit {
     private router: Router
   ) { }
 
-  @EsResolveAsync()
   ngOnInit() {
     // this.route.queryParams.subscribe(params => {
     //   this.domainService.active = params?.workflow;

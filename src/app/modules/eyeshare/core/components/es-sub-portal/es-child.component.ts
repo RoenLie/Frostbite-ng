@@ -12,6 +12,6 @@ export class EsChildComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("Just a child component");
+    // console.log("Just a child component");
   }
 }

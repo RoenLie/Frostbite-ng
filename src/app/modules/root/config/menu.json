@@ -62,9 +62,34 @@
     ]
   },
   {
-    "name": "404view",
+    "name":"threeView",
     "options": {
       "order": 15
+    },
+    "menuItems":[
+      {
+        "displayName": "Three",
+        "name": "three",
+        "route": "three/portal",
+        "menu": [
+          {
+            "displayName": "First",
+            "name": "first",
+            "route": "three/first"
+          },
+          {
+            "displayName": "Second",
+            "name": "second",
+            "route": "three/second"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "404view",
+    "options": {
+      "order": 99
     },
     "menuItems": [
       {

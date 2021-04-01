@@ -21,6 +21,7 @@ interface GridRouteParams {
 }
 
 
+@EsInitialize
 @Component({
   selector: 'es-grid',
   templateUrl: './es-grid.component.html',
@@ -51,7 +52,6 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   }
 
   @EsTimer()
-  @EsResolveAsync()
   ngOnInit() {
     this.route.params.subscribe(p => this.routeParams = p as GridRouteParams);
     this.route.queryParams.subscribe(p => ({}));

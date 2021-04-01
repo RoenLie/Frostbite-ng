@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EsGridRouterModule } from './es-grid-routing.module';
 import { EsGridComponent } from '../../views/es-grid/es-grid.component';
@@ -63,6 +63,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { AgGridModule } from 'ag-grid-angular';
 import { EsHostComponent, HelloComponent, HostDefaultComponent } from '../../components/es-host/es-host.component';
 import { NgxdModule } from '@ngxd/core';
+
+
 
 @NgModule({
   imports: [
@@ -137,6 +139,9 @@ import { NgxdModule } from '@ngxd/core';
     HelloComponent,
   ],
   providers: [ ],
-  exports: [ ],
+  exports: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class EsGridModule { }

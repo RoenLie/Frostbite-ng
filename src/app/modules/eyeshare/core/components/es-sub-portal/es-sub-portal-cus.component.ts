@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   template: `
   <p>  sub-portal CUSTOM </p>
   <span>{{message}}</span>
-  <es-child></es-child>
+  <!-- <es-child></es-child> -->
   `,
   styles: [``]
 })

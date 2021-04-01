@@ -16,7 +16,7 @@ export class EsPortalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("SYS");
+    // console.log("SYS");
     
   }
 }

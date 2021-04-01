@@ -18,6 +18,11 @@ const routes: Routes = [
     data: { animation: "fade" }
   },
   {
+    path: "three", loadChildren: async () => (
+      await import("./modules/three/modules/three.module")).ThreeModule,
+    data: { animation: "fade" }
+  },
+  {
     path: "404", loadChildren: async () => (
       await import("./modules/error404/error404.module")).Error404Module,
     data: { animation: "fade" }

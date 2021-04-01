@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EsResolveAsync } from '../../helpers/component-decorators';
+import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { ModuleService } from '../../services/module.service';
 
 
+@EsInitialize
 @Component({
   selector: 'es-modules',
   templateUrl: './es-modules.component.html',
@@ -17,7 +18,6 @@ export class EsModulesComponent implements OnInit {
     private router: Router
   ) { }
 
-  @EsResolveAsync()
   ngOnInit() {
     // this.route.queryParams.subscribe(params => {
     //   this.moduleService.active = params?.workflow;
