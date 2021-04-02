@@ -4,7 +4,6 @@ import {
 } from '@angular/core';
 import { EsDocumentComponent } from '../es-document/es-document.component';
 import { BehaviorSubject } from 'rxjs';
-import { testComponent } from "../../../implement/#templates";
 
 
 // ----------------------------------------------------------------------------
@@ -72,7 +71,7 @@ export class EsHostComponent implements OnInit {
 export const TEMPLATE_BASE = './templates/';
 
 export function getTemplateUrl(cmp: string): string {
-  return TEMPLATE_BASE + cmp + '.component' + "-" + testComponent + '.html' || "awdad";
+  return TEMPLATE_BASE + cmp + '.component' + "-" + "int" + '.html' || "awdad";
 }
 
 export const HELLO_SELECTOR = 'hello-component';

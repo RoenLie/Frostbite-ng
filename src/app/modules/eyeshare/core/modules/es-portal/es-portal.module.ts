@@ -5,7 +5,6 @@ import { EsPortalComponentsModule } from './es-portal.c.module';
 import { LazyLoaderService } from '../lazy/lazy.service';
 import { LAZY_WIDGETS } from '../lazy/lazy.token';
 import { lazyArrayToObj } from '../lazy/lazy.helpers';
-import { EsPortalModuleCus } from './es-portal-cus.c.module';
 
 
 @NgModule({
@@ -13,7 +12,6 @@ import { EsPortalModuleCus } from './es-portal-cus.c.module';
     CommonModule,
     EsPortalRouterModule,
     EsPortalComponentsModule,
-    EsPortalModuleCus,
   ],
   declarations: [ ],
   providers: [ LazyLoaderService, { provide: LAZY_WIDGETS, useFactory: lazyArrayToObj } ],

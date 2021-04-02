@@ -4,12 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { EsPortalComponent } from '../../views/es-portal/es-portal.component';
 
 
-const routes = [
-  {
-    path: "",
-    component: EsPortalComponent,
-  },
-];
+const routes = [ { path: "", component: EsPortalComponent } ];
 
 
 @NgModule({

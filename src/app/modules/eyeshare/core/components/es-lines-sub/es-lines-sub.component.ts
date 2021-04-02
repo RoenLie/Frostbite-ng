@@ -3,27 +3,26 @@ import {
   AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
-import { EsInitialize, EsComponentDeps } from '../../helpers/component-decorators';
+import { EsInitialize } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
-import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
 
 
 @EsInitialize
 @Component({
-  selector: 'es-lines',
-  templateUrl: './es-lines.component.html',
-  styleUrls: ['./es-lines.component.scss'],
+  selector: 'es-lines-sub',
+  template: `<div>SUB LINES</div>`,
+  styles: [``]
 })
-@EsComponentDeps({
-  directives: [
-    EsLinesSubComponent
-  ]
-})
-export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
+export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  constructor(private logger: LoggerService) { }
+  static [Symbol.hasInstance](instance: any) {
+    return this.isPrototypeOf(instance);
+  }
+  constructor(private logger?: LoggerService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log("I am es lines sub");
+  }
   ngAfterContentInit() { }
   ngAfterViewInit() { }
   ngOnChanges(changes: any) { }

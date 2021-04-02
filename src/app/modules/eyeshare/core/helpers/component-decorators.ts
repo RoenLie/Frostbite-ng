@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import { getComponentDef } from './utils';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs } from './utils';
 
 /**
  * @description
@@ -122,85 +122,56 @@ export function EsTimer(message?: string) {
   };
 }
 
-export function EsComponent() {
+export function EsComponentDeps(config: ComponentDepsConfig) {
   return (component: any) => {
 
-
     const def = getComponentDef(component);
+    def.schemas = [CUSTOM_ELEMENTS_SCHEMA];
 
-    // console.log(def);
-    
-    // console.log(Object.entries(cmpType));
-    // console.log(originalFactory);
-    
-    // console.log(cmpType.ɵfac);
-    // console.log(cmpType.ɵcmp);
+    (async () => {
+      const modules: any[] = await Promise.all([
+        import("src/app/modules/eyeshare/#implement/#components.cus"),
+        import("src/app/modules/eyeshare/#implement/#components.int")
+      ]);
 
+      config.directives.forEach((dir: any, index: number) => {
+        modules.some((module: any) =>
+          Object.values(module).some((obj: any) => {
+            const isInstanceOf = obj instanceof dir;
+            if (isInstanceOf) {
+              config.directives[index] = obj;
+            }
+            
+            return isInstanceOf;
+          }))
+      });
 
+      const dirs: any = await Promise.all(config.directives);
 
+      let directiveDefs: Array<any> = [];
+      if (typeof def.directiveDefs === 'function') {
+        directiveDefs = def.directiveDefs();
+      }
 
-    // console.log(cmpType.ɵcmp.type);
-    
-    // cmpType.ɵcmp.type.ngOnDestroy = () => {
-    //   if (cmpType.ɵcmp.type.ngOnDestroy) {
-    //     cmpType.ɵcmp.type.ngOnDestroy();
-    //     console.log("on destroy already existed");
-    //   } else {
-    //     console.log("on destroy did not exist before this");
-    //   }
+      def.directiveDefs = [
+        ...(directiveDefs),
+        ...getDirectiveDefs(dirs || []),
+      ];
+
+      def.pipeDefs = [
+      ...getPipeDefs(config.pipes || [])
+      ];
+    })();
+  };
+}
+
+export function EsComponent() {
+  return (component: any) => {
+    const def = getComponentDef(component);
+    // def.factory = (...args: any[]) => {
+    //   console.log(args);
     // }
 
-    // console.log(cmpType.ɵcmp.type);
-    
-
-    // cmpType.ɵfac = (...args: any[]) => {
-    //   const comp = originalFactory(...args);
-    //   console.log(Object.entries((comp)));
-      
-
-    //   return comp;
-    // }
-
-
-
-
-    // cmpType.ɵcmp.factory = (...args: any[]) => {
-
-      
-
-    //   // const cmp = originalFactory(...args);
-
-    //   // console.log(args);
-      
-    //   // cmpType.ɵcmp.onDestroy = () => {
-    //   //   if (cmp.ngOnDestroy) {
-    //   //     cmp.ngOnDestroy();
-    //   //     console.log("on destroy already existed");
-    //   //   } else {
-    //   //     console.log("on destroy did not exist before this");
-    //   //   }
-    //   // }
-
-    //   // console.log(cmp);
-      
-    //   // return cmp;
-    // }
-
-    // console.log(cmpType);
-    // console.log(Object.values(cmpType));
-    
-
-    // const originalFactory = cmpType.ngComponentDef.factory;
-    // console.log(originalFactory);
-    // cmpType.ngComponentDef.factory = (...args: any[]) => {
-    //   const cmp = originalFactory(...args);
-
-    //   console.log(cmp);
-
-    //   return cmp;
-    // }
-    
-    // return cmpType;
-    // return cus;
+    console.log(def);
   }
 }

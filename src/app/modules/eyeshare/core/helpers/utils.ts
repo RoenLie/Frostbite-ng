@@ -45,18 +45,14 @@ export function getPipeDefs(types: Type<any>[]): PipeDef<any>[] {
 }
 
 export interface ComponentDepsConfig {
-  directives?: Type<any>[];
+  directives?: Type<any>[] | any;
   pipes?: Type<any>[];
 }
 
 export function ComponentDeps(config: ComponentDepsConfig) {
   return (component: any) => {
-
-    // console.log(component);
     const def = getComponentDef(component);
-    // console.log(def);
     def.schemas = [CUSTOM_ELEMENTS_SCHEMA];
-    // console.log(CUSTOM_ELEMENTS_SCHEMA);
     let directiveDefs: Array<any> = [];
     if (typeof def.directiveDefs === 'function') {
       directiveDefs = def.directiveDefs();
@@ -70,8 +66,31 @@ export function ComponentDeps(config: ComponentDepsConfig) {
     def.pipeDefs = [
       ...getPipeDefs(config.pipes || [])
     ];
-
-
-    // console.log(def);
   };
+}
+
+export type EsLayer = "custom" | "integration" | "system";
+
+export interface EsComponentMetaConfig {
+  layer?: EsLayer;
+}
+
+export function EsComponentMeta(config: EsComponentMetaConfig) {
+  return (component: any) => {
+    const def = getComponentDef(component) as any;
+    def._es = config
+  };
+}
+
+export const EsModulePicker = async () => {
+  const random = Math.floor((Math.random() * 2));
+  const modules: any[] = [
+    // import("../core/modules/es-portal/es-portal.module"),
+    // import("../core/modules/es-portal/es-portal-int.module"),
+    // import("../core/modules/es-portal/es-portal-cus.module"),
+  ]
+
+  const mod: any = await modules[0];
+
+  return mod[Object.keys(mod)[0]];
 }

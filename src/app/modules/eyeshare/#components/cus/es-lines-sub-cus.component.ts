@@ -3,26 +3,22 @@ import {
   AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
-// import { ComponentDeps } from '../../helpers/utils';
+import { EsLinesSubComponent } from '../../core/components/es-lines-sub/es-lines-sub.component';
 
 
 @Component({
   selector: 'es-lines-sub',
-  template: `<div>SUB LINES</div>`,
+  template: `<div>SUB LINES CUS</div>`,
   styles: [``]
 })
-// @ComponentDeps({
-//   directives: [
-//   ...LINES_COMPONENTS
-//   ]
-// })
-export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
-  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+export class EsLinesSubComponentCus extends EsLinesSubComponent
+  implements OnInit, OnChanges, DoCheck, OnDestroy, AfterContentInit,
+  AfterContentChecked, AfterViewInit, AfterViewChecked {
   
-  constructor() { }
+  constructor() { super(); }
 
   ngOnInit() {
-    console.log("I am es lines sub");
+    console.log("I am es lines sub CUS");
   }
   ngAfterContentInit() { }
   ngAfterViewInit() { }

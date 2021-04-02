@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { EsModulePicker } from '../../implement/#modules';
 
 
 const routes = [
   { path: "", redirectTo: "global/sys" },
-  // { path: ":tenant/:domain/portal", loadChildren: async () => (
-  //   await import("./es-portal/es-portal.module")).EsPortalModule},
-  {
-    path: ":tenant/:domain/portal", loadChildren: async () => await EsModulePicker()
-  },
+
+  { path: ":tenant/:domain/portal", loadChildren: async () => (
+    await import("./es-portal/es-portal.module")).EsPortalModule },
   
   { path: ":tenant/:domain/grid", loadChildren: async () => (
     await import("./es-grid/es-grid.module")).EsGridModule},
