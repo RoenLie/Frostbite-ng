@@ -1,5 +1,4 @@
 :host {
-  // @include scrollbar();
   overflow: hidden;
   &::-webkit-scrollbar {
     width: 0.75em;
@@ -15,35 +14,4 @@
   }
 
   padding: 1em;
-}
-
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-td, th {
-  width: 25%;
-}
-
-.overflowauto {
-  overflow: auto;
-  height: 80%;
-
-  &::-webkit-scrollbar {
-    width: 0.75em;
-    height: 0.75em;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.15);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.09);
-  }
 }

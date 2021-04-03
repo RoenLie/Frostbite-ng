@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { ModuleService } from '../../services/module.service';
 
+// ----------------------------------------------------------------------------
 
 @EsInitialize
 @Component({

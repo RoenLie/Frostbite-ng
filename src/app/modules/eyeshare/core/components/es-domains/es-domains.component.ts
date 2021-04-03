@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { DomainService } from '../../services/domain.service';
 
+// ----------------------------------------------------------------------------
+
 @EsInitialize
 @Component({
   selector: 'es-domains',

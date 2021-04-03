@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EsPortalComponent } from '../../views/es-portal/es-portal.component';
+import { EsPortalComponent } from './es-portal.component';
 
+// ----------------------------------------------------------------------------
 
 @NgModule({
   imports: [

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { WorkflowService } from '../../services/workflow.service';
 
+// ----------------------------------------------------------------------------
 
 @EsInitialize
 @Component({

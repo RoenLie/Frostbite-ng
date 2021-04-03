@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+// ----------------------------------------------------------------------------
+
 @Component({
   selector: 'es-portal',
   templateUrl: "./es-portal.component.html",

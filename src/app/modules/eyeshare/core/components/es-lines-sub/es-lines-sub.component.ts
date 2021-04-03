@@ -1,11 +1,12 @@
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
+  AfterViewInit, Component, ComponentDecorator, DoCheck, Input, OnChanges,
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
 import { EsInitialize } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
 
+// ----------------------------------------------------------------------------
 
 @EsInitialize
 @Component({
@@ -15,9 +16,8 @@ import { LoggerService } from '../../services/logger.service';
 })
 export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  static [Symbol.hasInstance](instance: any) {
-    return this.isPrototypeOf(instance);
-  }
+  @Input() message: string;
+
   constructor(private logger?: LoggerService) { }
 
   ngOnInit() {

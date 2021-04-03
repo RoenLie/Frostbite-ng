@@ -6,6 +6,7 @@ import {
 import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
 import { TenantService } from '../services/tenant.service';
 
+// ----------------------------------------------------------------------------
 
 @Injectable({
   providedIn: 'root',

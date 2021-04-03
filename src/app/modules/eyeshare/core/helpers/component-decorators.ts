@@ -2,6 +2,8 @@ import 'reflect-metadata'
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs } from './utils';
 
+// ----------------------------------------------------------------------------
+
 /**
  * @description
  * Eye-share custom decorator that enables the use of async services.
@@ -27,6 +29,7 @@ import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs } f
  */
 export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
   return class extends Base {
+    static [Symbol.hasInstance](instance: any) { return this.isPrototypeOf(instance); }
     constructor(...args: any[]) {
       super(...args);
 
@@ -124,9 +127,9 @@ export function EsTimer(message?: string) {
 
 export function EsComponentDeps(config: ComponentDepsConfig) {
   return (component: any) => {
-
     const def = getComponentDef(component);
-    def.schemas = [CUSTOM_ELEMENTS_SCHEMA];
+
+    def.schemas = [ CUSTOM_ELEMENTS_SCHEMA ];
 
     (async () => {
       const modules: any[] = await Promise.all([
@@ -159,7 +162,7 @@ export function EsComponentDeps(config: ComponentDepsConfig) {
       ];
 
       def.pipeDefs = [
-      ...getPipeDefs(config.pipes || [])
+        ...getPipeDefs(config.pipes || [])
       ];
     })();
   };

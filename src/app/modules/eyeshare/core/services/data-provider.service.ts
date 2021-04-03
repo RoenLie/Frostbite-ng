@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { EsServiceAsync } from "../helpers/service-factories";
 
+// ----------------------------------------------------------------------------
+
 export declare type Module = "invoice" | "generalledger";
 
 @Injectable({

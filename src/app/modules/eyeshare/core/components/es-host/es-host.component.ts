@@ -5,7 +5,6 @@ import {
 import { EsDocumentComponent } from '../es-document/es-document.component';
 import { BehaviorSubject } from 'rxjs';
 
-
 // ----------------------------------------------------------------------------
 
 @Component({
@@ -14,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
       <h3>Host Default Component</h3>
       <h5>{{message}}</h5>
       <!-- <input type="text" [ngModel]="subjectModel.value" (ngModelChange)="subjectModel.next($event)" /> -->
-      <input type="text" [(ngModel)]="message" (ngModelChange)="onChange($event)"/>
+      <!-- <input type="text" [(ngModel)]="message" (ngModelChange)="onChange($event)"/> -->
   `
 })
 export class HostDefaultComponent implements OnInit, OnChanges {

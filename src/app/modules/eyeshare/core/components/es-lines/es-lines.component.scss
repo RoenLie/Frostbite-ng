@@ -1,10 +1,13 @@
 :host {
+  overflow: hidden;
+
   display: grid;
   place-items: start center;
   grid-auto-rows: min-content;
   row-gap: 0.5em;
-}
 
+  padding: 1em;
+}
 
 * {
   color: orange;

@@ -4,7 +4,7 @@ import {
   OnDestroy, OnInit, TypeDecorator, Type
 } from '@angular/core';
 import { LoggerService } from '../../services/logger.service';
-import { EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
+import { EsComponentDeps, EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
 import { DataProviderService, Module } from '../../services/data-provider.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkflowService } from '../../services/workflow.service';
@@ -12,6 +12,10 @@ import { WorkflowService } from '../../services/workflow.service';
 import { EsLinesComponent } from "../../components/es-lines/es-lines.component";
 import { EsActionsComponent } from '../../components/es-actions/es-actions.component';
 import { EsDocumentComponent } from '../../components/es-document/es-document.component';
+import { EsTableComponent } from '../../components/es-table/es-table.component';
+import { EsDomainsComponent } from '../../components/es-domains/es-domains.component';
+import { EsTabsComponent } from '../../components/es-tabs/es-tabs.component';
+import { EsModulesComponent } from '../../components/es-modules/es-modules.component';
 
 interface GridRouteParams {
   tenant: string,
@@ -21,12 +25,23 @@ interface GridRouteParams {
 }
 
 
-@EsInitialize
+// @EsInitialize
 @Component({
   selector: 'es-grid',
   templateUrl: './es-grid.component.html',
   styleUrls: ['./es-grid.component.scss'],
   providers: []
+})
+@EsComponentDeps({
+  directives: [
+    EsDomainsComponent,
+    EsModulesComponent,
+    EsTabsComponent,
+    EsLinesComponent,
+    EsDocumentComponent,
+    EsActionsComponent,
+    EsTableComponent
+  ]  
 })
 export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {

@@ -4,11 +4,16 @@ import {
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
 import { EsLinesSubComponent } from '../../core/components/es-lines-sub/es-lines-sub.component';
+import { EsInitialize } from '../../core/helpers/component-decorators';
 
 
+@EsInitialize
 @Component({
   selector: 'es-lines-sub',
-  template: `<div>SUB LINES CUS</div>`,
+  template: `
+  <div>SUB LINES CUS</div>
+  <div>{{ message }}</div>
+  `,
   styles: [``]
 })
 export class EsLinesSubComponentCus extends EsLinesSubComponent

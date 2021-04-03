@@ -6,6 +6,8 @@ import {
 import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
 import { DomainService } from '../services/domain.service';
 
+// ----------------------------------------------------------------------------
+
 @Injectable({
   providedIn: 'root',
 })

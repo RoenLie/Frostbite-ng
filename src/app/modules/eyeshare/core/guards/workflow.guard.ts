@@ -7,6 +7,7 @@ import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
 import { EsServiceAsync } from '../helpers/service-factories';
 import { WorkflowService } from '../services/workflow.service';
 
+// ----------------------------------------------------------------------------
 
 @Injectable({
   providedIn: 'root',

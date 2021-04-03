@@ -6,6 +6,7 @@ import { LazyLoaderService } from '../lazy/lazy.service';
 import { LAZY_WIDGETS } from '../lazy/lazy.token';
 import { lazyArrayToObj } from '../lazy/lazy.helpers';
 
+// ----------------------------------------------------------------------------
 
 @NgModule({
   imports: [

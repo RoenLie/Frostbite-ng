@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
+
+// ----------------------------------------------------------------------------
 
 @Component({
   selector: 'es-document',
@@ -10,11 +12,9 @@ export class EsDocumentComponent implements OnInit {
   tabs = ['Attachments', 'Information', 'Permissions', 'Log'];
   selected = new FormControl(0);
 
-  
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() { }
 
   addTab(selectAfterAdding: boolean) {
     this.tabs.push('New');
@@ -23,9 +23,8 @@ export class EsDocumentComponent implements OnInit {
       this.selected.setValue(this.tabs.length - 1);
     }
   }
-
+  
   removeTab(index: number) {
     this.tabs.splice(index, 1);
   }
-
 }
