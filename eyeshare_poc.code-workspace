@@ -6,24 +6,16 @@
 	],
 	"settings": {
 		"files.exclude": {
-			"[0-9]*": true,
-			"[A-Z]*": true,
-			"[.]*": true,
-			// Remove all except for folders starting with s
-			"[a-r, t-z]*": true,
-			// Remove all that don't start with sr
-			"s[a-q, s-z]*": true,
-			// Remove all inside src that don't start with a
-			"src/[b-r, s-z]*": true,
-			// Remove all that don't start with ap
-			"src/a[a-o, q-z]*": true,
-			// all inside src/app that don't start with m
-			"src/app/[a-l, n-z]*": true,
-			// all inside src/app/modules that don't start with e
-			"src/app/modules/[a-d, f-z]*": true,
-			// all inside src/app/modules that don't start with ey
-			"src/app/modules/e[a-x, z]*": true,
-			//  a b c d e f g h i j k l m n o p q r s t u v w x y z 
+			// remove everything that is not starting with
+			// ey inside the src/app/modules folder
+			"[!s]**": true,
+			"s[!r]**": true,
+			"src/[!a]*": true,
+			"src/a[!p]*": true,
+			"src/app/[!m]*": true,
+			"src/app/m[!o]*": true,
+			"src/app/modules/[!e]*": true,
+			"src/app/modules/e[!y]*": true,
 		},
 	}
 }
