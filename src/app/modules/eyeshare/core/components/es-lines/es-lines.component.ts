@@ -1,15 +1,15 @@
-import { CommonModule, NgClass, NgComponentOutlet, NgForOf, NgIf, NgPlural, NgPluralCase, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
-  OnDestroy, OnInit, TypeDecorator
+  AfterViewInit, Component, ComponentDecorator, CUSTOM_ELEMENTS_SCHEMA,
+  DoCheck, NgModule, OnChanges, OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
-import { FormsModule, NgForm, NgModel, NgModelGroup, ɵInternalFormsSharedModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { EsInitialize, EsComponentDeps } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
 import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
-
 // ----------------------------------------------------------------------------
+
 
 @Component({
   selector: 'es-lines',
@@ -27,7 +27,7 @@ export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   
   message: string = "Initial message";
 
-  constructor(private logger: LoggerService) { }
+  constructor(public logger?: LoggerService) { }
 
   ngOnInit() { }
   ngAfterContentInit() { }
@@ -38,3 +38,19 @@ export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   ngAfterContentChecked() { }
   ngOnDestroy() { }
 }
+
+// ----------------------------------------------------------------------------
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
+  declarations: [
+    EsLinesComponent
+  ],
+  providers: [ ],
+  exports: [ ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+})
+export class EsLinesModule { }

@@ -3,7 +3,8 @@
   max-width: 40vw;
 
   display: grid;
-  place-items: start center;
+  place-items: start;
+  grid-auto-rows: min-content;
 
   padding: 1em;
 }

@@ -6,6 +6,7 @@ import { ModuleGuard } from '../../guards/module.guard';
 import { DomainGuard } from '../../guards/domain.guard';
 import { TenantGuard } from '../../guards/tenant.guard';
 import { EsGridComponent } from './es-grid.component';
+// ----------------------------------------------------------------------------
 
 
 const routes = [
@@ -23,9 +24,8 @@ const routes = [
 ];
 
 
-@NgModule({
-  declarations: [ ],
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
-})
+// ----------------------------------------------------------------------------
+
+
+@NgModule({ imports: [ CommonModule, RouterModule.forChild(routes) ] })
 export class EsGridRouterModule { }

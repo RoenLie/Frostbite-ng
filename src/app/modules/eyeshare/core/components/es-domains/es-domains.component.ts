@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { DomainService } from '../../services/domain.service';
-
 // ----------------------------------------------------------------------------
+
 
 @EsInitialize
 @Component({
@@ -39,3 +41,18 @@ export class EsDomainsComponent implements OnInit {
     this.router.navigateByUrl(urlTree);
   }
 }
+
+// ----------------------------------------------------------------------------
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
+  declarations: [
+    EsDomainsComponent
+  ],
+  providers: [ ],
+  exports: [ ]
+})
+export class EsDomainsModule { }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { WorkflowService } from '../../services/workflow.service';
@@ -37,3 +39,18 @@ export class EsTabsComponent implements OnInit {
     this.router.navigateByUrl(urlTree);
   }
 }
+
+// ----------------------------------------------------------------------------
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
+  declarations: [
+    EsTabsComponent
+  ],
+  providers: [ ],
+  exports: [ ]
+})
+export class EsTabsModule { }

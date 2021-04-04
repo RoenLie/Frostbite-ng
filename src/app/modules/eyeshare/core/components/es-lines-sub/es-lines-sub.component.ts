@@ -1,12 +1,14 @@
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, ComponentDecorator, DoCheck, Input, OnChanges,
+  AfterViewInit, Component, ComponentDecorator, DoCheck, Input, NgModule, OnChanges,
   OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { EsInitialize } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
-
 // ----------------------------------------------------------------------------
+
 
 @EsInitialize
 @Component({
@@ -31,3 +33,19 @@ export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestro
   ngAfterContentChecked() { }
   ngOnDestroy() { }
 }
+
+// ----------------------------------------------------------------------------
+
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
+  declarations: [
+    EsLinesSubComponent
+  ],
+  providers: [ ],
+  exports: [ ]
+})
+export class EsLinesSubModule { }

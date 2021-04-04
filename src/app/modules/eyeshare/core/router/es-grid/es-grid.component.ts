@@ -1,14 +1,13 @@
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
   AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
-  OnDestroy, OnInit, TypeDecorator, Type
+  OnDestroy, OnInit, TypeDecorator, Type, NgModule, CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
-import { LoggerService } from '../../services/logger.service';
-import { EsComponentDeps, EsInitialize, EsResolveAsync, EsTimer } from '../../helpers/component-decorators';
-import { DataProviderService, Module } from '../../services/data-provider.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EsComponentDeps, EsInitialize, EsTimer } from '../../helpers/component-decorators';
+import { DataProviderService, Module } from '../../services/data-provider.service';
+import { LoggerService } from '../../services/logger.service';
 import { WorkflowService } from '../../services/workflow.service';
-
 import { EsLinesComponent } from "../../components/es-lines/es-lines.component";
 import { EsActionsComponent } from '../../components/es-actions/es-actions.component';
 import { EsDocumentComponent } from '../../components/es-document/es-document.component';
@@ -16,6 +15,9 @@ import { EsTableComponent } from '../../components/es-table/es-table.component';
 import { EsDomainsComponent } from '../../components/es-domains/es-domains.component';
 import { EsTabsComponent } from '../../components/es-tabs/es-tabs.component';
 import { EsModulesComponent } from '../../components/es-modules/es-modules.component';
+import { CommonModule } from '@angular/common';
+// ----------------------------------------------------------------------------
+
 
 interface GridRouteParams {
   tenant: string,
@@ -25,13 +27,12 @@ interface GridRouteParams {
 }
 
 
-// @EsInitialize
 @Component({
   selector: 'es-grid',
   templateUrl: './es-grid.component.html',
   styleUrls: ['./es-grid.component.scss'],
-  providers: []
 })
+@EsInitialize
 @EsComponentDeps({
   directives: [
     EsDomainsComponent,
@@ -74,9 +75,7 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
     // this.loggerService.ngOnInit();
     // this.dataProviderService.data("invoice");
   }
-
   ngAfterContentInit() { }
-
   ngAfterViewInit() { }
   ngOnChanges(changes: any) { }
   ngDoCheck() { }
@@ -84,3 +83,18 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   ngAfterContentChecked() { }
   ngOnDestroy() { }
 }
+
+// ----------------------------------------------------------------------------
+
+@NgModule({
+  imports: [
+    CommonModule,
+  ],
+  declarations: [
+    EsGridComponent
+  ],
+  providers: [ ],
+  exports: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+})
+export class EsGridModule { }

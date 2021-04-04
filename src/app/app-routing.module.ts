@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: "es", loadChildren: async () => (
-      await import("./modules/eyeshare/core/modules/eyeshare.module")).EyeshareModule,
+      await import("./modules/eyeshare/core/router/eyeshare-router.module")).EyeshareRouterModule,
     data: { animation: "fade" }
   },
   {

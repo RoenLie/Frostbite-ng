@@ -5,16 +5,17 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'es-actions',
-  templateUrl: './es-actions.component.html',
-  styleUrls: ['./es-actions.component.scss']
+  selector: 'es-input',
+  templateUrl: './es-input.component.html',
+  styleUrls: ['./es-input.component.scss']
 })
-export class EsActionsComponent implements OnInit {
+export class EsInputComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 }
 
 // ----------------------------------------------------------------------------
@@ -25,9 +26,9 @@ export class EsActionsComponent implements OnInit {
     FormsModule,
   ],
   declarations: [
-    EsActionsComponent
+    EsInputComponent
   ],
   providers: [ ],
   exports: [ ]
 })
-export class EsActionsModule { }
+export class EsInputModule { }

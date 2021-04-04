@@ -13,5 +13,9 @@
     background: rgba(255, 255, 255, 0.09);
   }
 
+  display: grid;
+  place-items: start;
+  grid-auto-rows: min-content;
+
   padding: 1em;
 }

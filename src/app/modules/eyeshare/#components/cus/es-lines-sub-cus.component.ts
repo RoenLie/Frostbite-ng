@@ -1,13 +1,15 @@
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, ComponentDecorator, DoCheck, OnChanges,
-  OnDestroy, OnInit, TypeDecorator
+  AfterViewInit, Component, ComponentDecorator, CUSTOM_ELEMENTS_SCHEMA,
+  DoCheck, NgModule, OnChanges, OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
 import { EsLinesSubComponent } from '../../core/components/es-lines-sub/es-lines-sub.component';
 import { EsInitialize } from '../../core/helpers/component-decorators';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+// ----------------------------------------------------------------------------
 
 
-@EsInitialize
 @Component({
   selector: 'es-lines-sub',
   template: `
@@ -33,3 +35,19 @@ export class EsLinesSubComponentCus extends EsLinesSubComponent
   ngAfterContentChecked() { }
   ngOnDestroy() { }
 }
+
+// ----------------------------------------------------------------------------
+
+@NgModule({
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
+  declarations: [
+    EsLinesSubComponentCus,
+  ],
+  providers: [ ],
+  exports: [ ]
+})
+export class EsLinesSubCusModule { }
