@@ -1,4 +1,7 @@
 <div>
   DOCUMENT
 </div>
-<es-input></es-input>
+<form [formGroup]="document">
+  <es-input formControlName="value"></es-input>
+  <button (click)="submitForm()">Submit</button>
+</form>

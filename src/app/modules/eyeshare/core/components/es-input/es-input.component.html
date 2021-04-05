@@ -1,2 +1,2 @@
-<label for="">es-input</label>
-<input type="text">
+<label for="">{{label}}</label>
+<input type="text" [formControl]="value" (input)="doInput()" (blur)="doBlur()" />

@@ -1,8 +1,14 @@
 {
 	"folders": [
 		{
+			"name": "Base",
+			"path": ".",
+		},
+		{
+			"name": "Eyeshare",
 			"path": "./src/app/modules/eyeshare"
 		}
+		
 	],
 	"settings": {
 		"files.exclude": { },

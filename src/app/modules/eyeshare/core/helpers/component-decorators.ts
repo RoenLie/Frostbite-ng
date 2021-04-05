@@ -15,6 +15,7 @@ export const setModules = async () => {
 
   return modules;
 }
+export const getModules = () => modules;
 // ----------------------------------------------------------------------------
 
 /**

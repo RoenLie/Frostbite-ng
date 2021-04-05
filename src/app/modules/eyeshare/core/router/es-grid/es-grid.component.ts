@@ -10,7 +10,7 @@ import { LoggerService } from '../../services/logger.service';
 import { WorkflowService } from '../../services/workflow.service';
 import { EsLinesComponent } from "../../components/es-lines/es-lines.component";
 import { EsActionsComponent } from '../../components/es-actions/es-actions.component';
-import { EsDocumentComponent } from '../../components/es-document/es-document.component';
+import { EsDocumentComponent, EsDocumentModule } from '../../components/es-document/es-document.component';
 import { EsTableComponent } from '../../components/es-table/es-table.component';
 import { EsDomainsComponent } from '../../components/es-domains/es-domains.component';
 import { EsTabsComponent } from '../../components/es-tabs/es-tabs.component';
@@ -88,7 +88,7 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule
   ],
   declarations: [
     EsGridComponent

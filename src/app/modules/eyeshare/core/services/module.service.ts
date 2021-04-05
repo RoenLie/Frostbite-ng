@@ -5,8 +5,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: (instance: ModuleService | null) =>
-    instance || EsServiceAsync(ModuleService)
+  useFactory: () => EsServiceAsync(ModuleService)
 })
 export class ModuleService {
   private [Symbol.toStringTag] = "ModuleService"

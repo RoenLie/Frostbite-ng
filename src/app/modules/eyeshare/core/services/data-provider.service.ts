@@ -7,8 +7,7 @@ export declare type Module = "invoice" | "generalledger";
 
 @Injectable({
   providedIn: "root",
-  useFactory: (instance: DataProviderService | null) =>
-    instance || EsServiceAsync(DataProviderService),
+  useFactory: () => EsServiceAsync(DataProviderService),
 })
 export class DataProviderService {
   private [Symbol.toStringTag] = "DataProviderService"

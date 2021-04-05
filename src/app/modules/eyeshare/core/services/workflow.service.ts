@@ -5,8 +5,7 @@ import { EsServiceAsync } from "../helpers/service-factories";
 
 @Injectable({
   providedIn: "root",
-  useFactory: (instance: WorkflowService | null) =>
-    instance || EsServiceAsync(WorkflowService)
+  useFactory: () => EsServiceAsync(WorkflowService)
 })
 export class WorkflowService {
   private [Symbol.toStringTag] = "WorkflowService"

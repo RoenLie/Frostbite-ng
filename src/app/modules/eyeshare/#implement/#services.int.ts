@@ -1,3 +1,2 @@
+// export { LoggerServiceInt } from "../#services/int/logger-int.service";
 export { };
-
-export { LoggerServiceInt } from "../#services/int/logger-int.service";

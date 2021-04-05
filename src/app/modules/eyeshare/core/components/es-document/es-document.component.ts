@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, NgModule, OnInit } from '@angular/core';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
+import { EsCardComponent } from '../es-card/es-card.component';
 import { EsInputComponent } from '../es-input/es-input.component';
 // ----------------------------------------------------------------------------
 
@@ -14,16 +15,24 @@ import { EsInputComponent } from '../es-input/es-input.component';
 @EsInitialize
 @EsComponentDeps({
   directives: [
-    EsInputComponent
+    EsInputComponent,
+    EsCardComponent
   ]
 })
 export class EsDocumentComponent implements OnInit {
+  document: FormGroup = this.fb.group({
+    value: [""]
+  });
+
   tabs = ['Attachments', 'Information', 'Permissions', 'Log'];
   selected = new FormControl(0);
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() { }
+  submitForm() {
+    console.log(this.document.get("value"));
+  }
 
   addTab(selectAfterAdding: boolean) {
     this.tabs.push('New');
@@ -43,13 +52,14 @@ export class EsDocumentComponent implements OnInit {
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
   ],
   declarations: [
     EsDocumentComponent
   ],
   providers: [ ],
-  exports: [ ],
+  exports: [ EsDocumentComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class EsDocumentModule { }

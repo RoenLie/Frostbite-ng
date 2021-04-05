@@ -14,7 +14,6 @@ import { DomainService } from '../../services/domain.service';
   styleUrls: ['./es-domains.component.scss']
 })
 export class EsDomainsComponent implements OnInit {
-
   constructor(
     public domainService: DomainService,
     private route: ActivatedRoute,
@@ -42,7 +41,9 @@ export class EsDomainsComponent implements OnInit {
   }
 }
 
+
 // ----------------------------------------------------------------------------
+
 
 @NgModule({
   imports: [

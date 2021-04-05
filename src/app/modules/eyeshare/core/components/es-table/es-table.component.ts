@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { NgxdModule } from '@ngxd/core';
 import { EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
-import { EsInputComponent } from '../es-input/es-input.component';
+import { EsCardComponent } from '../es-card/es-card.component';
 // ----------------------------------------------------------------------------
 
 @Component({
@@ -17,7 +17,7 @@ import { EsInputComponent } from '../es-input/es-input.component';
 @EsInitialize
 @EsComponentDeps({
   directives: [
-    EsInputComponent
+    EsCardComponent
   ]  
 })
 export class EsTableComponent implements AfterViewInit {
