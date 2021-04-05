@@ -99,4 +99,9 @@ export const EsModulePicker = async () => {
   const mod: any = await modules[0];
 
   return mod[Object.keys(mod)[0]];
+};
+
+export function sleep(miliseconds: number) {
+  var currentTime = new Date().getTime();
+  while (currentTime + miliseconds >= new Date().getTime()) { }
 }

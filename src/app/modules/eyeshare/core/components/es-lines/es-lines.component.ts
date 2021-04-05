@@ -10,17 +10,16 @@ import { LoggerService } from '../../services/logger.service';
 import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
 // ----------------------------------------------------------------------------
 
-
-@Component({
-  selector: 'es-lines',
-  templateUrl: './es-lines.component.html',
-  styleUrls: ['./es-lines.component.scss'],
-})
 @EsInitialize
 @EsComponentDeps({
   directives: [
     EsLinesSubComponent
   ]
+})
+@Component({
+  selector: 'es-lines',
+  templateUrl: './es-lines.component.html',
+  styleUrls: ['./es-lines.component.scss'],
 })
 export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {

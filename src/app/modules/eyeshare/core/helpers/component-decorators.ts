@@ -1,7 +1,20 @@
 import 'reflect-metadata'
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs } from './utils';
+import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs, sleep } from './utils';
+// ----------------------------------------------------------------------------
+let modules: any[];
+export const setModules = async () => {
+  if (modules) {
+    return await modules;
+  }
 
+  modules = await Promise.all([
+    import("src/app/modules/eyeshare/#implement/#components.cus"),
+    import("src/app/modules/eyeshare/#implement/#components.int")
+  ]);
+
+  return modules;
+}
 // ----------------------------------------------------------------------------
 
 /**
@@ -28,6 +41,7 @@ import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs } f
  * @author Kristoffer Roen-Lie
  */
 export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
+  // sleep(100);
   return class extends Base {
     static [Symbol.hasInstance](instance: any) { return this.isPrototypeOf(instance); }
     constructor(...args: any[]) {
@@ -47,9 +61,9 @@ export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
         }))
   
         results.forEach((res: any, index: number) =>
-          { if (res) t[keys[index]] = res; })
+        { if (res) t[keys[index]] = res; })
       })()
-
+      
       /**
        * Go through the lifecyclehooks that require to be awaited and await
        * the resolution of the class services beofre proceeding.
@@ -127,15 +141,16 @@ export function EsTimer(message?: string) {
 
 export function EsComponentDeps(config: ComponentDepsConfig) {
   return (component: any) => {
-    const def = getComponentDef(component);
+    // console.log("EsComponentDeps", component.name);
+    const assign = (modules: any[]) => {
+      const def = getComponentDef(component);
 
-    def.schemas = [ CUSTOM_ELEMENTS_SCHEMA ];
-
-    (async () => {
-      const modules: any[] = await Promise.all([
-        import("src/app/modules/eyeshare/#implement/#components.cus"),
-        import("src/app/modules/eyeshare/#implement/#components.int")
-      ]);
+      def.schemas = [CUSTOM_ELEMENTS_SCHEMA];
+      
+      let directiveDefs: Array<any> = [];
+      if (typeof def.directiveDefs === 'function') {
+        directiveDefs = def.directiveDefs();
+      }
 
       config.directives.forEach((dir: any, index: number) => {
         modules.some((module: any) =>
@@ -146,35 +161,32 @@ export function EsComponentDeps(config: ComponentDepsConfig) {
             }
             
             return isInstanceOf;
-          }))
+          }));
       });
-
-      const dirs: any = await Promise.all(config.directives);
-
-      let directiveDefs: Array<any> = [];
-      if (typeof def.directiveDefs === 'function') {
-        directiveDefs = def.directiveDefs();
-      }
 
       def.directiveDefs = [
         ...(directiveDefs),
-        ...getDirectiveDefs(dirs || []),
+        ...getDirectiveDefs(config.directives || []),
       ];
 
       def.pipeDefs = [
         ...getPipeDefs(config.pipes || [])
       ];
-    })();
+      // console.log("assignment completed");
+    }
+
+    if (modules) return assign(modules);
+
+    (async () => assign(await setModules()))();
   };
 }
 
 export function EsComponent() {
   return (component: any) => {
-    const def = getComponentDef(component);
+    const def: any = getComponentDef(component);
+
     // def.factory = (...args: any[]) => {
     //   console.log(args);
     // }
-
-    console.log(def);
   }
 }

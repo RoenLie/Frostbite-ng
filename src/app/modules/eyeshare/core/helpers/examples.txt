@@ -12,3 +12,26 @@ sortKeys = (a: any, b: any) => {
 
 to clean [object Type] and only leave Type.
 use this regex /(\[object )|]/
+
+
+
+Good morning Lucio.
+
+
+I am writing this to request an increase in my grade from g9 to g10.
+It is now 2 years since I last received a grade increase.
+When I first joined the company I was told that the road to g11 would be approximatly 4 years.
+Of course there have been difficult times the last few years and I understand this process has been slightly delayed.
+I have been performing my work without failure.
+My technical knowledge and expertise has grown conciderably and I believe it is more than enough
+to be granted an increase in grade to atleast g10.
+
+I have also not yet received any information about the sapphire pin that is awareded after 5 years of service
+in the company. How do I proceed to find out more about this.
+
+
+Looking forward to hearing your thoughts on this matter.
+
+
+Regards,
+Ekaterina

@@ -25,6 +25,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    // "target": "es2017",
     "target": "es2015",
     "module": "esnext",
     "lib": [
