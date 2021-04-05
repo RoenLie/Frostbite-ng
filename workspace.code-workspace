@@ -8,11 +8,18 @@
 			"name": "Eyeshare",
 			"path": "./src/app/modules/eyeshare"
 		}
-		
 	],
 	"settings": {
-		"files.exclude": { },
+		"files.exclude": {
+			// Example of glob patterns.
+			// "[!s]**": true,
+			// "s[!r]**": true,
+			// "src/[!a]*": true,
+			// "src/a[!p]*": true,
+			// "src/app/[!m]*": true,
+			// "src/app/m[!o]*": true,
+			// "src/app/modules/[!e]*": true,
+			// "src/app/modules/e[!y]*": true,
+		}
 	}
 }
-
-
