@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
-import { EsServiceAsync } from "../helpers/service-factories";
+import { EsServiceFactory } from "../helpers/service-factories";
 
 // ----------------------------------------------------------------------------
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => EsServiceAsync(WorkflowService)
+  useFactory: () => EsServiceFactory(WorkflowService)
 })
 export class WorkflowService {
-  private [Symbol.toStringTag] = "WorkflowService"
+  private [Symbol.toStringTag] = "WorkflowService";
   static [Symbol.hasInstance](instance: any) {
     return this.isPrototypeOf(instance);
   }
@@ -18,6 +18,6 @@ export class WorkflowService {
     "Approved",
     "Declined",
     "Transferred",
-  ]
+  ];
   active: string = this.available[0];
 }

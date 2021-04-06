@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
-import { EsServiceAsync } from "../helpers/service-factories";
+import { EsServiceFactory } from "../helpers/service-factories";
 
 // ----------------------------------------------------------------------------
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => EsServiceAsync(LoggerService)
+  useFactory: () => EsServiceFactory(LoggerService)
 })
 export class LoggerService {
-  private [Symbol.toStringTag] = "LoggerService"
+  private [Symbol.toStringTag] = "LoggerService";
   static [Symbol.hasInstance](instance: any) {
     return this.isPrototypeOf(instance);
   }

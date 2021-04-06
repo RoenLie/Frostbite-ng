@@ -10,7 +10,6 @@ import { LoggerService } from '../../services/logger.service';
 import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
 // ----------------------------------------------------------------------------
 
-@EsInitialize
 @EsComponentDeps({
   directives: [
     EsLinesSubComponent
@@ -23,7 +22,7 @@ import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
 })
 export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  
+
   message: string = "Initial message";
 
   constructor(public logger?: LoggerService) { }
@@ -48,8 +47,8 @@ export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   declarations: [
     EsLinesComponent
   ],
-  providers: [ ],
-  exports: [ ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  providers: [],
+  exports: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class EsLinesModule { }

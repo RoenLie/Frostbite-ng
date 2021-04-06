@@ -14,11 +14,10 @@ import { EsCardComponent } from '../es-card/es-card.component';
   templateUrl: 'es-table.component.html',
   styleUrls: ['es-table.component.scss'],
 })
-@EsInitialize
 @EsComponentDeps({
   directives: [
     EsCardComponent
-  ]  
+  ]
 })
 export class EsTableComponent implements AfterViewInit {
 
@@ -40,8 +39,8 @@ export class EsTableComponent implements AfterViewInit {
   declarations: [
     EsTableComponent
   ],
-  providers: [ ],
-  exports: [ ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [],
+  exports: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EsTableModule { }

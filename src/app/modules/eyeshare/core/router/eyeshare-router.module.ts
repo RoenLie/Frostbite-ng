@@ -1,7 +1,8 @@
 import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { setModules } from '../helpers/component-decorators';
+import { setComponentModules } from '../helpers/component-decorators';
+import { setServiceModules } from "../helpers/service-factories";
 // ----------------------------------------------------------------------------
 
 
@@ -22,8 +23,8 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [ CommonModule, RouterModule.forChild(routes) ],
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class EyeshareRouterModule {
-  constructor() { setModules(); }
+  constructor() { setComponentModules(); setServiceModules(); }
 }

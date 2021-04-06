@@ -23,7 +23,7 @@ interface GridRouteParams {
   tenant: string,
   domain: string,
   module: string,
-  mode: string
+  mode: string;
 }
 
 
@@ -32,7 +32,6 @@ interface GridRouteParams {
   templateUrl: './es-grid.component.html',
   styleUrls: ['./es-grid.component.scss'],
 })
-@EsInitialize
 @EsComponentDeps({
   directives: [
     EsDomainsComponent,
@@ -42,18 +41,18 @@ interface GridRouteParams {
     EsDocumentComponent,
     EsActionsComponent,
     EsTableComponent
-  ]  
+  ]
 })
 export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  
+
   routeParams: GridRouteParams;
   esDocumentComponent = EsDocumentComponent;
 
-  txt: string = "initial text"
+  txt: string = "initial text";
   txt2: any = {
     message: "initial test number 2"
-  }
+  };
 
 
   constructor(
@@ -93,8 +92,8 @@ export class EsGridComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   declarations: [
     EsGridComponent
   ],
-  providers: [ ],
+  providers: [],
   exports: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EsGridModule { }

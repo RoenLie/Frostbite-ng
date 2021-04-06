@@ -1,12 +1,10 @@
-import 'reflect-metadata'
+// import 'reflect-metadata';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs, sleep } from './utils';
 // ----------------------------------------------------------------------------
 let modules: any[];
-export const setModules = async () => {
-  if (modules) {
-    return await modules;
-  }
+export const setComponentModules = async () => {
+  if (modules) return modules;
 
   modules = await Promise.all([
     import("src/app/modules/eyeshare/#implement/#components.cus"),
@@ -14,7 +12,7 @@ export const setModules = async () => {
   ]);
 
   return modules;
-}
+};
 export const getModules = () => modules;
 // ----------------------------------------------------------------------------
 
@@ -56,15 +54,14 @@ export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
        * Start an async function to resolve the class services.
        */
       (async () => {
-        const results = await Promise.all(values.map((value: any) => { 
+        const results = await Promise.all(values.map((value: any) => {
           if (value && typeof value?.then == 'function') return value;
           return null;
-        }))
-  
-        results.forEach((res: any, index: number) =>
-        { if (res) t[keys[index]] = res; })
-      })()
-      
+        }));
+
+        results.forEach((res: any, index: number) => { if (res) t[keys[index]] = res; });
+      })();
+
       /**
        * Go through the lifecyclehooks that require to be awaited and await
        * the resolution of the class services beofre proceeding.
@@ -74,17 +71,17 @@ export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
         if (!Base.prototype[lch]) return;
 
         const previous = Base.prototype[lch].bind(this);
-        Base.prototype[lch] = async function() {
+        Base.prototype[lch] = async function () {
           await Promise.all(values);
           previous();
-        }
-      })
+        };
+      });
 
       /**
        * Unsubscribe to all RXJS subscriptions before destroying the instance.
        */
       const onDestroy = Base.prototype.ngOnDestroy?.bind(this);
-      Base.prototype.ngOnDestroy = function() {
+      Base.prototype.ngOnDestroy = function () {
         if (Base.prototype.ngOnDestroy) {
           onDestroy?.();
         }
@@ -93,8 +90,8 @@ export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
           if (prop[1]?.unsubscribe) {
             t[prop[0]].unsubscribe();
           }
-        })
-      }
+        });
+      };
     }
   };
 }
@@ -108,18 +105,18 @@ export function EsResolveAsync() {
       const keys = Object.keys(t);
       const values = Object.values(t);
 
-      const results = await Promise.all(values.map((value: any) => { 
+      const results = await Promise.all(values.map((value: any) => {
         if (value && typeof value?.then == 'function') return value;
 
         return null;
-      }))
+      }));
 
       results.forEach((res: any, index: number) => {
         if (res) t[keys[index]] = res;
-      })
-      
+      });
+
       return fn.apply(this, arguments);
-    }
+    };
   };
 }
 
@@ -136,7 +133,7 @@ export function EsTimer(message?: string) {
       const res = fn.apply(this, arguments);
       console.timeEnd(message);
       return res;
-    }
+    };
   };
 }
 
@@ -147,7 +144,7 @@ export function EsComponentDeps(config: ComponentDepsConfig) {
       const def = getComponentDef(component);
 
       def.schemas = [CUSTOM_ELEMENTS_SCHEMA];
-      
+
       let directiveDefs: Array<any> = [];
       if (typeof def.directiveDefs === 'function') {
         directiveDefs = def.directiveDefs();
@@ -160,7 +157,7 @@ export function EsComponentDeps(config: ComponentDepsConfig) {
             if (isInstanceOf) {
               config.directives[index] = obj;
             }
-            
+
             return isInstanceOf;
           }));
       });
@@ -174,11 +171,11 @@ export function EsComponentDeps(config: ComponentDepsConfig) {
         ...getPipeDefs(config.pipes || [])
       ];
       // console.log("assignment completed");
-    }
+    };
 
     if (modules) return assign(modules);
 
-    (async () => assign(await setModules()))();
+    (async () => assign(await setComponentModules()))();
   };
 }
 
@@ -189,5 +186,5 @@ export function EsComponent() {
     // def.factory = (...args: any[]) => {
     //   console.log(args);
     // }
-  }
+  };
 }

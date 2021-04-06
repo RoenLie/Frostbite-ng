@@ -20,12 +20,9 @@ export class ModuleGuard implements CanActivate {
 
   ) { }
 
-  // @EsTimer()
-  @EsResolveAsync()
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot)
-  {
+    state: RouterStateSnapshot) {
     const url = state.url.split("?")[0];
 
     const current = route.params?.module;
@@ -45,7 +42,7 @@ export class ModuleGuard implements CanActivate {
         }
       );
 
-      return urlTree
+      return urlTree;
     }
 
     this.moduleService.active = current;

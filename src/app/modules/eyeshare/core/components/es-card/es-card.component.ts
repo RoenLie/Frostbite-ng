@@ -11,9 +11,8 @@ import { EsComponentDeps, EsInitialize } from '../../helpers/component-decorator
   templateUrl: 'es-card.component.html',
   styleUrls: ['es-card.component.scss'],
 })
-@EsInitialize
 @EsComponentDeps({
-  directives: [ ]
+  directives: []
 })
 export class EsCardComponent implements OnInit, AfterViewInit {
   @Input() header: string = "Header from base";
@@ -37,8 +36,8 @@ export class EsCardComponent implements OnInit, AfterViewInit {
   declarations: [
     EsCardComponent
   ],
-  providers: [ ],
-  exports: [ ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [],
+  exports: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EsCardModule { }

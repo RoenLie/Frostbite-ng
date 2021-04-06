@@ -7,7 +7,7 @@ import { DomainService } from '../../services/domain.service';
 // ----------------------------------------------------------------------------
 
 
-@EsInitialize
+// @EsInitialize
 @Component({
   selector: 'es-domains',
   templateUrl: './es-domains.component.html',
@@ -36,7 +36,7 @@ export class EsDomainsComponent implements OnInit {
     const url = this.router.url.split("?")[0].replace(previous, domain);
 
     const urlTree = this.router.createUrlTree([url]);
-    
+
     this.router.navigateByUrl(urlTree);
   }
 }
@@ -53,7 +53,7 @@ export class EsDomainsComponent implements OnInit {
   declarations: [
     EsDomainsComponent
   ],
-  providers: [ ],
-  exports: [ ]
+  providers: [],
+  exports: []
 })
 export class EsDomainsModule { }

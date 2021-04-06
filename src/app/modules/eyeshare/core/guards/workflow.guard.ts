@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot, UrlTree, Router, ActivatedRoute
 } from '@angular/router';
 import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
-import { EsServiceAsync } from '../helpers/service-factories';
+import { EsServiceFactory } from '../helpers/service-factories';
 import { WorkflowService } from '../services/workflow.service';
 
 // ----------------------------------------------------------------------------
@@ -19,12 +19,9 @@ export class WorkflowGuard implements CanActivate {
     private route: ActivatedRoute,
     private workflowService: WorkflowService) { }
 
-  // @EsTimer()
-  @EsResolveAsync()
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot)
-  {
+    state: RouterStateSnapshot) {
     const workflow = route.queryParams?.workflow;
     const validWorkflows = this.workflowService.available;
 
@@ -34,7 +31,8 @@ export class WorkflowGuard implements CanActivate {
       const urlTree = this.router.createUrlTree([url], {
         queryParams: { workflow: validWorkflows[0] },
         queryParamsHandling: "merge",
-        preserveFragment: true });
+        preserveFragment: true
+      });
 
       return urlTree;
     }

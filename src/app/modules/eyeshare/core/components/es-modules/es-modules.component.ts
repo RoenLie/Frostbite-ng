@@ -7,7 +7,7 @@ import { ModuleService } from '../../services/module.service';
 // ----------------------------------------------------------------------------
 
 
-@EsInitialize
+// @EsInitialize
 @Component({
   selector: 'es-modules',
   templateUrl: './es-modules.component.html',
@@ -29,7 +29,7 @@ export class EsModulesComponent implements OnInit {
 
   activate(module: string) {
     if (module == this.moduleService.active) return;
-    
+
     const previous = this.moduleService.active;
 
     this.moduleService.active = module;
@@ -37,7 +37,7 @@ export class EsModulesComponent implements OnInit {
     const url = this.router.url.split("?")[0].replace(previous, module);
 
     const urlTree = this.router.createUrlTree([url]);
-    
+
     this.router.navigateByUrl(urlTree);
   }
 }
@@ -52,7 +52,7 @@ export class EsModulesComponent implements OnInit {
   declarations: [
     EsModulesComponent
   ],
-  providers: [ ],
-  exports: [ ]
+  providers: [],
+  exports: []
 })
 export class EsModulesModule { }

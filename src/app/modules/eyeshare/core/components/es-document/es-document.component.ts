@@ -12,7 +12,6 @@ import { EsInputComponent } from '../es-input/es-input.component';
   templateUrl: './es-document.component.html',
   styleUrls: ['./es-document.component.scss']
 })
-@EsInitialize
 @EsComponentDeps({
   directives: [
     EsInputComponent,
@@ -41,7 +40,7 @@ export class EsDocumentComponent implements OnInit {
       this.selected.setValue(this.tabs.length - 1);
     }
   }
-  
+
   removeTab(index: number) {
     this.tabs.splice(index, 1);
   }
@@ -58,8 +57,8 @@ export class EsDocumentComponent implements OnInit {
   declarations: [
     EsDocumentComponent
   ],
-  providers: [ ],
-  exports: [ EsDocumentComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [],
+  exports: [EsDocumentComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EsDocumentModule { }

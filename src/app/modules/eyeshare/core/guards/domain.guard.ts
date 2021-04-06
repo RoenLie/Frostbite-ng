@@ -17,15 +17,11 @@ export class DomainGuard implements CanActivate {
     private router: Router,
     private route: ActivatedRoute,
     private domainService: DomainService
-
   ) { }
 
-  // @EsTimer()
-  @EsResolveAsync()
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot)
-  {
+    state: RouterStateSnapshot) {
     const url = state.url.split("?")[0];
 
     const current = route.params?.domain;
@@ -42,7 +38,7 @@ export class DomainGuard implements CanActivate {
         }
       );
 
-      return urlTree
+      return urlTree;
     }
 
     this.domainService.active = current;

@@ -18,12 +18,9 @@ export class TenantGuard implements CanActivate {
     private tenantService: TenantService
   ) { }
 
-  // @EsTimer()
-  @EsResolveAsync()
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot)
-  {
+    state: RouterStateSnapshot) {
     const url = state.url.split("?")[0];
 
     const current = route.params?.tenant;
@@ -41,7 +38,7 @@ export class TenantGuard implements CanActivate {
         }
       );
 
-      return urlTree
+      return urlTree;
     }
 
     this.tenantService.active = current;

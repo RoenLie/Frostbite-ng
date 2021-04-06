@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { EsServiceAsync } from "../helpers/service-factories";
+import { EsServiceFactory } from "../helpers/service-factories";
 // ----------------------------------------------------------------------------
 
 
 @Injectable({
   providedIn: "root",
-  useFactory: () => EsServiceAsync(DomainService)
+  useFactory: () => EsServiceFactory(DomainService)
 })
 export class DomainService {
   private [Symbol.toStringTag] = "DomainService";

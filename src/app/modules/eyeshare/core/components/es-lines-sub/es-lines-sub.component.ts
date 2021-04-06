@@ -10,7 +10,6 @@ import { LoggerService } from '../../services/logger.service';
 // ----------------------------------------------------------------------------
 
 
-@EsInitialize
 @Component({
   selector: 'es-lines-sub',
   template: `<div>SUB LINES</div>`,
@@ -20,7 +19,7 @@ export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestro
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
   @Input() message: string;
 
-  constructor(private logger?: LoggerService) {}
+  constructor(private logger?: LoggerService) { }
 
   ngOnInit() {
     console.log("I am es lines sub");
@@ -46,7 +45,7 @@ export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestro
   declarations: [
     EsLinesSubComponent
   ],
-  providers: [ ],
-  exports: [ ]
+  providers: [],
+  exports: []
 })
 export class EsLinesSubModule { }

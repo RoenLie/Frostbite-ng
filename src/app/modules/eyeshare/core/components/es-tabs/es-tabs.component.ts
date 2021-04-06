@@ -7,7 +7,7 @@ import { WorkflowService } from '../../services/workflow.service';
 
 // ----------------------------------------------------------------------------
 
-@EsInitialize
+// @EsInitialize
 @Component({
   selector: 'es-tabs',
   templateUrl: './es-tabs.component.html',
@@ -24,7 +24,7 @@ export class EsTabsComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.workflowService.active = params?.workflow;
-    })
+    });
   }
 
   activate(workflow: string) {
@@ -35,7 +35,7 @@ export class EsTabsComponent implements OnInit {
       queryParamsHandling: "merge",
       preserveFragment: true
     });
-    
+
     this.router.navigateByUrl(urlTree);
   }
 }
@@ -50,7 +50,7 @@ export class EsTabsComponent implements OnInit {
   declarations: [
     EsTabsComponent
   ],
-  providers: [ ],
-  exports: [ ]
+  providers: [],
+  exports: []
 })
 export class EsTabsModule { }
