@@ -16,6 +16,7 @@ export const EsServiceFactory = (service: any) => {
   let resolvedService = new service();
 
   const modules = serviceModules;
+
   modules.some((module: any) =>
     Object.values(module).some((obj: any) => {
       const cls = new obj();
