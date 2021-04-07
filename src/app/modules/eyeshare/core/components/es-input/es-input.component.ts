@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input, NgModule, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { EsBaseComponent } from "../../helpers/component-decorators";
 // ----------------------------------------------------------------------------
 
 
+@EsBaseComponent()
 @Component({
   selector: 'es-input',
   templateUrl: './es-input.component.html',
@@ -16,6 +18,7 @@ import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, Reac
   ]
 })
 export class EsInputComponent implements OnInit, ControlValueAccessor {
+  static [Symbol.hasInstance](instance: any) { return this.isPrototypeOf(instance); }
   @Input() label: string;
   public value = new FormControl("");
   private onChange: (value: string) => void;
@@ -67,7 +70,7 @@ export class EsInputComponent implements OnInit, ControlValueAccessor {
   declarations: [
     EsInputComponent
   ],
-  providers: [ ],
-  exports: [ ]
+  providers: [],
+  exports: []
 })
 export class EsInputModule { }

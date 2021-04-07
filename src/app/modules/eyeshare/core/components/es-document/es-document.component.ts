@@ -1,22 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
+import { EsBaseComponent, EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
 import { EsCardComponent } from '../es-card/es-card.component';
 import { EsInputComponent } from '../es-input/es-input.component';
 // ----------------------------------------------------------------------------
 
 
+@EsBaseComponent()
+@EsComponentDeps({ directives: [EsInputComponent, EsCardComponent] })
 @Component({
   selector: 'es-document',
   templateUrl: './es-document.component.html',
   styleUrls: ['./es-document.component.scss']
-})
-@EsComponentDeps({
-  directives: [
-    EsInputComponent,
-    EsCardComponent
-  ]
 })
 export class EsDocumentComponent implements OnInit {
   document: FormGroup = this.fb.group({

@@ -1,9 +1,8 @@
-import { NgModule, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { setComponentModules } from '../helpers/component-decorators';
 import { setServiceModules } from "../helpers/service-factories";
-// ----------------------------------------------------------------------------
 
 
 const routes: Routes = [
@@ -20,6 +19,7 @@ const routes: Routes = [
       (await import("./es-grid/es-grid-router.module")).EsGridRouterModule,
   },
 ];
+
 
 
 @NgModule({

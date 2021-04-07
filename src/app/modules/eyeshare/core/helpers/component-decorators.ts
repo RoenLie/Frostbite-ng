@@ -1,8 +1,11 @@
 // import 'reflect-metadata';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs, sleep } from './utils';
-// ----------------------------------------------------------------------------
+
+
 let modules: any[];
+
+// -----------  ASYNC CALL TO CACHE AVAILABLE CUSTOM COMPONENTS  ----------
 export const setComponentModules = async () => {
   if (modules) return modules;
 
@@ -13,34 +16,12 @@ export const setComponentModules = async () => {
 
   return modules;
 };
-export const getModules = () => modules;
-// ----------------------------------------------------------------------------
 
-/**
- * @description
- * Eye-share custom decorator that enables the use of async services.
- * 1. Performs a resolution of async services in the constructor step.
- * 2. Enhanced any existing lifecycle hooks with an async await to allow
- *    the async services to resolve before performing the lifecycle hook.
- * 3. Modifies or creates the ngOnDelete lifecycle hook and allows it to
- *    automaticly unsubscribe to any rxjs properties on the class.
- * @usageNotes
- * Add this decorator to the top of a component.
- * ```
- * @EsInitialize
- * @Component({
- *   selector: 'es-sub-portal',
- *   template: `
- *     <p>sub-portal SYS</p>
- *     <span>{{message}}</span>
- *     <es-child></es-child>`,
- *   styles:[``]
- * })
- * ```
- * @author Kristoffer Roen-Lie
- */
+// ----------------  RETRIEVE THE CACHED CUSTOM COMPONENTS  ---------------
+export const getComponentModules = () => modules;
+
+// ------  WRAPS BASE COMPONENT AND PERFORM VARIOUS HELPER FUNCTIONS  -----
 export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
-  // sleep(100);
   return class extends Base {
     static [Symbol.hasInstance](instance: any) { return this.isPrototypeOf(instance); }
     constructor(...args: any[]) {
@@ -96,6 +77,7 @@ export function EsInitialize<T extends { new(...args: any[]): {}; }>(Base: T) {
   };
 }
 
+// ----------  DECORATOR WRAPS METHOD AND AWAITS ASYNC SERVICES  ----------
 export function EsResolveAsync() {
   return function (target: any, key: string, descriptor: PropertyDescriptor) {
     const fn = descriptor.value;
@@ -120,6 +102,7 @@ export function EsResolveAsync() {
   };
 }
 
+// ----  TIMER DECORATOR THAT LOGS OUT HOW LONG A METHOD TAKES TO RUN  ----
 export function EsTimer(message?: string) {
   return function (target: any, key: string, descriptor: PropertyDescriptor) {
     const fn = descriptor.value;
@@ -137,9 +120,9 @@ export function EsTimer(message?: string) {
   };
 }
 
+// -----------------  DECORATOR FOR INJECTING COMPONENTS  -----------------
 export function EsComponentDeps(config: ComponentDepsConfig) {
   return (component: any) => {
-    // console.log("EsComponentDeps", component.name);
     const assign = (modules: any[]) => {
       const def = getComponentDef(component);
 
@@ -173,18 +156,22 @@ export function EsComponentDeps(config: ComponentDepsConfig) {
       // console.log("assignment completed");
     };
 
-    if (modules) return assign(modules);
-
-    (async () => assign(await setComponentModules()))();
+    if (config.directives.length) {
+      if (modules) return assign(modules);
+      (async () => assign(await setComponentModules()))();
+    }
   };
 }
 
-export function EsComponent() {
+// ---------  DECORATOR THAT ENABLES INSTANCEOF FOR CHILD CLASSES  --------
+export function EsBaseComponent() {
   return (component: any) => {
     const def: any = getComponentDef(component);
 
-    // def.factory = (...args: any[]) => {
-    //   console.log(args);
-    // }
+    Object.defineProperty(def.type, Symbol.hasInstance, {
+      value: function (instance: any) {
+        return this.isPrototypeOf(instance);
+      },
+    });
   };
 }

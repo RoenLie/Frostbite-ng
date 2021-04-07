@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { EsCardComponent } from "../../core/components/es-card/es-card.component";
+// ----------------------------------------------------------------------------
+
 
 @Component({
   selector: "es-card",
@@ -17,8 +19,10 @@ export class EsCardComponentCus extends EsCardComponent {
   constructor() {
     super();
     this.header = "Header from Custom";
+    this.content = "Jeg har liten storetå";
   }
 }
+
 
 // ----------------------------------------------------------------------------
 
@@ -30,8 +34,8 @@ export class EsCardComponentCus extends EsCardComponent {
   declarations: [
     EsCardComponentCus
   ],
-  providers: [ ],
-  exports: [ ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [],
+  exports: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EsCardModuleCus { }

@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EsBaseComponent } from "../../helpers/component-decorators";
 // ----------------------------------------------------------------------------
 
 
+@EsBaseComponent()
 @Component({
   selector: 'es-actions',
   templateUrl: './es-actions.component.html',
@@ -27,7 +29,7 @@ export class EsActionsComponent implements OnInit {
   declarations: [
     EsActionsComponent
   ],
-  providers: [ ],
-  exports: [ ]
+  providers: [],
+  exports: []
 })
 export class EsActionsModule { }

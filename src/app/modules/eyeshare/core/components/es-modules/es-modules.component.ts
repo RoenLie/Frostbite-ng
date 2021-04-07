@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
+import { EsBaseComponent, EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
 import { ModuleService } from '../../services/module.service';
 // ----------------------------------------------------------------------------
 
 
-// @EsInitialize
+@EsBaseComponent()
 @Component({
   selector: 'es-modules',
   templateUrl: './es-modules.component.html',

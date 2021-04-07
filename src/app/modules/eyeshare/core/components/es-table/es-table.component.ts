@@ -5,19 +5,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { NgxdModule } from '@ngxd/core';
-import { EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
+import { EsBaseComponent, EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
 import { EsCardComponent } from '../es-card/es-card.component';
 // ----------------------------------------------------------------------------
 
+
+@EsBaseComponent()
+@EsComponentDeps({ directives: [EsCardComponent] })
 @Component({
   selector: 'es-table',
   templateUrl: 'es-table.component.html',
   styleUrls: ['es-table.component.scss'],
-})
-@EsComponentDeps({
-  directives: [
-    EsCardComponent
-  ]
 })
 export class EsTableComponent implements AfterViewInit {
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { WorkflowGuard } from '../../guards/workflow.guard';
 import { ModuleGuard } from '../../guards/module.guard';
 import { DomainGuard } from '../../guards/domain.guard';
@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // ----------------------------------------------------------------------------
 
 
-const routes = [
+const routes: Routes = [
   { path: "", redirectTo: "invoice" },
   {
     path: ":module",

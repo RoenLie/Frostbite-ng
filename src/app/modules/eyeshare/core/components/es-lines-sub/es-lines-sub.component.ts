@@ -5,11 +5,12 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { EsInitialize } from '../../helpers/component-decorators';
+import { EsBaseComponent, EsInitialize } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
 // ----------------------------------------------------------------------------
 
 
+@EsBaseComponent()
 @Component({
   selector: 'es-lines-sub',
   template: `<div>SUB LINES</div>`,

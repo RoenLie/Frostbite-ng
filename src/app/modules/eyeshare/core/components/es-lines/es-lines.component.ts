@@ -5,16 +5,13 @@ import {
   DoCheck, NgModule, OnChanges, OnDestroy, OnInit, TypeDecorator
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { EsInitialize, EsComponentDeps } from '../../helpers/component-decorators';
+import { EsInitialize, EsComponentDeps, EsBaseComponent } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
 import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
 // ----------------------------------------------------------------------------
 
-@EsComponentDeps({
-  directives: [
-    EsLinesSubComponent
-  ]
-})
+@EsBaseComponent()
+@EsComponentDeps({ directives: [EsLinesSubComponent] })
 @Component({
   selector: 'es-lines',
   templateUrl: './es-lines.component.html',
