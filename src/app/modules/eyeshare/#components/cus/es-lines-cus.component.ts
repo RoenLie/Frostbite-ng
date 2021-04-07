@@ -4,7 +4,6 @@ import { EsLinesComponent } from "../../core/components/es-lines/es-lines.compon
 import { EsLinesSubComponent } from "../../core/components/es-lines-sub/es-lines-sub.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// ----------------------------------------------------------------------------
 
 
 @Component({
@@ -24,9 +23,6 @@ export class EsLinesComponentCus extends EsLinesComponent implements OnInit {
     super.logger?.log();
   }
 }
-
-
-// ----------------------------------------------------------------------------
 
 
 @NgModule({

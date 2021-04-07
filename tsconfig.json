@@ -6,12 +6,12 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "@app/*": ["app/*"],
-      "@config/*": ["app/_config/*"],
-      "@environment/*": ["environments/*"],
-      "@shared/*": ["app/_shared/*"],
-      "@helpers/*": ["helpers/*"],
-      "@templates/*": ["app/modules/eyeshare/templates/*"]
+      // "@app/*": ["app/*"],
+      // "@config/*": ["app/_config/*"],
+      // "@environment/*": ["environments/*"],
+      // "@shared/*": ["app/_shared/*"],
+      // "@helpers/*": ["helpers/*"],
+      // "@templates/*": ["app/modules/eyeshare/templates/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -25,7 +25,6 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    // "target": "es2017",
     "target": "es2015",
     "module": "esnext",
     "lib": [

@@ -4,7 +4,6 @@ import {
 import { EsLinesSubComponent } from '../../core/components/es-lines-sub/es-lines-sub.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// ----------------------------------------------------------------------------
 
 
 @Component({
@@ -19,11 +18,9 @@ export class EsLinesSubComponentCus extends EsLinesSubComponent implements OnIni
   constructor() { super(); }
   ngOnInit() {
     console.log("I am es lines sub CUS");
+    console.log("I am test man");
   }
 }
-
-
-// ----------------------------------------------------------------------------
 
 
 @NgModule({

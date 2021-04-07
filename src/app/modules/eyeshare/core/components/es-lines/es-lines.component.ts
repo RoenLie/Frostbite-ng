@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { EsInitialize, EsComponentDeps, EsBaseComponent } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
 import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
-// ----------------------------------------------------------------------------
+
 
 @EsBaseComponent()
 @EsComponentDeps({ directives: [EsLinesSubComponent] })
@@ -34,7 +34,6 @@ export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   ngOnDestroy() { }
 }
 
-// ----------------------------------------------------------------------------
 
 @NgModule({
   imports: [
