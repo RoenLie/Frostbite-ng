@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
   AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, ComponentDecorator, CUSTOM_ELEMENTS_SCHEMA,
-  DoCheck, NgModule, OnChanges, OnDestroy, OnInit, TypeDecorator
+  AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA,
+  DoCheck, NgModule, OnChanges, OnDestroy, OnInit
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { EsInitialize, EsComponentDeps, EsBaseComponent } from '../../helpers/component-decorators';
+import { EsComponentDeps, EsBaseComponent } from '../../helpers/component-decorators';
 import { LoggerService } from '../../services/logger.service';
 import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
 

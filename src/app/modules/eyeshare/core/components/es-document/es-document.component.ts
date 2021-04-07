@@ -4,7 +4,6 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule }
 import { EsBaseComponent, EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
 import { EsCardComponent } from '../es-card/es-card.component';
 import { EsInputComponent } from '../es-input/es-input.component';
-// ----------------------------------------------------------------------------
 
 
 @EsBaseComponent()
@@ -42,7 +41,6 @@ export class EsDocumentComponent implements OnInit {
   }
 }
 
-// ----------------------------------------------------------------------------
 
 @NgModule({
   imports: [

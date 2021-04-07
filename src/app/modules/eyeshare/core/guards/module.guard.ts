@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate, ActivatedRouteSnapshot,
-  RouterStateSnapshot, UrlTree, Router, ActivatedRoute
-} from '@angular/router';
-import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { ModuleService } from '../services/module.service';
 
-// ----------------------------------------------------------------------------
 
 @Injectable({
   providedIn: 'root',

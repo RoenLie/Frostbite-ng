@@ -1,11 +1,6 @@
 import { Type, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { 
-  ɵComponentDef as ComponentDef, 
-  ɵDirectiveDef as DirectiveDef,
-  ɵPipeDef as PipeDef
-} from '@angular/core';
+import { ɵComponentDef as ComponentDef, ɵDirectiveDef as DirectiveDef, ɵPipeDef as PipeDef } from '@angular/core';
 
-// ----------------------------------------------------------------------------
 
 export function getComponentDef<T>(t: Type<T> | any): ComponentDef<T> {
   if (t['ɵcmp']) {
@@ -16,7 +11,7 @@ export function getComponentDef<T>(t: Type<T> | any): ComponentDef<T> {
 }
 
 export function getDirectiveDef<T>(t: Type<T> | any): DirectiveDef<T> {
- 
+
   if (t['ngDirectiveDef']) {
     return t['ngDirectiveDef'] as DirectiveDef<T>;
   }
@@ -29,12 +24,12 @@ export function getDirectiveDef<T>(t: Type<T> | any): DirectiveDef<T> {
   if (t['ɵcmp']) {
     return t['ɵcmp'] as ComponentDef<T>;
   }
-  
+
   throw new Error('No Angular definition found for ' + t.name);
 }
 
 export function getPipeDef<T>(t: Type<T> | any): PipeDef<T> {
- 
+
   if (t['ngPipeDef']) {
     return t['ngPipeDef'] as PipeDef<T>;
   }
@@ -74,32 +69,6 @@ export function ComponentDeps(config: ComponentDepsConfig) {
     ];
   };
 }
-
-export type EsLayer = "custom" | "integration" | "system";
-
-export interface EsComponentMetaConfig {
-  layer?: EsLayer;
-}
-
-export function EsComponentMeta(config: EsComponentMetaConfig) {
-  return (component: any) => {
-    const def = getComponentDef(component) as any;
-    def._es = config
-  };
-}
-
-export const EsModulePicker = async () => {
-  const random = Math.floor((Math.random() * 2));
-  const modules: any[] = [
-    // import("../core/modules/es-portal/es-portal.module"),
-    // import("../core/modules/es-portal/es-portal-int.module"),
-    // import("../core/modules/es-portal/es-portal-cus.module"),
-  ]
-
-  const mod: any = await modules[0];
-
-  return mod[Object.keys(mod)[0]];
-};
 
 export function sleep(miliseconds: number) {
   var currentTime = new Date().getTime();

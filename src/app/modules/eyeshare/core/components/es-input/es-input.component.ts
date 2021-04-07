@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input, NgModule, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { EsBaseComponent } from "../../helpers/component-decorators";
-// ----------------------------------------------------------------------------
 
 
 @EsBaseComponent()
@@ -56,9 +55,6 @@ export class EsInputComponent implements OnInit, ControlValueAccessor {
     this.onTouched();
   }
 }
-
-
-// ----------------------------------------------------------------------------
 
 
 @NgModule({

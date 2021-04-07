@@ -1,13 +1,10 @@
-import {
-  Component, NgModule, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit
-} from '@angular/core';
+import { Component, NgModule, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { NgxdModule } from '@ngxd/core';
-import { EsBaseComponent, EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
+import { EsBaseComponent, EsComponentDeps } from '../../helpers/component-decorators';
 import { EsCardComponent } from '../es-card/es-card.component';
-// ----------------------------------------------------------------------------
 
 
 @EsBaseComponent()
@@ -24,7 +21,6 @@ export class EsTableComponent implements AfterViewInit {
   ngAfterViewInit() { }
 }
 
-// ----------------------------------------------------------------------------
 
 @NgModule({
   imports: [

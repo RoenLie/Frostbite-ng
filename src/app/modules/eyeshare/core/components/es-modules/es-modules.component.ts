@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EsBaseComponent, EsInitialize, EsResolveAsync } from '../../helpers/component-decorators';
+import { EsBaseComponent } from '../../helpers/component-decorators';
 import { ModuleService } from '../../services/module.service';
-// ----------------------------------------------------------------------------
 
 
 @EsBaseComponent()
@@ -42,7 +41,6 @@ export class EsModulesComponent implements OnInit {
   }
 }
 
-// ----------------------------------------------------------------------------
 
 @NgModule({
   imports: [

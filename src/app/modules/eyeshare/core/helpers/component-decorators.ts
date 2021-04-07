@@ -1,6 +1,6 @@
 // import 'reflect-metadata';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs, sleep } from './utils';
+import { ComponentDepsConfig, getComponentDef, getDirectiveDefs, getPipeDefs } from './utils';
 
 
 let modules: any[];

@@ -2,8 +2,7 @@ import {
   Component, NgModule, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, OnInit, Input
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EsBaseComponent, EsComponentDeps, EsInitialize } from '../../helpers/component-decorators';
-// ----------------------------------------------------------------------------
+import { EsBaseComponent, EsComponentDeps } from '../../helpers/component-decorators';
 
 
 @EsBaseComponent()
@@ -25,9 +24,6 @@ export class EsCardComponent implements OnInit, AfterViewInit {
   ngOnInit() { }
   ngAfterViewInit() { }
 }
-
-
-// ----------------------------------------------------------------------------
 
 
 @NgModule({

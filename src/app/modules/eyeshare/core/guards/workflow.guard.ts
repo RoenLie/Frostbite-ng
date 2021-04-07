@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate, ActivatedRouteSnapshot,
-  RouterStateSnapshot, UrlTree, Router, ActivatedRoute
-} from '@angular/router';
-import { EsResolveAsync, EsTimer } from '../helpers/component-decorators';
-import { EsServiceFactory } from '../helpers/service-factories';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { WorkflowService } from '../services/workflow.service';
 
-// ----------------------------------------------------------------------------
 
 @Injectable({
   providedIn: 'root',
