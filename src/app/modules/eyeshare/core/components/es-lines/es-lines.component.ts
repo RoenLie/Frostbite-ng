@@ -1,41 +1,30 @@
 import { CommonModule } from '@angular/common';
-import {
-  AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA,
-  DoCheck, NgModule, OnChanges, OnDestroy, OnInit
-} from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { EsComponentDeps, EsBaseComponent } from '../../helpers/component-decorators';
-import { LoggerService } from '../../services/logger.service';
-import { EsLinesSubComponent } from '../es-lines-sub/es-lines-sub.component';
+import { EsCardComponent } from "@eyeshare/core/components/es-card/es-card.component";
+import { EsBaseComponent, EsComponentDeps } from "@eyeshare/core/helpers/component-decorators";
+import { LoggerService } from "@eyeshare/core/services/logger.service";
 
 
 @EsBaseComponent()
-@EsComponentDeps({ directives: [EsLinesSubComponent] })
-@Component({
-  selector: 'es-lines',
-  templateUrl: './es-lines.component.html',
-  styleUrls: ['./es-lines.component.scss'],
-})
-export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
-  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+@EsComponentDeps( { directives: [ EsCardComponent ] } )
+@Component( {
+  selector: "es-lines",
+  templateUrl: "es-lines.component.html",
+  styleUrls: [ "es-lines.component.scss" ],
+} )
+export class EsLinesComponent implements OnInit, AfterViewInit {
 
   message: string = "Initial message";
 
-  constructor(public logger?: LoggerService) { }
+  constructor ( public logger?: LoggerService ) { }
 
   ngOnInit() { }
-  ngAfterContentInit() { }
   ngAfterViewInit() { }
-  ngOnChanges(changes: any) { }
-  ngDoCheck() { }
-  ngAfterViewChecked() { }
-  ngAfterContentChecked() { }
-  ngOnDestroy() { }
 }
 
 
-@NgModule({
+@NgModule( {
   imports: [
     CommonModule,
     FormsModule,
@@ -45,6 +34,6 @@ export class EsLinesComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
   ],
   providers: [],
   exports: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+} )
 export class EsLinesModule { }

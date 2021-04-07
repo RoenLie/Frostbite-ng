@@ -1,24 +1,20 @@
 import { Injectable } from "@angular/core";
+import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { EsServiceFactory } from "../helpers/service-factories";
 
-// ----------------------------------------------------------------------------
 
-@Injectable({
+@EsBaseInjector()
+@Injectable( {
   providedIn: "root",
-  useFactory: () => EsServiceFactory(LoggerService)
-})
+  useFactory: () => EsServiceFactory( LoggerService )
+} )
 export class LoggerService {
-  private [Symbol.toStringTag] = "LoggerService";
-  static [Symbol.hasInstance](instance: any) {
-    return this.isPrototypeOf(instance);
-  }
-
-  constructor() { }
+  constructor () { }
   ngOnInit() {
-    console.log("ngOnInit from SYS logger service");
+    console.log( "ngOnInit from SYS logger service" );
   }
 
   log() {
-    console.log("log from SYS logger service");
+    console.log( "log from SYS logger service" );
   }
 }

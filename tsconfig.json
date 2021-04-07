@@ -6,12 +6,8 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      // "@app/*": ["app/*"],
-      // "@config/*": ["app/_config/*"],
-      // "@environment/*": ["environments/*"],
-      // "@shared/*": ["app/_shared/*"],
-      // "@helpers/*": ["helpers/*"],
-      // "@templates/*": ["app/modules/eyeshare/templates/*"]
+      "@eyeshare/*": ["src/app/modules/eyeshare/*"],
+      "@/*": ["src/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

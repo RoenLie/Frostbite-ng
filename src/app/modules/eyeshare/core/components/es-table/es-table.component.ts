@@ -3,38 +3,37 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { NgxdModule } from '@ngxd/core';
-import { EsBaseComponent, EsComponentDeps } from '../../helpers/component-decorators';
-import { EsCardComponent } from '../es-card/es-card.component';
+import { EsBaseComponent, EsComponentDeps } from "@eyeshare/core/helpers/component-decorators";
 
 
 @EsBaseComponent()
-@EsComponentDeps({ directives: [EsCardComponent] })
-@Component({
+@EsComponentDeps( { directives: [] } )
+@Component( {
   selector: 'es-table',
   templateUrl: 'es-table.component.html',
-  styleUrls: ['es-table.component.scss'],
-})
+  styleUrls: [ 'es-table.component.scss' ],
+} )
 export class EsTableComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor () { }
 
   ngAfterViewInit() { }
 }
 
 
-@NgModule({
+@NgModule( {
   imports: [
     CommonModule,
     FormsModule,
 
     NgxdModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents( [] ),
   ],
   declarations: [
     EsTableComponent
   ],
   providers: [],
   exports: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+} )
 export class EsTableModule { }

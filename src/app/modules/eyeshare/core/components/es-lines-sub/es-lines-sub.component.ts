@@ -1,48 +1,30 @@
-import {
-  AfterContentChecked, AfterContentInit, AfterViewChecked,
-  AfterViewInit, Component, DoCheck, Input, NgModule, OnChanges,
-  OnDestroy, OnInit
-} from '@angular/core';
+import { AfterViewInit, Component, Input, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { EsBaseComponent } from '../../helpers/component-decorators';
-import { LoggerService } from '../../services/logger.service';
+import { EsBaseComponent } from "@eyeshare/core/helpers/component-decorators";
+import { LoggerService } from "@eyeshare/core/services/logger.service";
 
 
 @EsBaseComponent()
-@Component({
-  selector: 'es-lines-sub',
-  template: `<div>SUB LINES</div>`,
-  styles: [``]
-})
-export class EsLinesSubComponent implements OnInit, OnChanges, DoCheck, OnDestroy,
-  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  @Input() message: string;
+@Component( {
+    selector: "es-lines-sub",
+    templateUrl: "es-lines-sub.component.html",
+    styleUrls: [ "es-lines-sub.component.scss" ]
+} )
+export class EsLinesSubComponent implements OnInit, AfterViewInit {
+    @Input() message: string;
 
-  constructor(private logger?: LoggerService) { }
+    constructor ( private logger?: LoggerService ) { }
 
-  ngOnInit() {
-    console.log("I am es lines sub");
-  }
-  ngAfterContentInit() { }
-  ngAfterViewInit() { }
-  ngOnChanges(changes: any) { }
-  ngDoCheck() { }
-  ngAfterViewChecked() { }
-  ngAfterContentChecked() { }
-  ngOnDestroy() { }
+    ngOnInit() { }
+    ngAfterViewInit() { }
 }
 
 
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-  ],
-  declarations: [
-    EsLinesSubComponent
-  ],
-  providers: [],
-  exports: []
-})
+@NgModule( {
+    imports: [ CommonModule, FormsModule, ],
+    declarations: [ EsLinesSubComponent ],
+    providers: [],
+    exports: []
+} )
 export class EsLinesSubModule { }

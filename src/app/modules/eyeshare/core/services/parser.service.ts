@@ -1,16 +1,13 @@
 import { Injectable } from "@angular/core";
+import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { EsServiceFactory } from "../helpers/service-factories";
 
-// ----------------------------------------------------------------------------
 
-@Injectable({
+@EsBaseInjector()
+@Injectable( {
   providedIn: "root",
-  useFactory: () => EsServiceFactory(ParserService)
-})
+  useFactory: () => EsServiceFactory( ParserService )
+} )
 export class ParserService {
-  private [Symbol.toStringTag] = "ParserService";
-  static [Symbol.hasInstance](instance: any) {
-    return this.isPrototypeOf(instance);
-  }
-  parse() { console.log("parsing from SYS"); }
+  parse() { console.log( "parsing from SYS" ); }
 }

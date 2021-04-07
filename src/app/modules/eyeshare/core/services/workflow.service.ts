@@ -1,17 +1,14 @@
 import { Injectable } from "@angular/core";
+import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { EsServiceFactory } from "../helpers/service-factories";
 
-// ----------------------------------------------------------------------------
 
-@Injectable({
+@EsBaseInjector()
+@Injectable( {
   providedIn: "root",
-  useFactory: () => EsServiceFactory(WorkflowService)
-})
+  useFactory: () => EsServiceFactory( WorkflowService )
+} )
 export class WorkflowService {
-  private [Symbol.toStringTag] = "WorkflowService";
-  static [Symbol.hasInstance](instance: any) {
-    return this.isPrototypeOf(instance);
-  }
   available: any[] = [
     "Not started",
     "Waiting for approval",
@@ -19,5 +16,5 @@ export class WorkflowService {
     "Declined",
     "Transferred",
   ];
-  active: string = this.available[0];
+  active: string = this.available[ 0 ];
 }

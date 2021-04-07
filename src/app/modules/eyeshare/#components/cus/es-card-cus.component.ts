@@ -4,22 +4,23 @@ import { EsCardComponent } from "../../core/components/es-card/es-card.component
 // ----------------------------------------------------------------------------
 
 
-@Component({
+@Component( {
   selector: "es-card",
   templateUrl: "../../core/components/es-card/es-card.component.html",
-  styleUrls: ["../../core/components/es-card/es-card.component.scss"],
-  styles: [`
+  styleUrls: [ "../../core/components/es-card/es-card.component.scss" ],
+  styles: [ `
     section {
       color: maroon;
     }
   `]
-})
+} )
 export class EsCardComponentCus extends EsCardComponent {
 
-  constructor() {
+  constructor () {
     super();
     this.header = "Header from Custom";
-    this.content = "Jeg har liten storetå";
+    this.content = "Content from Custom";
+    this.footer = "Footer from Custom";
   }
 }
 
@@ -27,7 +28,7 @@ export class EsCardComponentCus extends EsCardComponent {
 // ----------------------------------------------------------------------------
 
 
-@NgModule({
+@NgModule( {
   imports: [
     CommonModule,
   ],
@@ -36,6 +37,6 @@ export class EsCardComponentCus extends EsCardComponent {
   ],
   providers: [],
   exports: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+} )
 export class EsCardModuleCus { }

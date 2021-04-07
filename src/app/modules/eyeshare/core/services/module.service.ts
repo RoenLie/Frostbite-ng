@@ -1,22 +1,29 @@
 import { Injectable } from "@angular/core";
-import { EsServiceFactory } from "../helpers/service-factories";
+import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
+import { EsServiceFactory } from "@eyeshare/core/helpers/service-factories";
 
-// ----------------------------------------------------------------------------
 
-@Injectable({
-  providedIn: "root",
-  useFactory: () => EsServiceFactory(ModuleService)
-})
+export declare type Module =
+   "accounting" |
+   "invoice" |
+   "costinvoice" |
+   "travel" |
+   "archive" |
+   "purchaseorder";
+
+
+@EsBaseInjector()
+@Injectable( {
+   providedIn: "root",
+   useFactory: () => EsServiceFactory( ModuleService )
+} )
 export class ModuleService {
-  private [Symbol.toStringTag] = "ModuleService";
-  static [Symbol.hasInstance](instance: any) {
-    return this.isPrototypeOf(instance);
-  }
-  available: any[] = [
-    "invoice",
-    "generalledger",
-    "purchaseorder",
-    "archive"
-  ];
-  active: string = this.available[0];
+   available: Module[] = [
+      "invoice",
+      "costinvoice",
+      "travel",
+      "archive",
+      "purchaseorder",
+   ];
+   active: string = this.available[ 0 ];
 }

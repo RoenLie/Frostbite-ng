@@ -3,22 +3,9 @@
 
   display: grid;
   place-items: start center;
-  grid-auto-rows: min-content;
+
+  grid-auto-flow: column;
   row-gap: 0.5em;
 
   padding: 1em;
-}
-
-* {
-  color: orange;
-}
-
-button {
-  background-color: darkgrey;
-  color: black;
-  font-size: 2em;
-  padding: 1em;
-  outline: none;
-  border:none; 
-  border-radius: 0.2rem;
 }
