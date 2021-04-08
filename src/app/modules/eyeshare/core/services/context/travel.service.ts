@@ -13,6 +13,7 @@ import { Module } from "@eyeshare/core/services/module.service";
 } )
 export class TravelService extends InvoiceService implements IContext {
     context: Module = "travel";
+    count = 4;
     constructor () { super(); }
 
     onInit() {

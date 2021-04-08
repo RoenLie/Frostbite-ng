@@ -1,5 +1,7 @@
 <div>
-  <div>Active context: {{this.contextService.context}}</div>
+  <div>Active context: {{this.contextService.moduleContext.context}}</div>
+  <div>context counter: {{this.contextService.moduleContext.count}}</div>
+  <button (click)="countUp()" >+1</button>
 </div>
 <form [formGroup]="document">
   <es-input formControlName="value"></es-input>

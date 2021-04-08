@@ -7,7 +7,7 @@ import { DomainGuard } from '../../guards/domain.guard';
 import { TenantGuard } from '../../guards/tenant.guard';
 import { EsGridComponent } from './es-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ContextResolverService } from "@eyeshare/core/guards/context.guard";
+import { ContextResolverService } from "@eyeshare/core/resolvers/context.resolver";
 // ----------------------------------------------------------------------------
 
 

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, NgModule, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EsInputComponent } from "@eyeshare/core/components/es-input/es-input.component";
+import { EsBaseComponent, EsComponentDeps } from "@eyeshare/core/helpers/component-decorators";
 import { ContextService } from "@eyeshare/core/services/context/context.service";
-import { EsBaseComponent, EsComponentDeps } from '../../helpers/component-decorators';
-import { EsInputComponent } from '../es-input/es-input.component';
 
 
 @EsBaseComponent()
@@ -26,12 +26,12 @@ export class EsDocumentComponent implements OnInit {
     public contextService: ContextService
   ) { }
 
-  ngOnInit() {
-    console.log( this.contextService );
-
-    this.contextService;
-
+  countUp() {
+    if ( this.contextService.moduleContext?.count )
+      this.contextService.moduleContext.count++;
   }
+
+  ngOnInit() { }
   submitForm() {
     console.log( this.document.get( "value" ) );
   }

@@ -1,5 +1,4 @@
-import { Injectable, Type } from "@angular/core";
-import { ContextResolverService } from "@eyeshare/core/guards/context.guard";
+import { Inject, Injectable, Injector, Type } from "@angular/core";
 import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { AccountingService } from "@eyeshare/core/services/context/accounting.service";
 import { ArchiveService } from "@eyeshare/core/services/context/archive.service";
@@ -22,40 +21,37 @@ const contextServices: TContextService[] = [
 
 export interface IContext {
    context: Module,
+   count?: number,
    onInit: Function,
    onViewInit: Function,
    onContentInit: Function,
    onDestroy: Function,
 }
 
-export const contextFactory = ( ...args: any[] ) => {
-   console.log( "context service factory" );
-
-   const [ ModuleService ] = args;
-
+export const contextFactory = ( moduleService: ModuleService, injector: Injector ) => {
    const contextService = contextServices.find( ( ctx: TContextService ) =>
-      ctx[ 0 ] == ModuleService.active );
+      ctx[ 0 ] == moduleService.active );
 
    let context: any = AccountingService;
 
    if ( contextService?.[ 1 ] ) context = contextService[ 1 ];
 
-   return new context();
+   return injector.get( context as Type<IContext> );
 };
 
 
 @EsBaseInjector()
 @Injectable( {
    providedIn: "root",
-   useFactory: contextFactory,
-   deps: [ ModuleService ]
 } )
-export class ContextService implements IContext {
-   context: Module = "accounting";
-   constructor () { }
-   reset() { }
-   onInit() { console.log( "ContextService onInit" ); }
-   onViewInit() { console.log( "ContextService onViewInit" ); }
-   onContentInit() { console.log( "ContextService onContentInit" ); }
-   onDestroy() { console.log( "ContextService onDestroy" ); }
+export class ContextService {
+
+   moduleContext: IContext;
+   constructor ( private moduleService: ModuleService, private injector: Injector ) {
+      this.refreshModuleContext();
+   }
+
+   refreshModuleContext() {
+      this.moduleContext = contextFactory( this.moduleService, this.injector );
+   }
 }
