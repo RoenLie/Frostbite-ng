@@ -1,13 +1,13 @@
 <div class="title-wrapper">
   <span class="icon">
     <svg-icon
-      src="assets/svg/frostbite_logo.svg"
-      [svgStyle]="{'height.px':'50', 'width.px':'50'}">
+      [src]="brandService.logoPath"
+      [svgStyle]="{'height.px':'35', 'width.px':'35'}">
     </svg-icon>
   </span>
   
   <span class="text">
-    {{navTitle}}
+    {{brandService.navTitle}}
   </span>
 </div>
 

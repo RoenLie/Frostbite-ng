@@ -5,6 +5,10 @@
 			"path": ".",
 		},
 		{
+			"name": "ThreeJs",
+			"path": "./src/app/modules/three"
+		},
+		{
 			"name": "Eyeshare",
 			"path": "./src/app/modules/eyeshare"
 		}

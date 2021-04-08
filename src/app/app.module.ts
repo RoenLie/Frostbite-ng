@@ -9,9 +9,9 @@ import { AppComponent } from './app.component';
 import { AuthService } from './modules/root/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { MatSpinner } from '@angular/material/progress-spinner';
+import { BrandService } from "@/app/modules/root/services/brand.service";
 
-@NgModule({
+@NgModule( {
   declarations: [
     AppComponent,
   ],
@@ -23,7 +23,12 @@ import { MatSpinner } from '@angular/material/progress-spinner';
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
-})
-export class AppModule {  }
+  providers: [ AuthService ],
+  bootstrap: [ AppComponent ]
+} )
+export class AppModule {
+  constructor ( private brandService: BrandService ) {
+    this.brandService.navTitle = "Frostbite";
+    this.brandService.logoPath = "assets/svg/frostbite_logo.svg";
+  }
+}

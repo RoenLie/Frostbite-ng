@@ -9,12 +9,12 @@
 <a routerLink="">
   <span class="icon" tabindex="1">
     <svg-icon title="User profile"
-      src="assets/svg/frostbite_logo.svg"
-      [svgStyle]="{'height.px':'50', 'width.px':'50'}">
+      [src]="brandService.logoPath"
+      [svgStyle]="{'height.px':'35', 'width.px':'35'}">
     </svg-icon>
   </span>
 </a>
 
 <span class="text">
-  {{navTitle}}
+  {{brandService.navTitle}}
 </span>

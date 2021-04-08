@@ -62,11 +62,11 @@
     ]
   },
   {
-    "name":"threeView",
+    "name": "threeView",
     "options": {
       "order": 15
     },
-    "menuItems":[
+    "menuItems": [
       {
         "displayName": "Three",
         "name": "three",

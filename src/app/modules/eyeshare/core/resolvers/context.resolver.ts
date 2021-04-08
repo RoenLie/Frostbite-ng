@@ -1,6 +1,5 @@
 import { Injectable, Injector } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { EyeshareRouterModule } from "@eyeshare/core/router/eyeshare-router.module";
 import { contextFactory, ContextService } from "@eyeshare/core/services/context/context.service";
 import { ModuleService } from "@eyeshare/core/services/module.service";
 
@@ -15,6 +14,6 @@ export class ContextResolverService implements Resolve<any> {
       private injector: Injector
    ) { }
    resolve( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) {
-      this.contextService.moduleContext = contextFactory( this.moduleService, this.injector );
+      this.contextService.module = contextFactory( this.moduleService, this.injector );
    }
 }

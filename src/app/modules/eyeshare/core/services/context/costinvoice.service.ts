@@ -12,7 +12,7 @@ import { Module } from "@eyeshare/core/services/module.service";
     useFactory: () => EsServiceFactory( CostInvoiceService )
 } )
 export class CostInvoiceService extends InvoiceService implements IContext {
-    context: Module = "costinvoice";
+    name: Module = "costinvoice";
     constructor () { super(); }
 
     onInit() {

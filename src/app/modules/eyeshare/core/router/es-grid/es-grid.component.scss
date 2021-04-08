@@ -2,26 +2,54 @@
   display: grid;
   padding: 1em;
 
-  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-columns: auto 1fr auto;
 
   grid-template-areas:
     "domains domains domains"
-    "modules modules modules"
     "tabs tabs tabs"
     "actions table document"
     "lines lines lines";
 
-  >:nth-child(1) { grid-area: domains };
-  >:nth-child(2) { grid-area: modules; border-top: none; };
-  >:nth-child(3) { grid-area: tabs; border-top: none; };
-  >:nth-child(4) { grid-area: actions; border-top: none; border-bottom: none; };
-  >:nth-child(5) { grid-area: table; border: none; };
-  >:nth-child(6) { grid-area: document; border-top: none; border-bottom: none; min-width: 20vw;};
-  >:nth-child(7) { grid-area: lines };
+  >:nth-child(1) {
+    grid-area: domains;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+  }
 
+  >:nth-child(2) {
+    grid-area: tabs;
+    border-top: none;
+  }
 
-  > *{
+  >:nth-child(3) {
+    grid-area: actions;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  >:nth-child(4) {
+    grid-area: table;
+    border: none;
+  }
+
+  >:nth-child(5) {
+    grid-area: document;
+    border-top: none;
+    border-bottom: none;
+    min-width: 20vw;
+  }
+
+  >:nth-child(6) {
+    grid-area: lines
+  }
+
+  >* {
     border: 1px solid darkolivegreen;
+
+    hr {
+      border: 1px solid darkolivegreen;
+    }
   }
 }

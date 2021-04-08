@@ -1,4 +1,4 @@
-$tab_bg: rgba(50,50,50,1);
+$tab_bg: rgba(50, 50, 50, 1);
 
 :host {
   display: grid;
@@ -10,7 +10,7 @@ $tab_bg: rgba(50,50,50,1);
 
 .tab {
   background-color: $tab_bg;
-  padding: 1em;
+  padding: 0.5em 1em;
 
   cursor: pointer;
 
@@ -22,5 +22,3 @@ $tab_bg: rgba(50,50,50,1);
     background-color: darken($tab_bg, 6%);
   }
 }
-
-

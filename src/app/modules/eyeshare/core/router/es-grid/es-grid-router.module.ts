@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { WorkflowGuard } from '../../guards/workflow.guard';
-import { ModuleGuard } from '../../guards/module.guard';
-import { DomainGuard } from '../../guards/domain.guard';
-import { TenantGuard } from '../../guards/tenant.guard';
-import { EsGridComponent } from './es-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContextResolverService } from "@eyeshare/core/resolvers/context.resolver";
-// ----------------------------------------------------------------------------
+import { EsGridComponent } from "@eyeshare/core/router/es-grid/es-grid.component";
+import { TenantGuard } from "@eyeshare/core/guards/tenant.guard";
+import { DomainGuard } from "@eyeshare/core/guards/domain.guard";
+import { ModuleGuard } from "@eyeshare/core/guards/module.guard";
+import { WorkflowGuard } from "@eyeshare/core/guards/workflow.guard";
 
 
 const routes: Routes = [
@@ -28,9 +27,6 @@ const routes: Routes = [
 
   },
 ];
-
-
-// ----------------------------------------------------------------------------
 
 
 @NgModule( {

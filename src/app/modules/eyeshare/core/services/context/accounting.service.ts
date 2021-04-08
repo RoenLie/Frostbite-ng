@@ -11,7 +11,7 @@ import { Module } from "@eyeshare/core/services/module.service";
     useFactory: () => EsServiceFactory( AccountingService )
 } )
 export class AccountingService implements IContext {
-    context: Module = "accounting";
+    name: Module = "accounting";
     constructor () { }
     onInit() { console.log( "AccountingService initialize" ); }
     onViewInit() { console.log( "AccountingService onViewInit" ); }

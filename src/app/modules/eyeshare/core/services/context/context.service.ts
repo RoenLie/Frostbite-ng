@@ -9,8 +9,8 @@ import { TravelService } from "@eyeshare/core/services/context/travel.service";
 import { Module, ModuleService } from "@eyeshare/core/services/module.service";
 
 
-export type TContextService = [ Module, Type<any> ];
-const contextServices: TContextService[] = [
+export type TContextTuple = [ Module, Type<any> ];
+const contextServices: TContextTuple[] = [
    [ "invoice", InvoiceService ],
    [ "costinvoice", CostInvoiceService ],
    [ "purchaseorder", PurchaseOrderService ],
@@ -20,7 +20,7 @@ const contextServices: TContextService[] = [
 
 
 export interface IContext {
-   context: Module,
+   name: Module,
    count?: number,
    onInit: Function,
    onViewInit: Function,
@@ -29,14 +29,14 @@ export interface IContext {
 }
 
 export const contextFactory = ( moduleService: ModuleService, injector: Injector ) => {
-   const contextService = contextServices.find( ( ctx: TContextService ) =>
+   const contextService = contextServices.find( ( ctx: TContextTuple ) =>
       ctx[ 0 ] == moduleService.active );
 
    let context: any = AccountingService;
 
    if ( contextService?.[ 1 ] ) context = contextService[ 1 ];
 
-   return injector.get( context as Type<IContext> );
+   return injector.get( context as Type<IContext>, context );
 };
 
 
@@ -46,12 +46,12 @@ export const contextFactory = ( moduleService: ModuleService, injector: Injector
 } )
 export class ContextService {
 
-   moduleContext: IContext;
+   module: IContext;
    constructor ( private moduleService: ModuleService, private injector: Injector ) {
       this.refreshModuleContext();
    }
 
    refreshModuleContext() {
-      this.moduleContext = contextFactory( this.moduleService, this.injector );
+      this.module = contextFactory( this.moduleService, this.injector );
    }
 }
