@@ -1,5 +1,3 @@
-// https://richardmattka.com/
-
 varying vec2 vUv;
 uniform float iTime;
 uniform vec2 iResolution;

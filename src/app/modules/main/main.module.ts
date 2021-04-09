@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainViewComponent } from './views/main-view/main-view.component';
 import { RouterModule } from '@angular/router';
-import { ThreeFirstComponent } from "@three/routes/first/three-first.component";
+import { OrbThreeComponent } from "@three/routes/second/orb.three.component";
 
 
 
@@ -11,7 +11,7 @@ import { ThreeFirstComponent } from "@three/routes/first/three-first.component";
   imports: [
     CommonModule,
     RouterModule.forChild( [
-      { path: "", component: ThreeFirstComponent },
+      { path: "", component: OrbThreeComponent },
     ] ),
   ]
 } )
