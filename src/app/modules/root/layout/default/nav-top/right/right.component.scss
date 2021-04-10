@@ -9,7 +9,7 @@
 }
 
 button {
-  display:grid;
+  display: grid;
   place-items: center;
 
   margin: 0.25em;
@@ -19,11 +19,11 @@ button {
   color: inherit;
 
   cursor: pointer;
-  transition: box-shadow 0.1s linear;
 
-  &:active {
-    box-shadow: 0 0 3px 3px rgba(var(--txt-color-1), 0.5) inset;
-  }
+  // transition: box-shadow 0.1s linear;
+  // &:active {
+  //   box-shadow: 0 0 3px 3px rgba(var(--txt-color-1), 0.5) inset;
+  // }
 }
 
 .text {
@@ -33,17 +33,17 @@ button {
 
 .icon {
   >* {
-    display:grid;
+    display: grid;
     place-items: center;
   }
 
   cursor: pointer;
 
-  transition: all 0.1s linear;
 
   color: rgba(var(--txt-color-1));
 
-  &:active {
-    box-shadow: 0 0 3px 3px rgba(var(--txt-color-1), 0.5) inset;
-  }
+  // transition: all 0.1s linear;
+  // &:active {
+  //   box-shadow: 0 0 3px 3px rgba(var(--txt-color-1), 0.5) inset;
+  // }
 }
