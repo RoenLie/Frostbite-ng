@@ -1,7 +1,7 @@
-import { Injectable, Injector } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { contextFactory, ContextService } from "@eyeshare/core/services/context/context.service";
-import { ModuleService } from "@eyeshare/core/services/module.service";
+import { ContextService } from "@eyeshare/core/services/context/context.service";
+import { HotToastService } from "@ngneat/hot-toast";
 
 
 @Injectable( {
@@ -10,10 +10,9 @@ import { ModuleService } from "@eyeshare/core/services/module.service";
 export class ContextResolverService implements Resolve<any> {
    constructor (
       private contextService: ContextService,
-      private moduleService: ModuleService,
-      private injector: Injector
+      private toast: HotToastService
    ) { }
    resolve( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) {
-      this.contextService.module = contextFactory( this.moduleService, this.injector );
+      // this.toast.show( "context: " + this.contextService.value.type.description );
    }
 }

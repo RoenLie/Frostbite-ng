@@ -10,6 +10,7 @@ import { AuthService } from './modules/root/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { BrandService } from "@/app/modules/root/services/brand.service";
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule( {
   declarations: [
@@ -22,6 +23,7 @@ import { BrandService } from "@/app/modules/root/services/brand.service";
     LayoutModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
+    HotToastModule.forRoot(),
   ],
   providers: [ AuthService ],
   bootstrap: [ AppComponent ]

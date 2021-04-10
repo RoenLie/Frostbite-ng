@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { EsServiceFactory } from "@eyeshare/core/helpers/service-factories";
 import { ContextService, IContext } from "@eyeshare/core/services/context/context.service";
-import { Module } from "@eyeshare/core/services/module.service";
+import { ACCOUNTING, Module } from "@eyeshare/core/services/module.service";
 
 
 @EsBaseInjector()
@@ -11,7 +11,7 @@ import { Module } from "@eyeshare/core/services/module.service";
     useFactory: () => EsServiceFactory( AccountingService )
 } )
 export class AccountingService implements IContext {
-    name: Module = "accounting";
+    type: Module = ACCOUNTING;
     constructor () { }
     onInit() { console.log( "AccountingService initialize" ); }
     onViewInit() { console.log( "AccountingService onViewInit" ); }

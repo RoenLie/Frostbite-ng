@@ -6,21 +6,19 @@ import { CostInvoiceService } from "@eyeshare/core/services/context/costinvoice.
 import { InvoiceService } from "@eyeshare/core/services/context/invoice.service";
 import { PurchaseOrderService } from "@eyeshare/core/services/context/purchaseorder.service";
 import { TravelService } from "@eyeshare/core/services/context/travel.service";
-import { Module, ModuleService } from "@eyeshare/core/services/module.service";
+import { ARCHIVE, COSTINVOICE, INVOICE, Module, ModuleService, PURCHASEORDER, TRAVEL } from "@eyeshare/core/services/module.service";
 
 
-export type TContextTuple = [ Module, Type<any> ];
-const contextServices: TContextTuple[] = [
-   [ "invoice", InvoiceService ],
-   [ "costinvoice", CostInvoiceService ],
-   [ "purchaseorder", PurchaseOrderService ],
-   [ "archive", ArchiveService ],
-   [ "travel", TravelService ],
-];
+export const contextServices = new Map();
+contextServices.set( INVOICE, InvoiceService );
+contextServices.set( COSTINVOICE, CostInvoiceService );
+contextServices.set( PURCHASEORDER, PurchaseOrderService );
+contextServices.set( ARCHIVE, ArchiveService );
+contextServices.set( TRAVEL, TravelService );
 
 
 export interface IContext {
-   name: Module,
+   type: Module,
    count?: number,
    onInit: Function,
    onViewInit: Function,
@@ -28,13 +26,10 @@ export interface IContext {
    onDestroy: Function,
 }
 
-export const contextFactory = ( moduleService: ModuleService, injector: Injector ) => {
-   const contextService = contextServices.find( ( ctx: TContextTuple ) =>
-      ctx[ 0 ] == moduleService.active );
 
-   let context: any = AccountingService;
-
-   if ( contextService?.[ 1 ] ) context = contextService[ 1 ];
+export const contextFactory = ( injector: Injector, moduleService: ModuleService ) => {
+   const contextService = contextServices.get( moduleService.active.value );
+   const context = contextService ? contextService : AccountingService;
 
    return injector.get( context as Type<IContext>, context );
 };
@@ -45,13 +40,10 @@ export const contextFactory = ( moduleService: ModuleService, injector: Injector
    providedIn: "root",
 } )
 export class ContextService {
-
-   module: IContext;
-   constructor ( private moduleService: ModuleService, private injector: Injector ) {
-      this.refreshModuleContext();
-   }
-
-   refreshModuleContext() {
-      this.module = contextFactory( this.moduleService, this.injector );
+   value: IContext;
+   constructor ( private injector: Injector, private moduleService: ModuleService ) {
+      this.moduleService.active.subscribe( module => {
+         this.value = contextFactory( this.injector, this.moduleService );
+      } );
    }
 }

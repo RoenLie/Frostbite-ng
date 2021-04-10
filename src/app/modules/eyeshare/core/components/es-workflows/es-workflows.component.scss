@@ -6,11 +6,29 @@ $tab_bg: rgba(50, 50, 50, 1);
   justify-content: flex-start;
   align-items: stretch;
   column-gap: 0.3em;
+
+  overflow: hidden;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.09);
+  }
 }
 
 .tab {
   background-color: $tab_bg;
   padding: 0.5em 1em;
+
+  white-space: nowrap;
 
   cursor: pointer;
 

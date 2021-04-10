@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EsComponentDeps } from "@eyeshare/core/helpers/component-decorators";
 import { EsDomainsComponent } from "@eyeshare/core/components/es-domains/es-domains.component";
 import { EsModulesComponent } from "@eyeshare/core/components/es-modules/es-modules.component";
-import { EsTabsComponent } from "@eyeshare/core/components/es-tabs/es-tabs.component";
+import { EsWorkflowsComponent } from "@eyeshare/core/components/es-workflows/es-workflows.component";
 import { EsLinesComponent } from "@eyeshare/core/components/es-lines/es-lines.component";
 import { EsDocumentComponent } from "@eyeshare/core/components/es-document/es-document.component";
 import { EsActionsComponent } from "@eyeshare/core/components/es-actions/es-actions.component";
@@ -28,7 +28,7 @@ interface GridRouteParams {
    directives: [
       EsDomainsComponent,
       EsModulesComponent,
-      EsTabsComponent,
+      EsWorkflowsComponent,
       EsLinesComponent,
       EsDocumentComponent,
       EsActionsComponent,

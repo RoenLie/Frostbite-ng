@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, ActivatedRoute } from '@angular/router';
-import { ContextService } from "@eyeshare/core/services/context/context.service";
-import { ModuleService } from '../services/module.service';
+import {
+  CanActivate, ActivatedRouteSnapshot,
+  RouterStateSnapshot, Router, ActivatedRoute
+} from '@angular/router';
+import { Module, ModuleService } from '../services/module.service';
 
 
 @Injectable( {
@@ -13,24 +15,21 @@ export class ModuleGuard implements CanActivate {
     private router: Router,
     private route: ActivatedRoute,
     private moduleService: ModuleService
-
   ) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot ) {
+  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) {
     const url = state.url.split( "?" )[ 0 ];
 
     const current = route.params?.module;
-    const valid = this.moduleService.available;
+    const available = this.moduleService.available;
+    const valid = available.find( x => x.description == current );
 
-    if ( current && !valid.includes( current ) ) {
-
-      const newCurrent = valid[ 0 ];
-      this.moduleService.active = newCurrent;
+    if ( current && !valid ) {
+      const newCurrent = available[ 0 ];
+      this.moduleService.active.next( newCurrent );
 
       const urlTree = this.router.createUrlTree(
-        [ url.replace( current, newCurrent ) ],
+        [ url.replace( current, newCurrent.description || "" ) ],
         {
           queryParams: { workflow: route.queryParams?.workflow },
           queryParamsHandling: "merge",
@@ -41,7 +40,9 @@ export class ModuleGuard implements CanActivate {
       return urlTree;
     }
 
-    this.moduleService.active = current;
+    if ( valid?.description != current ) {
+      this.moduleService.active.next( valid as Module );
+    }
 
     return true;
   }

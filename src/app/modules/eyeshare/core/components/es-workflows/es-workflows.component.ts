@@ -7,48 +7,48 @@ import { WorkflowService } from '../../services/workflow.service';
 
 
 @EsBaseComponent()
-@Component({
-  selector: 'es-tabs',
-  templateUrl: './es-tabs.component.html',
-  styleUrls: ['./es-tabs.component.scss']
-})
-export class EsTabsComponent implements OnInit {
+@Component( {
+  selector: 'es-workflows',
+  templateUrl: './es-workflows.component.html',
+  styleUrls: [ './es-workflows.component.scss' ]
+} )
+export class EsWorkflowsComponent implements OnInit {
 
-  constructor(
+  constructor (
     public workflowService: WorkflowService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe( params => {
       this.workflowService.active = params?.workflow;
-    });
+    } );
   }
 
-  activate(workflow: string) {
+  activate( workflow: string ) {
     this.workflowService.active = workflow;
 
-    const urlTree = this.router.createUrlTree([], {
+    const urlTree = this.router.createUrlTree( [], {
       queryParams: { workflow: this.workflowService.active },
       queryParamsHandling: "merge",
       preserveFragment: true
-    });
+    } );
 
-    this.router.navigateByUrl(urlTree);
+    this.router.navigateByUrl( urlTree );
   }
 }
 
 
-@NgModule({
+@NgModule( {
   imports: [
     CommonModule,
     FormsModule,
   ],
   declarations: [
-    EsTabsComponent
+    EsWorkflowsComponent
   ],
   providers: [],
   exports: []
-})
+} )
 export class EsTabsModule { }

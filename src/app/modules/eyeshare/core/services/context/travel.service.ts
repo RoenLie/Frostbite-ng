@@ -3,7 +3,7 @@ import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { EsServiceFactory } from "@eyeshare/core/helpers/service-factories";
 import { IContext } from "@eyeshare/core/services/context/context.service";
 import { InvoiceService } from "@eyeshare/core/services/context/invoice.service";
-import { Module } from "@eyeshare/core/services/module.service";
+import { Module, TRAVEL } from "@eyeshare/core/services/module.service";
 
 
 @EsBaseInjector()
@@ -12,7 +12,7 @@ import { Module } from "@eyeshare/core/services/module.service";
     useFactory: () => EsServiceFactory( TravelService )
 } )
 export class TravelService extends InvoiceService implements IContext {
-    name: Module = "travel";
+    type: Module = TRAVEL;
     count = 4;
     constructor () { super(); }
 

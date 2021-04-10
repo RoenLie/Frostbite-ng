@@ -3,18 +3,18 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EsBaseComponent } from '../../helpers/component-decorators';
-import { ModuleService } from '../../services/module.service';
+import { Module, ModuleService } from '../../services/module.service';
 
 
 @EsBaseComponent()
-@Component({
+@Component( {
   selector: 'es-modules',
   templateUrl: './es-modules.component.html',
-  styleUrls: ['./es-modules.component.scss']
-})
+  styleUrls: [ './es-modules.component.scss' ]
+} )
 export class EsModulesComponent implements OnInit {
 
-  constructor(
+  constructor (
     public moduleService: ModuleService,
     private route: ActivatedRoute,
     private router: Router
@@ -26,23 +26,25 @@ export class EsModulesComponent implements OnInit {
     // })
   }
 
-  activate(module: string) {
-    if (module == this.moduleService.active) return;
+  activate( module: Module ) {
+    const activeModule = this.moduleService.active.getValue();
 
-    const previous = this.moduleService.active;
+    if ( module == activeModule ) return;
 
-    this.moduleService.active = module;
+    const previous = activeModule.description || "";
 
-    const url = this.router.url.split("?")[0].replace(previous, module);
+    this.moduleService.active.next( module );
 
-    const urlTree = this.router.createUrlTree([url]);
+    const url = this.router.url.split( "?" )[ 0 ].replace( previous, module.description || "" );
 
-    this.router.navigateByUrl(urlTree);
+    const urlTree = this.router.createUrlTree( [ url ] );
+
+    this.router.navigateByUrl( urlTree );
   }
 }
 
 
-@NgModule({
+@NgModule( {
   imports: [
     CommonModule,
     FormsModule,
@@ -52,5 +54,5 @@ export class EsModulesComponent implements OnInit {
   ],
   providers: [],
   exports: []
-})
+} )
 export class EsModulesModule { }

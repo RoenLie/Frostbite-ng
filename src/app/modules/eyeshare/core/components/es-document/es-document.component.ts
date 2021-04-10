@@ -27,8 +27,8 @@ export class EsDocumentComponent implements OnInit {
   ) { }
 
   countUp() {
-    if ( this.contextService.module?.count )
-      this.contextService.module.count++;
+    if ( this.contextService.value?.count )
+      this.contextService.value.count++;
   }
 
   ngOnInit() { }

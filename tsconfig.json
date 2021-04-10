@@ -26,6 +26,7 @@
     "target": "es2015",
     "module": "esnext",
     "lib": [
+      "es2019",
       "es2018",
       "dom"
     ]

@@ -1,6 +1,6 @@
 <div>
-  <div>Active context: {{this.contextService.module.name}}</div>
-  <div>context counter: {{this.contextService.module.count}}</div>
+  <div>Active context: {{this.contextService.value.type.description}}</div>
+  <div>context counter: {{this.contextService.value.count}}</div>
   <button (click)="countUp()" >+1</button>
 </div>
 <form [formGroup]="document">

@@ -1,5 +1,5 @@
 <div *ngFor="let module of moduleService.available; index as i"
   class="tab"
-  [ngClass]="{'active': moduleService.active == module}"
+  [ngClass]="{'active': moduleService.active.value == module}"
   (click)="activate(module)"
->{{module}}</div>
+>{{module.description}}</div>
