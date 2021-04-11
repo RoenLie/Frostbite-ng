@@ -9,7 +9,7 @@
     "domains domains domains"
     "tabs tabs tabs"
     "actions table document"
-    "lines lines lines";
+    "liness liness liness";
 
   >:nth-child(1) {
     grid-area: domains;
@@ -39,10 +39,12 @@
     border-top: none;
     border-bottom: none;
     min-width: 20vw;
+    max-width: 80vw;
   }
 
   >:nth-child(6) {
-    grid-area: lines
+    grid-area: liness;
+    max-height: 80vh;
   }
 
   >* {

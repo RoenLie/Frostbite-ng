@@ -1,9 +1,14 @@
 import { Injectable } from "@angular/core";
 import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
 import { EsServiceFactory } from "@eyeshare/core/helpers/service-factories";
-import { AccountingService } from "@eyeshare/core/services/context/accounting.service";
+import { AccountingFRF, AccountingService, FieldRenderers } from "@eyeshare/core/services/context/accounting.service";
 import { IContext } from "@eyeshare/core/services/context/context.service";
 import { INVOICE, Module } from "@eyeshare/core/services/module.service";
+
+
+export interface InvoiceFRF {
+    roundDown( value: number ): number;
+}
 
 
 @EsBaseInjector()
@@ -13,7 +18,16 @@ import { INVOICE, Module } from "@eyeshare/core/services/module.service";
 } )
 export class InvoiceService extends AccountingService implements IContext {
     type: Module = INVOICE;
-    constructor () { super(); }
+    fieldRenderFunctions: FieldRenderers<AccountingFRF, InvoiceFRF> = {
+        ...this.fieldRenderFunctions,
+        roundDown: ( value: number ) => Math.floor( value )
+    };
+
+    constructor () {
+        super();
+        this.fieldRenderFunctions.roundDown( 5 );
+    }
+
     onInit() {
         super.onInit();
         console.log( "InvoiveService initialize" );

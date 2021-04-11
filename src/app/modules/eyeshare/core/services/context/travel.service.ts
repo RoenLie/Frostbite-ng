@@ -14,8 +14,9 @@ import { Module, TRAVEL } from "@eyeshare/core/services/module.service";
 export class TravelService extends InvoiceService implements IContext {
     type: Module = TRAVEL;
     count = 4;
-    constructor () { super(); }
 
+
+    constructor () { super(); }
     onInit() {
         super.onInit();
         console.log( "TravelService initialize" );
@@ -23,4 +24,5 @@ export class TravelService extends InvoiceService implements IContext {
     onViewInit() { console.log( "TravelService onViewInit" ); }
     onContentInit() { console.log( "TravelService onContentInit" ); }
     onDestroy() { console.log( "TravelService onDestroy" ); }
+
 }

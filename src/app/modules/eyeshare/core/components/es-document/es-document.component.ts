@@ -14,7 +14,7 @@ import { ContextService } from "@eyeshare/core/services/context/context.service"
   styleUrls: [ './es-document.component.scss' ]
 } )
 export class EsDocumentComponent implements OnInit {
-  document: FormGroup = this.fb.group( {
+  documentForm: FormGroup = this.fb.group( {
     value: [ "" ]
   } );
 
@@ -33,7 +33,7 @@ export class EsDocumentComponent implements OnInit {
 
   ngOnInit() { }
   submitForm() {
-    console.log( this.document.get( "value" ) );
+    console.log( this.documentForm.get( "value" ) );
   }
 
   addTab( selectAfterAdding: boolean ) {

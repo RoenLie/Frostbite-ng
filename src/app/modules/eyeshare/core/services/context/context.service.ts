@@ -1,20 +1,24 @@
-import { Inject, Injectable, Injector, Type } from "@angular/core";
+import { Injectable, Injector, Type } from "@angular/core";
 import { EsBaseInjector } from "@eyeshare/core/helpers/component-decorators";
-import { AccountingService } from "@eyeshare/core/services/context/accounting.service";
+import { AccountingService, FieldRenderers } from "@eyeshare/core/services/context/accounting.service";
 import { ArchiveService } from "@eyeshare/core/services/context/archive.service";
 import { CostInvoiceService } from "@eyeshare/core/services/context/costinvoice.service";
 import { InvoiceService } from "@eyeshare/core/services/context/invoice.service";
 import { PurchaseOrderService } from "@eyeshare/core/services/context/purchaseorder.service";
 import { TravelService } from "@eyeshare/core/services/context/travel.service";
-import { ARCHIVE, COSTINVOICE, INVOICE, Module, ModuleService, PURCHASEORDER, TRAVEL } from "@eyeshare/core/services/module.service";
+import {
+   ARCHIVE, COSTINVOICE, INVOICE, PURCHASEORDER, TRAVEL,
+   Module, ModuleService
+} from "@eyeshare/core/services/module.service";
 
 
-export const contextServices = new Map();
-contextServices.set( INVOICE, InvoiceService );
-contextServices.set( COSTINVOICE, CostInvoiceService );
-contextServices.set( PURCHASEORDER, PurchaseOrderService );
-contextServices.set( ARCHIVE, ArchiveService );
-contextServices.set( TRAVEL, TravelService );
+export const contextServices = new Map( [
+   [ INVOICE, InvoiceService ],
+   [ COSTINVOICE, CostInvoiceService ],
+   [ PURCHASEORDER, PurchaseOrderService ],
+   [ ARCHIVE, ArchiveService ],
+   [ TRAVEL, TravelService ],
+] );
 
 
 export interface IContext {
@@ -24,6 +28,7 @@ export interface IContext {
    onViewInit: Function,
    onContentInit: Function,
    onDestroy: Function,
+   fieldRenderFunctions?: FieldRenderers<any, any>;
 }
 
 
@@ -38,6 +43,7 @@ export const contextFactory = ( injector: Injector, moduleService: ModuleService
 @EsBaseInjector()
 @Injectable( {
    providedIn: "root",
+   // useFactory: () => EsServiceFactory( ContextService )
 } )
 export class ContextService {
    value: IContext;

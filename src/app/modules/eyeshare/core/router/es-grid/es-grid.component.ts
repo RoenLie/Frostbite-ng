@@ -9,6 +9,7 @@ import { EsLinesComponent } from "@eyeshare/core/components/es-lines/es-lines.co
 import { EsDocumentComponent } from "@eyeshare/core/components/es-document/es-document.component";
 import { EsActionsComponent } from "@eyeshare/core/components/es-actions/es-actions.component";
 import { EsTableComponent } from "@eyeshare/core/components/es-table/es-table.component";
+import { ResizableDirective } from "@eyeshare/core/directives/resize.directive";
 
 
 interface GridRouteParams {
@@ -32,7 +33,8 @@ interface GridRouteParams {
       EsLinesComponent,
       EsDocumentComponent,
       EsActionsComponent,
-      EsTableComponent
+      EsTableComponent,
+      ResizableDirective
    ]
 } )
 export class EsGridComponent implements OnInit, AfterViewInit {
