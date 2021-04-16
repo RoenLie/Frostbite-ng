@@ -1,6 +1,7 @@
 import { Component, NgModule, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EsBaseComponent, EsComponentDeps } from '../../helpers/component-decorators';
+import { EsBaseComponent, EsComponentDeps } from "@eyeshare/core/helpers/component-decorators";
+import { LoggerService } from "@eyeshare/core/services/logger.service";
 
 
 @EsBaseComponent()

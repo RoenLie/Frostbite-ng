@@ -9,17 +9,17 @@ import { EsCardComponent } from "../../core/components/es-card/es-card.component
   styleUrls: [ "../../core/components/es-card/es-card.component.scss" ],
   styles: [ `
     section {
-      color: maroon;
+      color: pink;
     }
   `]
 } )
-export class EsCardComponentCus extends EsCardComponent {
+export class EsCardComponentInt extends EsCardComponent {
 
   constructor () {
     super();
-    this.header = "Header from Custom";
-    this.content = "Content from Custom";
-    this.footer = "Footer from Custom";
+    this.header = "Header from int";
+    this.content = "Content from int";
+    this.footer = "Footer from int";
   }
 }
 

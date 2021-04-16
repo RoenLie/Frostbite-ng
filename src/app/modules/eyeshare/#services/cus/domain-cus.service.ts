@@ -3,10 +3,15 @@ import { DomainService } from "../../core/services/domain.service";
 // ----------------------------------------------------------------------------
 
 
-@Injectable({
+@Injectable( {
   providedIn: "root"
-})
+} )
 export class DomainServiceCus extends DomainService {
-  available: string[] = [...this.available, "AX2012"];
-  constructor() { super(); }
+  available: string[] = [ ...this.available, "AX2012" ];
+  constructor () { super(); }
+
+  domainLogger() {
+    // super.domainLogger();
+
+  }
 }

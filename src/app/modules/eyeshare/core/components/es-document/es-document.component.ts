@@ -11,6 +11,7 @@ import { ContextService } from "@eyeshare/core/services/context/context.service"
 @Component( {
   selector: 'es-document',
   templateUrl: './es-document.component.html',
+  template: `<div></div>`,
   styleUrls: [ './es-document.component.scss' ]
 } )
 export class EsDocumentComponent implements OnInit {

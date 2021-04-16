@@ -127,7 +127,7 @@ export class OrbThreeComponent implements AfterViewInit {
    initObjects() {
       console.time( "initObjects" );
       const vertices = [];
-      const spriteCount = 900;
+      const spriteCount = 200;
       for ( let i = 0; i < spriteCount; i++ ) {
          const x = Math.random() * 60 - 30;
          const y = Math.random() * 60 - 30;
@@ -267,28 +267,28 @@ export class OrbThreeComponent implements AfterViewInit {
    };
    syncHostRect = () => this.hostRect = this.host.getBoundingClientRect();
 
-   @HostListener( "mousemove", [ "$event" ] )
-   mouseMove( e: MouseEvent ) {
-      this.mouse.x = ( e.clientX - this.hostRect.width / 2 );
-      this.mouse.y = ( e.clientY - this.hostRect.height / 2 );
-   }
+   // @HostListener( "mousemove", [ "$event" ] )
+   // mouseMove( e: MouseEvent ) {
+   //    this.mouse.x = ( e.clientX - this.hostRect.width / 2 );
+   //    this.mouse.y = ( e.clientY - this.hostRect.height / 2 );
+   // }
 
-   @HostListener( "mouseout", [ "$event" ] )
-   mouseOut( e?: MouseEvent ) {
-      this.mouse.x = this.hostRect.width / 2;
-      this.mouse.y = this.hostRect.height / 2;
-   }
+   // @HostListener( "mouseout", [ "$event" ] )
+   // mouseOut( e?: MouseEvent ) {
+   //    this.mouse.x = this.hostRect.width / 2;
+   //    this.mouse.y = this.hostRect.height / 2;
+   // }
 
-   @HostListener( "touchmove", [ "$event" ] )
-   touchMove( e: TouchEvent ) {
-      this.mouse.x = ( e.touches[ 0 ].clientX - this.hostRect.width / 2 );
-      this.mouse.y = ( e.touches[ 0 ].clientY - this.hostRect.height / 2 );
-   }
+   // @HostListener( "touchmove", [ "$event" ] )
+   // touchMove( e: TouchEvent ) {
+   //    this.mouse.x = ( e.touches[ 0 ].clientX - this.hostRect.width / 2 );
+   //    this.mouse.y = ( e.touches[ 0 ].clientY - this.hostRect.height / 2 );
+   // }
 
-   @HostListener( "touchend", [ "$event" ] )
-   touchEnd( e: TouchEvent ) {
-      this.mouseOut();
-   }
+   // @HostListener( "touchend", [ "$event" ] )
+   // touchEnd( e: TouchEvent ) {
+   //    this.mouseOut();
+   // }
 
    @HostListener( "window:resize", [ "$event" ] )
    resize( e?: Event ) {

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { AfterViewInit, Directive, ElementRef, Input, NgModule, OnDestroy, Renderer2 } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, Input, NgModule, OnDestroy, OnInit, Renderer2 } from "@angular/core";
 
 
 type direction = "top" | "bottom" | "left" | "right";
@@ -8,7 +8,7 @@ type direction = "top" | "bottom" | "left" | "right";
 @Directive( {
    selector: "[resizable]"
 } )
-export class ResizableDirective implements AfterViewInit, OnDestroy {
+export class ResizableDirective implements OnInit, AfterViewInit, OnDestroy {
    @Input( "resizable" ) direction: direction;
    @Input() defaultColor: string = "inherit";
    @Input() highlightColor: string = "rgba(150,150,150)";
@@ -23,6 +23,13 @@ export class ResizableDirective implements AfterViewInit, OnDestroy {
    hostResize: Function;
 
    constructor ( public elementRef: ElementRef<Element>, public rd: Renderer2 ) { }
+   ngOnInit() {
+      this.mousedownListener?.();
+      this.mousemoveListener?.();
+      this.mouseupListener?.();
+      this.mouseenterListener?.();
+      this.mouseoutListener?.();
+   }
    ngAfterViewInit() {
       this.createMainDiv();
       this.createEvents();
@@ -130,11 +137,11 @@ export class ResizableDirective implements AfterViewInit, OnDestroy {
       } );
    }
    ngOnDestroy() {
-      this.mousedownListener();
-      this.mousemoveListener();
-      this.mouseupListener();
-      this.mouseenterListener();
-      this.mouseoutListener();
+      this.mousedownListener?.();
+      this.mousemoveListener?.();
+      this.mouseupListener?.();
+      this.mouseenterListener?.();
+      this.mouseoutListener?.();
    }
 }
 

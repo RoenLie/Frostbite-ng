@@ -14,6 +14,9 @@ export class DomainService {
     "SYS",
     "D365",
     "AX2009",
+    "hei"
   ];
   active: string = this.available[ 0 ];
+
+  domainLogger() { }
 }
